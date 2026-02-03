@@ -78,7 +78,7 @@ export default function Home() {
   return (
     <main className="relative min-h-screen bg-[var(--bg)] text-[var(--text)]">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-16 px-5 pb-28 pt-12 sm:px-6 md:gap-20 md:pb-32 md:pt-16">
-        <header className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-muted">
+        <header className="flex items-center justify-between border-b border-default pb-6 text-xs uppercase tracking-[0.3em] text-muted">
           <span>{siteData.location}</span>
           <div className="flex items-center gap-4">
             <a
@@ -91,7 +91,7 @@ export default function Home() {
           </div>
         </header>
 
-        <section className="border-b border-default pb-10">
+        <section className="border-b border-default pb-12">
           <Reveal>
             <TextReveal
               text={siteData.name}
@@ -112,7 +112,7 @@ export default function Home() {
           </Reveal>
         </section>
 
-        <section className="space-y-6">
+        <section className="space-y-6 md:space-y-8">
           <Reveal>
             <TextReveal text="Bio" as="h2" className="text-xs uppercase tracking-[0.3em] text-muted" />
             <div className="mt-6 space-y-4 text-base text-[var(--text)] sm:text-lg">
@@ -123,12 +123,15 @@ export default function Home() {
           </Reveal>
         </section>
 
-        <section className="space-y-6">
+        <section className="space-y-6 md:space-y-8">
           <Reveal>
             <TextReveal text="Focus" as="h2" className="text-xs uppercase tracking-[0.3em] text-muted" />
             <div className="mt-6 space-y-4">
               {siteData.focus.map((item) => (
-                <div key={item.title} className="border-b border-default pb-4">
+                <div
+                  key={item.title}
+                  className="border-b border-default pb-5 last:border-b-0 last:pb-0"
+                >
                   <div className="text-base font-semibold">{item.title}</div>
                   <div className="mt-2 text-sm text-muted">→ {item.reason}</div>
                 </div>
@@ -137,7 +140,7 @@ export default function Home() {
           </Reveal>
         </section>
 
-        <section className="space-y-6">
+        <section className="space-y-6 md:space-y-8">
           <Reveal>
             <TextReveal
               text="Highlights"
@@ -152,7 +155,7 @@ export default function Home() {
           </Reveal>
         </section>
 
-        <section className="space-y-6">
+        <section className="space-y-6 md:space-y-8">
           <Reveal>
             <div>
               <TextReveal
@@ -166,7 +169,7 @@ export default function Home() {
               {siteData.projects.map((project) => (
                 <a
                   key={project.name}
-                  className="flex flex-col gap-2 border-b border-default pb-5 transition-colors hover:text-[var(--accent)]"
+                  className="flex flex-col gap-2 border-b border-default pb-6 transition-colors hover:text-[var(--accent)] last:border-b-0 last:pb-0"
                   href={project.href}
                   target="_blank"
                   rel="noreferrer"
@@ -183,7 +186,7 @@ export default function Home() {
           </Reveal>
         </section>
 
-        <section className="space-y-6">
+        <section className="space-y-6 md:space-y-8">
           <Reveal>
             <TextReveal
               text="Point of View"
@@ -198,7 +201,7 @@ export default function Home() {
           </Reveal>
         </section>
 
-        <section className="space-y-6">
+        <section className="space-y-6 md:space-y-8">
           <Reveal>
             <TextReveal
               text="Currently Working On"
@@ -213,7 +216,7 @@ export default function Home() {
           </Reveal>
         </section>
 
-        <section className="space-y-6">
+        <section className="space-y-6 md:space-y-8">
           <Reveal>
             <TextReveal
               text="Writing"
@@ -232,17 +235,17 @@ export default function Home() {
           </Reveal>
         </section>
 
-        <section className="space-y-6">
+        <section className="space-y-6 md:space-y-8">
           <Reveal>
             <div>
               <TextReveal text="Links" as="h2" className="text-xs uppercase tracking-[0.3em] text-muted" />
               <p className="mt-3 text-sm text-muted">Reach out or follow along.</p>
             </div>
-            <div className="mt-6 flex flex-wrap gap-4 text-sm uppercase tracking-[0.2em] text-muted">
+            <div className="mt-6 flex flex-wrap gap-5 text-sm uppercase tracking-[0.2em] text-muted">
               {siteData.links.map((link) => (
                 <a
                   key={link.label}
-                  className="transition-colors hover:text-[var(--accent)]"
+                  className="underline-offset-4 decoration-transparent transition-colors hover:text-[var(--accent)] hover:decoration-[var(--accent)]"
                   href={link.href}
                   target="_blank"
                   rel="noreferrer"
@@ -254,7 +257,7 @@ export default function Home() {
           </Reveal>
         </section>
 
-        <section className="space-y-6">
+        <section className="space-y-6 md:space-y-8">
           <Reveal>
             <TextReveal
               text="Let’s build something useful."
@@ -265,7 +268,7 @@ export default function Home() {
               I’m always open to collaborations around scalable LLM systems.
             </p>
             <a
-              className="mt-5 inline-flex rounded-full border border-default px-5 py-2 text-sm transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
+              className="mt-6 inline-flex rounded-full border border-default px-5 py-2 text-sm transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
               href="mailto:gauravlochab487@gmail.com"
             >
               Say hello
