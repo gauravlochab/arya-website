@@ -34,7 +34,11 @@ export default function ThemeToggle() {
   }
 
   return (
-    <button className="theme-toggle" type="button" onClick={toggleTheme}>
+    <button
+      className="text-xs uppercase tracking-[0.3em] text-muted transition-colors hover:text-[var(--accent)]"
+      type="button"
+      onClick={toggleTheme}
+    >
       {theme === "dark" ? "Light mode" : "Dark mode"}
     </button>
   );
