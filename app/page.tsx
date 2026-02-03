@@ -4,18 +4,29 @@ import ThemeToggle from "./components/ThemeToggle";
 
 const siteData = {
   name: "Gaurav Lochab",
-  headline: "AI Engineer focused on LLM systems.",
-  subheadline: "Building scalable LLM systems for recruiting and hospitality.",
+  headline:
+    "AI engineer building scalable LLM systems for hiring, hospitality, and real-world workflows.",
+  subheadline:
+    "Production-first LLM infrastructure that handles private data, large document volumes, and real operational constraints.",
   location: "New Delhi, India",
   bio: [
-    "Senior Machine Learning Engineer at APOLIS (since Nov 2025).",
-    "I build LLM systems for smart recruiting and hotel management across Welcome Group, Hotel Jain, and APOLIS hiring, using a shared agent platform.",
-    "I care about robust, scalable LLM infra and real-world deployment."
+    "I build LLM systems that survive contact with production.",
+    "At APOLIS, I design shared agent platforms used across recruiting and hospitality—handling private data, large document volumes, and real operational constraints.",
+    "I care deeply about reliability, evaluation, and cost, because models are easy—systems are hard."
   ],
   focus: [
-    "Agent platforms that unify hiring and hospitality workflows",
-    "RAG systems for private knowledge bases and enterprise data",
-    "Evaluation, reliability, and cost-aware LLM infrastructure"
+    {
+      title: "Agent platforms",
+      reason: "Because complex workflows beat single-shot prompts."
+    },
+    {
+      title: "RAG systems",
+      reason: "Because private data is the real moat."
+    },
+    {
+      title: "Evaluation & cost",
+      reason: "Because production failures are expensive."
+    }
   ],
   highlights: [
     "Senior Machine Learning Engineer at APOLIS (Nov 2025–present)",
@@ -27,19 +38,33 @@ const siteData = {
     {
       name: "chat-bot-dailogflow-backend",
       href: "https://github.com/gauravlochab/chat-bot-dailogflow-backend",
-      description: "Dialogflow chatbot backend integrations."
+      description: "Dialogflow chatbot backend integrations.",
+      context: "Designed for reliable, multi-tenant deployment."
     },
     {
       name: "Contract_Management_Bot",
       href: "https://github.com/gauravlochab/Contract_Management_Bot",
-      description: "Contract workflow assistant and automation."
+      description: "Contract workflow assistant and automation.",
+      context: "Multi-step agent orchestration with validation."
     },
     {
       name: "RAG-Private-GPT-Langchain",
       href: "https://github.com/gauravlochab/RAG-Private-GPT-Langchain",
-      description: "Private RAG pipeline using LangChain."
+      description: "Private RAG pipeline using LangChain.",
+      context: "Designed for enterprise data isolation and scale."
     }
   ],
+  pointOfView: [
+    "LLM engineering is shifting from prompts to platforms.",
+    "The hard problems now are orchestration, evaluation, cost control, and integrating models into real workflows.",
+    "That’s where I spend my time."
+  ],
+  now: [
+    "Scaling resume ingestion to millions of documents",
+    "Agent-based budgeting and compliance workflows",
+    "Reducing inference cost with open models"
+  ],
+  writing: "I write about building LLM systems that actually ship.",
   links: [
     { label: "Email", href: "mailto:gauravlochab487@gmail.com" },
     { label: "GitHub", href: "https://github.com/gauravlochab" },
@@ -79,7 +104,7 @@ export default function Home() {
       <section className="section">
         <Reveal>
           <TextReveal text="Bio" as="h2" />
-          <div className="stack">
+          <div className="stack lead">
             {siteData.bio.map((line) => (
               <p key={line}>{line}</p>
             ))}
@@ -90,11 +115,14 @@ export default function Home() {
       <section className="section">
         <Reveal>
           <TextReveal text="Focus" as="h2" />
-          <ul className="list minimal">
+          <div className="focus-list">
             {siteData.focus.map((item) => (
-              <li key={item}>{item}</li>
+              <div key={item.title} className="focus-row">
+                <div className="focus-title">{item.title}</div>
+                <div className="focus-reason">→ {item.reason}</div>
+              </div>
             ))}
-          </ul>
+          </div>
         </Reveal>
       </section>
 
@@ -127,11 +155,41 @@ export default function Home() {
                 <div>
                   <div className="project-title">{project.name}</div>
                   <div className="project-desc">{project.description}</div>
+                  <div className="project-context">→ {project.context}</div>
                 </div>
                 <span className="project-cta">View repo →</span>
               </a>
             ))}
           </div>
+        </Reveal>
+      </section>
+
+      <section className="section">
+        <Reveal>
+          <TextReveal text="Point of View" as="h2" />
+          <div className="stack lead">
+            {siteData.pointOfView.map((line) => (
+              <p key={line}>{line}</p>
+            ))}
+          </div>
+        </Reveal>
+      </section>
+
+      <section className="section">
+        <Reveal>
+          <TextReveal text="Currently Working On" as="h2" />
+          <ul className="list minimal">
+            {siteData.now.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </Reveal>
+      </section>
+
+      <section className="section">
+        <Reveal>
+          <TextReveal text="Writing" as="h2" />
+          <p className="lead">{siteData.writing}</p>
         </Reveal>
       </section>
 

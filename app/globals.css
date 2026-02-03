@@ -202,6 +202,14 @@ h1,
   font-size: 1.05rem;
 }
 
+.stack.lead {
+  font-size: 1.1rem;
+}
+
+.lead {
+  font-size: 1.1rem;
+}
+
 .list {
   list-style: none;
   display: grid;
@@ -218,6 +226,31 @@ h1,
 .list.minimal li {
   background: transparent;
   border-style: dashed;
+}
+
+.focus-list {
+  display: grid;
+  gap: 12px;
+}
+
+.focus-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--bg-elevated);
+}
+
+.focus-title {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.focus-reason {
+  color: var(--muted);
+  font-size: 0.95rem;
 }
 
 .project-list {
@@ -252,6 +285,12 @@ h1,
 .project-desc {
   color: var(--muted);
   font-size: 0.95rem;
+}
+
+.project-context {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 6px;
 }
 
 .project-cta {
