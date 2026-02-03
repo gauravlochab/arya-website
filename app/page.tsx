@@ -1,3 +1,5 @@
+import Reveal from "./components/Reveal";
+
 const siteData = {
   name: "Gaurav Lochab",
   headline: "AI Engineer focused on LLM systems.",
@@ -7,6 +9,11 @@ const siteData = {
     "Senior Machine Learning Engineer at APOLIS (since Nov 2025).",
     "I build LLM systems for smart recruiting and hotel management across Welcome Group, Hotel Jain, and APOLIS hiring, using a shared agent platform.",
     "I care about robust, scalable LLM infra and real-world deployment."
+  ],
+  focus: [
+    "Agent platforms that unify hiring and hospitality workflows",
+    "RAG systems for private knowledge bases and enterprise data",
+    "Evaluation, reliability, and cost-aware LLM infrastructure"
   ],
   highlights: [
     "Senior Machine Learning Engineer at APOLIS (Nov 2025–present)",
@@ -45,66 +52,116 @@ const siteData = {
 export default function Home() {
   return (
     <main className="container">
+      <div className="ambient" aria-hidden="true" />
+
       <header className="hero">
-        <div className="hero-top">
-          <div>
-            <p className="eyebrow">{siteData.location}</p>
-            <h1>{siteData.name}</h1>
-            <p className="headline">{siteData.headline}</p>
-            <p className="subheadline">{siteData.subheadline}</p>
+        <Reveal>
+          <div className="hero-top">
+            <div>
+              <p className="eyebrow">{siteData.location}</p>
+              <h1>{siteData.name}</h1>
+              <p className="headline">{siteData.headline}</p>
+              <p className="subheadline">{siteData.subheadline}</p>
+            </div>
+            <div className="cta-group">
+              <a className="cta" href="mailto:gauravlochab487@gmail.com">
+                Contact
+              </a>
+              <span className="cta-note">Available for collaboration</span>
+            </div>
           </div>
-          <a className="cta" href="mailto:gauravlochab487@gmail.com">
-            Contact
-          </a>
-        </div>
+        </Reveal>
       </header>
 
       <section className="section">
-        <h2>Bio</h2>
-        <div className="stack">
-          {siteData.bio.map((line) => (
-            <p key={line}>{line}</p>
-          ))}
-        </div>
+        <Reveal>
+          <div className="section-grid">
+            <div>
+              <h2>Bio</h2>
+              <div className="stack">
+                {siteData.bio.map((line) => (
+                  <p key={line}>{line}</p>
+                ))}
+              </div>
+            </div>
+            <div className="focus">
+              <h2>Focus</h2>
+              <ul className="list minimal">
+                {siteData.focus.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Reveal>
       </section>
 
       <section className="section">
-        <h2>Highlights</h2>
-        <ul className="list">
-          {siteData.highlights.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
+        <Reveal>
+          <h2>Highlights</h2>
+          <ul className="list">
+            {siteData.highlights.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </Reveal>
       </section>
 
       <section className="section">
-        <h2>Projects</h2>
-        <div className="cards">
-          {siteData.projects.map((project) => (
-            <a
-              key={project.name}
-              className="card"
-              href={project.href}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div className="card-title">{project.name}</div>
-              <div className="card-desc">{project.description}</div>
+        <Reveal>
+          <div className="section-header">
+            <h2>Projects</h2>
+            <p className="muted">Selected open-source work.</p>
+          </div>
+          <div className="cards">
+            {siteData.projects.map((project) => (
+              <a
+                key={project.name}
+                className="card"
+                href={project.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <div className="card-title">{project.name}</div>
+                <div className="card-desc">{project.description}</div>
+                <span className="card-cta">View repo →</span>
+              </a>
+            ))}
+          </div>
+        </Reveal>
+      </section>
+
+      <section className="section">
+        <Reveal>
+          <div className="section-header">
+            <h2>Links</h2>
+            <p className="muted">Reach out or follow along.</p>
+          </div>
+          <div className="links">
+            {siteData.links.map((link) => (
+              <a key={link.label} href={link.href} target="_blank" rel="noreferrer">
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </Reveal>
+      </section>
+
+      <footer className="footer">
+        <Reveal>
+          <div className="footer-card">
+            <div>
+              <h3>Let’s build something useful.</h3>
+              <p className="muted">
+                I’m always open to collaborations around scalable LLM systems.
+              </p>
+            </div>
+            <a className="cta" href="mailto:gauravlochab487@gmail.com">
+              Say hello
             </a>
-          ))}
-        </div>
-      </section>
-
-      <section className="section">
-        <h2>Links</h2>
-        <div className="links">
-          {siteData.links.map((link) => (
-            <a key={link.label} href={link.href} target="_blank" rel="noreferrer">
-              {link.label}
-            </a>
-          ))}
-        </div>
-      </section>
+          </div>
+        </Reveal>
+      </footer>
     </main>
   );
 }
