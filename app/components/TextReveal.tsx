@@ -43,7 +43,6 @@ export default function TextReveal({ text, as = "div", className }: TextRevealPr
           aria-hidden="true"
         >
           {word}
-          {index < words.length - 1 ? " " : ""}
         </span>
       ))}
     </Tag>
