@@ -381,6 +381,75 @@ h1,
   transform: translateY(0);
 }
 
+@media (max-width: 640px) {
+  .page {
+    padding: 72px 18px 120px;
+  }
+
+  .hero {
+    padding-bottom: 36px;
+  }
+
+  h1,
+  .headline-main {
+    line-height: 1.12;
+  }
+
+  .headline {
+    line-height: 1.15;
+  }
+
+  .section {
+    gap: 28px;
+  }
+
+  .section h2 {
+    margin-top: 14px;
+  }
+
+  .stack {
+    font-size: 1rem;
+  }
+
+  .stack.lead,
+  .lead {
+    font-size: 1.02rem;
+  }
+
+  .focus-list,
+  .list,
+  .project-list {
+    gap: 16px;
+  }
+
+  .focus-row,
+  .list li,
+  .project-row {
+    padding: 16px 18px;
+  }
+
+  .project-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .project-cta {
+    margin-top: 8px;
+  }
+
+  .links {
+    gap: 18px 24px;
+  }
+
+  .footer {
+    margin-top: 32px;
+  }
+
+  .footer-card {
+    padding: 26px 22px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ambient {
     animation: none;

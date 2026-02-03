@@ -4,10 +4,9 @@ import ThemeToggle from "./components/ThemeToggle";
 
 const siteData = {
   name: "Gaurav Lochab",
-  headline:
-    "AI engineer building scalable LLM systems for hiring, hospitality, and real-world workflows.",
+  headline: "AI engineer building scalable LLM systems for hiring and hospitality.",
   subheadline:
-    "Production-first LLM infrastructure that handles private data, large document volumes, and real operational constraints.",
+    "Production-first LLM infrastructure for private data, large document volumes, and real operational constraints.",
   location: "New Delhi, India",
   bio: [
     "I build LLM systems that survive contact with production.",
