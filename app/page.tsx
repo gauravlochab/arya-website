@@ -96,14 +96,14 @@ export default function Home() {
             <TextReveal
               text={siteData.name}
               as="h1"
-              className="text-4xl font-semibold leading-[1.06] tracking-[-0.04em] sm:text-5xl md:text-6xl"
+              className="text-4xl font-semibold leading-[1.08] tracking-[-0.04em] sm:text-5xl sm:leading-[1.04] md:text-6xl"
             />
             <TextReveal
               text={siteData.headline}
               as="p"
-              className="mt-5 text-xl font-medium leading-snug text-[var(--text)] sm:text-2xl"
+              className="mt-5 max-w-[28ch] text-xl font-medium leading-snug text-[var(--text)] sm:max-w-none sm:text-2xl"
             />
-            <p className="mt-4 max-w-2xl text-base text-muted sm:text-lg">
+            <p className="mt-4 max-w-[40ch] text-base text-muted sm:max-w-2xl sm:text-lg">
               {siteData.subheadline}
             </p>
             <div className="mt-6 flex flex-col gap-2 text-sm uppercase tracking-[0.2em] text-muted">
