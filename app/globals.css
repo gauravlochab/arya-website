@@ -317,6 +317,18 @@ h1,
   border-bottom-color: var(--accent);
 }
 
+.writing-link a {
+  color: var(--muted);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.writing-link a:hover {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+
 .footer {
   margin-top: 16px;
 }

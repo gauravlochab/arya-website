@@ -11,7 +11,7 @@ const siteData = {
   location: "New Delhi, India",
   bio: [
     "I build LLM systems that survive contact with production.",
-    "At APOLIS, I design shared agent platforms used across recruiting and hospitality—handling private data, large document volumes, and real operational constraints.",
+    "At APOLIS, I design shared agent platforms used across recruiting and hospitality—handling private data and large document volumes.",
     "I care deeply about reliability, evaluation, and cost, because models are easy—systems are hard."
   ],
   focus: [
@@ -56,13 +56,12 @@ const siteData = {
   ],
   pointOfView: [
     "LLM engineering is shifting from prompts to platforms.",
-    "The hard problems now are orchestration, evaluation, cost control, and integrating models into real workflows.",
+    "The hard problems now are orchestration, evaluation, cost control, and integration.",
     "That’s where I spend my time."
   ],
   now: [
-    "Scaling resume ingestion to millions of documents",
-    "Agent-based budgeting and compliance workflows",
-    "Reducing inference cost with open models"
+    "Resume ingestion at scale",
+    "Agent-based budgeting and compliance"
   ],
   writing: "I write about building LLM systems that actually ship.",
   links: [
@@ -190,6 +189,11 @@ export default function Home() {
         <Reveal>
           <TextReveal text="Writing" as="h2" />
           <p className="lead">{siteData.writing}</p>
+          <div className="writing-link">
+            <a href="https://substack.com/@glochab" target="_blank" rel="noreferrer">
+              Read on Substack →
+            </a>
+          </div>
         </Reveal>
       </section>
 
