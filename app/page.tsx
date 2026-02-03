@@ -6,30 +6,30 @@ const siteData = {
   name: "Gaurav Lochab",
   headline: "AI engineer building scalable LLM systems for hiring and hospitality.",
   subheadline:
-    "Production-first LLM infrastructure for private data, large document volumes, and real operational constraints.",
+    "Production-first LLM infrastructure for private data, large document volumes, and real-world constraints.",
   location: "New Delhi, India",
   bio: [
     "I build LLM systems that survive contact with production.",
-    "At APOLIS, I design shared agent platforms used across recruiting and hospitality—handling private data and large document volumes.",
+    "At APOLIS, I design shared agent platforms used across recruiting and hospitality—handling private data at scale.",
     "I care deeply about reliability, evaluation, and cost, because models are easy—systems are hard."
   ],
   focus: [
     {
       title: "Agent platforms",
-      reason: "Because complex workflows beat single-shot prompts."
+      reason: "Because complex workflows beat single-shot prompts"
     },
     {
       title: "RAG systems",
-      reason: "Because private data is the real moat."
+      reason: "Because private data is the real moat"
     },
     {
       title: "Evaluation & cost",
-      reason: "Because production failures are expensive."
+      reason: "Because production failures are expensive"
     }
   ],
   highlights: [
     "Senior Machine Learning Engineer at APOLIS (Nov 2025–present)",
-    "Built shared agent platform powering recruiting + hospitality workflows",
+    "Built a shared agent platform powering recruiting and hospitality workflows",
     "Published research (ORCID)",
     "Open-source contributor: Optimus (Valory)"
   ],
@@ -55,12 +55,12 @@ const siteData = {
   ],
   pointOfView: [
     "LLM engineering is shifting from prompts to platforms.",
-    "The hard problems now are orchestration, evaluation, cost control, and integration.",
+    "The hard problems now are orchestration, evaluation, cost, and integration.",
     "That’s where I spend my time."
   ],
   now: [
     "Resume ingestion at scale",
-    "Agent-based budgeting and compliance"
+    "Agent-based budgeting and compliance workflows"
   ],
   writing: "I write about building LLM systems that actually ship.",
   links: [
@@ -139,7 +139,7 @@ export default function Home() {
         <Reveal>
           <div className="section-header">
             <TextReveal text="Projects" as="h2" />
-            <p className="muted">Selected open-source work.</p>
+            <p className="muted">Selected open-source systems.</p>
           </div>
           <div className="project-list">
             {siteData.projects.map((project) => (
