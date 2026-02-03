@@ -91,22 +91,22 @@ export default function Home() {
           </div>
         </header>
 
-        <section>
+        <section className="border-b border-default pb-10">
           <Reveal>
             <TextReveal
               text={siteData.name}
               as="h1"
-              className="text-4xl font-semibold leading-tight tracking-[-0.04em] sm:text-5xl md:text-6xl"
+              className="text-4xl font-semibold leading-[1.06] tracking-[-0.04em] sm:text-5xl md:text-6xl"
             />
             <TextReveal
               text={siteData.headline}
               as="p"
-              className="mt-4 text-xl font-medium leading-snug text-[var(--text)] sm:text-2xl"
+              className="mt-5 text-xl font-medium leading-snug text-[var(--text)] sm:text-2xl"
             />
             <p className="mt-4 max-w-2xl text-base text-muted sm:text-lg">
               {siteData.subheadline}
             </p>
-            <div className="mt-6 flex flex-col gap-2 text-sm text-muted">
+            <div className="mt-6 flex flex-col gap-2 text-sm uppercase tracking-[0.2em] text-muted">
               <span>Available for collaboration</span>
             </div>
           </Reveal>
@@ -128,10 +128,7 @@ export default function Home() {
             <TextReveal text="Focus" as="h2" className="text-xs uppercase tracking-[0.3em] text-muted" />
             <div className="mt-6 space-y-4">
               {siteData.focus.map((item) => (
-                <div
-                  key={item.title}
-                  className="rounded-2xl border border-default bg-elevated px-5 py-4"
-                >
+                <div key={item.title} className="border-b border-default pb-4">
                   <div className="text-base font-semibold">{item.title}</div>
                   <div className="mt-2 text-sm text-muted">→ {item.reason}</div>
                 </div>
@@ -169,7 +166,7 @@ export default function Home() {
               {siteData.projects.map((project) => (
                 <a
                   key={project.name}
-                  className="flex flex-col gap-2 rounded-2xl border border-default bg-elevated px-5 py-4 transition-colors hover:border-[var(--accent)]"
+                  className="flex flex-col gap-2 border-b border-default pb-5 transition-colors hover:text-[var(--accent)]"
                   href={project.href}
                   target="_blank"
                   rel="noreferrer"
