@@ -1,4 +1,6 @@
 import Reveal from "./components/Reveal";
+import TextReveal from "./components/TextReveal";
+import ThemeToggle from "./components/ThemeToggle";
 
 const siteData = {
   name: "Gaurav Lochab",
@@ -59,8 +61,8 @@ export default function Home() {
           <div className="hero-top">
             <div>
               <p className="eyebrow">{siteData.location}</p>
-              <h1>{siteData.name}</h1>
-              <p className="headline">{siteData.headline}</p>
+              <TextReveal text={siteData.name} as="h1" className="headline-main" />
+              <TextReveal text={siteData.headline} as="p" className="headline" />
               <p className="subheadline">{siteData.subheadline}</p>
             </div>
             <div className="cta-group">
@@ -68,6 +70,7 @@ export default function Home() {
                 Contact
               </a>
               <span className="cta-note">Available for collaboration</span>
+              <ThemeToggle />
             </div>
           </div>
         </Reveal>
@@ -75,30 +78,29 @@ export default function Home() {
 
       <section className="section">
         <Reveal>
-          <div className="section-grid">
-            <div>
-              <h2>Bio</h2>
-              <div className="stack">
-                {siteData.bio.map((line) => (
-                  <p key={line}>{line}</p>
-                ))}
-              </div>
-            </div>
-            <div className="focus">
-              <h2>Focus</h2>
-              <ul className="list minimal">
-                {siteData.focus.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
+          <TextReveal text="Bio" as="h2" />
+          <div className="stack">
+            {siteData.bio.map((line) => (
+              <p key={line}>{line}</p>
+            ))}
           </div>
         </Reveal>
       </section>
 
       <section className="section">
         <Reveal>
-          <h2>Highlights</h2>
+          <TextReveal text="Focus" as="h2" />
+          <ul className="list minimal">
+            {siteData.focus.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </Reveal>
+      </section>
+
+      <section className="section">
+        <Reveal>
+          <TextReveal text="Highlights" as="h2" />
           <ul className="list">
             {siteData.highlights.map((item) => (
               <li key={item}>{item}</li>
@@ -110,21 +112,23 @@ export default function Home() {
       <section className="section">
         <Reveal>
           <div className="section-header">
-            <h2>Projects</h2>
+            <TextReveal text="Projects" as="h2" />
             <p className="muted">Selected open-source work.</p>
           </div>
-          <div className="cards">
+          <div className="project-list">
             {siteData.projects.map((project) => (
               <a
                 key={project.name}
-                className="card"
+                className="project-row"
                 href={project.href}
                 target="_blank"
                 rel="noreferrer"
               >
-                <div className="card-title">{project.name}</div>
-                <div className="card-desc">{project.description}</div>
-                <span className="card-cta">View repo →</span>
+                <div>
+                  <div className="project-title">{project.name}</div>
+                  <div className="project-desc">{project.description}</div>
+                </div>
+                <span className="project-cta">View repo →</span>
               </a>
             ))}
           </div>
@@ -134,7 +138,7 @@ export default function Home() {
       <section className="section">
         <Reveal>
           <div className="section-header">
-            <h2>Links</h2>
+            <TextReveal text="Links" as="h2" />
             <p className="muted">Reach out or follow along.</p>
           </div>
           <div className="links">
@@ -151,7 +155,7 @@ export default function Home() {
         <Reveal>
           <div className="footer-card">
             <div>
-              <h3>Let’s build something useful.</h3>
+              <TextReveal text="Let’s build something useful." as="h3" />
               <p className="muted">
                 I’m always open to collaborations around scalable LLM systems.
               </p>
