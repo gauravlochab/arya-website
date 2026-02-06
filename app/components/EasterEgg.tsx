@@ -89,6 +89,12 @@ export default function EasterEgg() {
     let prevAngle = -0.1;
     let frame = 0;
     let entering = true;
+
+    /* Bubble dive: periodically steer toward bubbles area */
+    let divingToBubbles = false;
+    let diveTimer = 0;
+    const DIVE_INTERVAL = 500;  // frames between dives (~8s)
+    const DIVE_DURATION = 120;  // frames to steer toward bubbles (~2s)
     const trail: [number, number][] = [];
     let rafId: number;
 
@@ -142,13 +148,52 @@ export default function EasterEgg() {
           + Math.sin(frame * 0.013) * 0.02 * WANDER_SCALE
           + Math.sin(frame * 0.004) * 0.035 * WANDER_SCALE
           + Math.cos(frame * 0.0025) * 0.025 * WANDER_SCALE;
-        if (x < MARGIN) tgt = steer(tgt, 0, Math.pow((MARGIN - x) / MARGIN, 1.5) * 0.1);
-        if (x > W - MARGIN) tgt = steer(tgt, Math.PI, Math.pow((x - (W - MARGIN)) / MARGIN, 1.5) * 0.1);
-        if (y < MARGIN) tgt = steer(tgt, Math.PI * 0.4, Math.pow((MARGIN - y) / MARGIN, 1.5) * 0.1);
-        if (y > H - MARGIN) tgt = steer(tgt, -Math.PI * 0.4, Math.pow((y - (H - MARGIN)) / MARGIN, 1.5) * 0.1);
-        if (x < 30 || x > W - 30 || y < 30 || y > H - 30)
-          tgt = steer(tgt, Math.atan2(H / 2 - y, W / 2 - x), 0.15);
+        // Smooth edge avoidance — strong pull toward center near edges
+        const edgeZone = MARGIN * 1.5;
+        if (x < edgeZone) {
+          const s = Math.pow((edgeZone - x) / edgeZone, 1.2) * 0.2;
+          tgt = steer(tgt, 0, s);
+        }
+        if (x > W - edgeZone) {
+          const s = Math.pow((x - (W - edgeZone)) / edgeZone, 1.2) * 0.2;
+          tgt = steer(tgt, Math.PI, s);
+        }
+        if (y < edgeZone) {
+          const s = Math.pow((edgeZone - y) / edgeZone, 1.2) * 0.2;
+          tgt = steer(tgt, Math.PI * 0.5, s);
+        }
+        if (y > H - edgeZone) {
+          const s = Math.pow((y - (H - edgeZone)) / edgeZone, 1.2) * 0.2;
+          tgt = steer(tgt, -Math.PI * 0.5, s);
+        }
+        // Emergency pull if very close to edge
+        if (x < 40 || x > W - 40 || y < 40 || y > H - 40) {
+          tgt = steer(tgt, Math.atan2(H / 2 - y, W / 2 - x), 0.25);
+        }
         if (frame % 60 === 0) tgt += (Math.random() - 0.5) * 0.4;
+
+        // Periodically dive through the bubbles section
+        diveTimer++;
+        if (!divingToBubbles && diveTimer >= DIVE_INTERVAL) {
+          divingToBubbles = true;
+          diveTimer = 0;
+        }
+        if (divingToBubbles) {
+          const bubbleEl = document.querySelector(".physics-scene");
+          if (bubbleEl) {
+            const rect = bubbleEl.getBoundingClientRect();
+            const bx = rect.left + rect.width / 2 + (Math.random() - 0.5) * rect.width * 0.4;
+            const by = rect.top + rect.height / 2;
+            const toBubbles = Math.atan2(by - y, bx - x);
+            tgt = steer(tgt, toBubbles, 0.08);
+          }
+          diveTimer++;
+          if (diveTimer >= DIVE_DURATION) {
+            divingToBubbles = false;
+            diveTimer = 0;
+          }
+        }
+
         if (isFine) {
           const dx = x - mouseX, dy = y - mouseY;
           const dist = Math.sqrt(dx * dx + dy * dy);
@@ -162,6 +207,7 @@ export default function EasterEgg() {
         const speed = SPEED + verticalFactor * 0.4;
         x += Math.cos(angle) * speed;
         y += Math.sin(angle) * speed;
+
         const cos = Math.cos(angle);
         const sin = Math.sin(angle);
         trail.push([
@@ -235,6 +281,9 @@ export default function EasterEgg() {
         "transform",
         `translate(${x},${y + bob}) rotate(${(angle * 180) / Math.PI + rock + bank}) scale(${PLANE_SCALE})`
       );
+
+      // Share plane position for physics bubble interaction
+      (window as any).__planePos = { x, y: y + bob, angle };
       rafId = requestAnimationFrame(tick);
     }
 

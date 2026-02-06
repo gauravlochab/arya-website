@@ -92,6 +92,40 @@ export default function PhysicsBubbles() {
     let animationId: number;
 
     const render = () => {
+      // Paper airplane interaction — push bubbles away when plane flies through
+      const planePos = (window as any).__planePos;
+      if (planePos && scene) {
+        const rect = scene.getBoundingClientRect();
+        // Convert viewport coords to canvas-local coords
+        const px = planePos.x - rect.left;
+        const py = planePos.y - rect.top;
+        const REPEL_RADIUS = 100;
+        const BLAST_FORCE = 0.015;
+
+        // Plane's heading direction for directional push
+        const planeAngle = planePos.angle || 0;
+        const planeDirX = Math.cos(planeAngle);
+        const planeDirY = Math.sin(planeAngle);
+
+        bodies.forEach(({ body, radius }) => {
+          const dx = body.position.x - px;
+          const dy = body.position.y - py;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < REPEL_RADIUS + radius && dist > 1) {
+            const proximity = Math.pow(1 - dist / (REPEL_RADIUS + radius), 2);
+            // Blast: push away from plane + push in plane's flight direction
+            const awayX = (dx / dist) * BLAST_FORCE * proximity;
+            const awayY = (dy / dist) * BLAST_FORCE * proximity;
+            const pushX = planeDirX * BLAST_FORCE * proximity * 0.5;
+            const pushY = planeDirY * BLAST_FORCE * proximity * 0.5;
+            Matter.Body.applyForce(body, body.position, {
+              x: awayX + pushX,
+              y: awayY + pushY,
+            });
+          }
+        });
+      }
+
       Engine.update(engine, 1000 / 60);
 
       if (ctx) {
