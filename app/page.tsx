@@ -1,4 +1,5 @@
 import CustomCursor from "./components/CustomCursor";
+import EasterEgg from "./components/EasterEgg";
 import PhysicsBubbles from "./components/PhysicsBubbles";
 import Reveal from "./components/Reveal";
 import TextReveal from "./components/TextReveal";
@@ -51,6 +52,7 @@ export default function Home() {
   return (
     <main className="relative min-h-screen text-[var(--text)]">
       <CustomCursor />
+      <EasterEgg />
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-14 px-6 pb-20 pt-10">
         {/* Header */}
         <Reveal>
@@ -201,21 +203,6 @@ export default function Home() {
           </footer>
         </Reveal>
 
-        {/* For Tamana */}
-        <Reveal>
-          <div className="tamana-note">
-            <div className="tamana-hearts" aria-hidden="true">
-              <span className="floating-heart" style={{ animationDelay: "0s" }}>&#10084;</span>
-              <span className="floating-heart" style={{ animationDelay: "0.6s" }}>&#10084;</span>
-              <span className="floating-heart" style={{ animationDelay: "1.2s" }}>&#10084;</span>
-              <span className="floating-heart" style={{ animationDelay: "0.3s" }}>&#10084;</span>
-              <span className="floating-heart" style={{ animationDelay: "0.9s" }}>&#10084;</span>
-            </div>
-            <p className="tamana-text">
-              Built with a little extra <span className="tamana-heart">&#10084;</span> for Tamana
-            </p>
-          </div>
-        </Reveal>
       </div>
     </main>
   );
