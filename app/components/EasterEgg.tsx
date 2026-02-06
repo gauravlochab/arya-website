@@ -71,7 +71,8 @@ export default function EasterEgg() {
 
     let x = -100;
     let y = H * 0.4 + Math.random() * H * 0.2;
-    let angle = 0;
+    let angle = -0.1;
+    let prevAngle = -0.1;
     let frame = 0;
     let entering = true;
     const trail: [number, number][] = [];
@@ -140,9 +141,13 @@ export default function EasterEgg() {
           if (dist < MOUSE_REPEL_RADIUS && dist > 1)
             tgt = steer(tgt, Math.atan2(dy, dx), Math.pow(1 - dist / MOUSE_REPEL_RADIUS, 2) * 0.12);
         }
+        prevAngle = angle;
         angle = steer(angle, tgt, STEER_RATE);
-        x += Math.cos(angle) * SPEED;
-        y += Math.sin(angle) * SPEED;
+        // Speed varies: faster gliding down, slower climbing up
+        const verticalFactor = Math.sin(angle); // positive = going down
+        const speed = SPEED + verticalFactor * 0.4;
+        x += Math.cos(angle) * speed;
+        y += Math.sin(angle) * speed;
         const cos = Math.cos(angle);
         const sin = Math.sin(angle);
         trail.push([
@@ -201,10 +206,17 @@ export default function EasterEgg() {
         }
       }
 
-      // Airplane
+      // Airplane — paper plane physics: bob, rock, and bank into turns
+      const bob = Math.sin(frame * 0.04) * 3;
+      const rock = Math.sin(frame * 0.025) * 3;
+      // Bank into turns: tilt proportional to how fast the angle is changing
+      let turnRate = angle - prevAngle;
+      while (turnRate > Math.PI) turnRate -= Math.PI * 2;
+      while (turnRate < -Math.PI) turnRate += Math.PI * 2;
+      const bank = turnRate * 600; // amplify into degrees (subtle lean)
       planeEl.setAttribute(
         "transform",
-        `translate(${x},${y}) rotate(${(angle * 180) / Math.PI})`
+        `translate(${x},${y + bob}) rotate(${(angle * 180) / Math.PI + rock + bank})`
       );
       rafId = requestAnimationFrame(tick);
     }
@@ -266,10 +278,10 @@ export default function EasterEgg() {
 
       {/* Paper airplane */}
       <g className="ee-plane" filter="url(#ee-shadow)" transform="translate(-200,-200)">
-        <polygon points="-48,3 -60,-8 -56,14" className="ee-wing-shadow" />
-        <polygon points="0,2 -48,3 -42,26" className="ee-wing-lower" />
-        <polygon points="0,-1 -64,-28 -48,2" className="ee-wing-upper" />
-        <polygon points="-14,-1 -56,-24 -44,0" className="ee-wing-flap" />
+        <polygon points="-48,2 -58,-6 -54,10" className="ee-wing-shadow" />
+        <polygon points="0,2 -48,2 -44,16" className="ee-wing-lower" />
+        <polygon points="0,-1 -66,-26 -48,1" className="ee-wing-upper" />
+        <polygon points="-14,-1 -58,-22 -44,0" className="ee-wing-flap" />
         <line x1="0" y1="0" x2="-48" y2="2" className="ee-fold-main" />
       </g>
     </svg>
