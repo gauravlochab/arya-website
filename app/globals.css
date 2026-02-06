@@ -328,11 +328,87 @@
   transform: translateY(0);
 }
 
+/* ── Custom Cursor ── */
+
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--ring, rgba(255, 255, 255, 0.7));
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+  will-change: transform;
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background: var(--ring, rgba(255, 255, 255, 0.7));
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  mix-blend-mode: difference;
+  will-change: transform;
+}
+
+@media (pointer: coarse) {
+  .cursor-ring,
+  .cursor-dot {
+    display: none;
+  }
+}
+
+/* ── Physics Bubbles ── */
+
+.physics-scene {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+@media (max-width: 640px) {
+  .physics-scene {
+    height: 300px;
+  }
+}
+
+.physics-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .text-reveal .word {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .cursor-ring,
+  .cursor-dot {
+    display: none;
+  }
+
+  * {
+    cursor: auto !important;
   }
 }

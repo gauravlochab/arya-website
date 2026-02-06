@@ -1,3 +1,5 @@
+import CustomCursor from "./components/CustomCursor";
+import PhysicsBubbles from "./components/PhysicsBubbles";
 import Reveal from "./components/Reveal";
 import TextReveal from "./components/TextReveal";
 import ThemeToggle from "./components/ThemeToggle";
@@ -48,7 +50,7 @@ const siteData = {
 export default function Home() {
   return (
     <main className="relative min-h-screen text-[var(--text)]">
-      <div className="hero-ring" aria-hidden="true" />
+      <CustomCursor />
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-14 px-6 pb-20 pt-10">
         {/* Header */}
         <Reveal>
@@ -88,6 +90,14 @@ export default function Home() {
             <p className="max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
               {siteData.about}
             </p>
+          </Reveal>
+        </section>
+
+        {/* Physics Bubbles */}
+        <section>
+          <Reveal>
+            <div className="text-xs uppercase tracking-[0.3em] text-muted mb-4">Trusted by</div>
+            <PhysicsBubbles />
           </Reveal>
         </section>
 
