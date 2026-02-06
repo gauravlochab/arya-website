@@ -53,14 +53,14 @@ export default function Home() {
     <main className="relative min-h-screen text-[var(--text)]">
       <CustomCursor />
       <EasterEgg />
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-14 px-6 pb-20 pt-10">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 pb-16 pt-8 sm:gap-14 sm:px-6 sm:pb-20 sm:pt-10">
         {/* Header */}
         <Reveal>
           <header className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-muted">
             <span className="text-lg font-semibold tracking-normal text-[var(--text)]">
               {siteData.logo}
             </span>
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-3 sm:gap-6">
               <ThemeToggle />
               <a
                 className="nav-link text-[var(--text)]"

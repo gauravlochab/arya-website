@@ -4,8 +4,6 @@ import { useEffect, useRef } from "react";
 
 const SPEED = 1.8;
 const STEER_RATE = 0.04;
-const TRAIL_MAX = 180;
-const MARGIN = 100;
 const MOUSE_REPEL_RADIUS = 150;
 const NUM_SPARKLES = 4;
 
@@ -50,7 +48,19 @@ export default function EasterEgg() {
 
     let W = window.innerWidth;
     let H = window.innerHeight;
+    const isMobile = W < 768;
     svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+
+    const TRAIL_MAX = isMobile ? 100 : 180;
+    const MARGIN = isMobile ? 120 : 100;
+    const WANDER_SCALE = isMobile ? 0.6 : 1;
+    const PLANE_SCALE = isMobile ? 0.7 : 1;
+    const SPARKLE_SIZE_MULT = isMobile ? 1.5 : 2.5;
+    const TRAIL_WIDTH = isMobile ? 2 : 3;
+    const TRAIL_DASH = isMobile ? "2 8" : "3 10";
+    const TEXT_PAD_X = isMobile ? 80 : 60;
+    const TEXT_PAD_Y_TOP = isMobile ? 80 : 40;
+    const TEXT_PAD_Y_BOT = isMobile ? 80 : 40;
 
     let mouseX = -9999;
     let mouseY = -9999;
@@ -68,6 +78,10 @@ export default function EasterEgg() {
     const heartEl = svg.querySelector(".ee-heart") as SVGPathElement;
     const planeEl = svg.querySelector(".ee-plane") as SVGGElement;
     const sparkleEls = svg.querySelectorAll(".ee-sparkle") as NodeListOf<SVGCircleElement>;
+
+    /* Apply mobile-aware trail styling */
+    trailEl.setAttribute("stroke-width", String(TRAIL_WIDTH));
+    trailEl.setAttribute("stroke-dasharray", TRAIL_DASH);
 
     let x = -100;
     let y = H * 0.4 + Math.random() * H * 0.2;
@@ -103,7 +117,7 @@ export default function EasterEgg() {
         vy: (Math.random() - 0.5) * 0.3 - 0.2,
         life: 1,
         maxLife: 60 + Math.random() * 40,
-        size: 2.5 + Math.random() * 2.5,
+        size: SPARKLE_SIZE_MULT + Math.random() * SPARKLE_SIZE_MULT,
       });
       // Keep sparkle count reasonable
       while (sparkles.length > NUM_SPARKLES) sparkles.shift();
@@ -125,9 +139,9 @@ export default function EasterEgg() {
         if (x > W * 0.12) entering = false;
       } else {
         let tgt = angle
-          + Math.sin(frame * 0.013) * 0.02
-          + Math.sin(frame * 0.004) * 0.035
-          + Math.cos(frame * 0.0025) * 0.025;
+          + Math.sin(frame * 0.013) * 0.02 * WANDER_SCALE
+          + Math.sin(frame * 0.004) * 0.035 * WANDER_SCALE
+          + Math.cos(frame * 0.0025) * 0.025 * WANDER_SCALE;
         if (x < MARGIN) tgt = steer(tgt, 0, Math.pow((MARGIN - x) / MARGIN, 1.5) * 0.1);
         if (x > W - MARGIN) tgt = steer(tgt, Math.PI, Math.pow((x - (W - MARGIN)) / MARGIN, 1.5) * 0.1);
         if (y < MARGIN) tgt = steer(tgt, Math.PI * 0.4, Math.pow((MARGIN - y) / MARGIN, 1.5) * 0.1);
@@ -178,8 +192,8 @@ export default function EasterEgg() {
         const idx = Math.floor(trail.length * 0.25);
         const pt = trail[idx];
         // Clamp to stay visible within viewport
-        const tx = Math.max(60, Math.min(W - 60, pt[0]));
-        const ty = Math.max(40, Math.min(H - 40, pt[1]));
+        const tx = Math.max(TEXT_PAD_X, Math.min(W - TEXT_PAD_X, pt[0]));
+        const ty = Math.max(TEXT_PAD_Y_TOP, Math.min(H - TEXT_PAD_Y_BOT, pt[1]));
         textEl.setAttribute("x", String(tx));
         textEl.setAttribute("y", String(ty - 18));
         heartEl.setAttribute("d", heartPath(tx + 58, ty - 18, 14));
@@ -216,7 +230,7 @@ export default function EasterEgg() {
       const bank = turnRate * 600; // amplify into degrees (subtle lean)
       planeEl.setAttribute(
         "transform",
-        `translate(${x},${y + bob}) rotate(${(angle * 180) / Math.PI + rock + bank})`
+        `translate(${x},${y + bob}) rotate(${(angle * 180) / Math.PI + rock + bank}) scale(${PLANE_SCALE})`
       );
       rafId = requestAnimationFrame(tick);
     }
@@ -261,7 +275,7 @@ export default function EasterEgg() {
       </defs>
 
       {/* Dotted trail */}
-      <path className="ee-trail" d="" fill="none" stroke="url(#ee-trail-grad)" strokeDasharray="3 10" strokeLinecap="round" strokeWidth="3" />
+      <path className="ee-trail" d="" fill="none" stroke="url(#ee-trail-grad)" strokeDasharray="3 10" strokeLinecap="round" strokeWidth="3" suppressHydrationWarning />
 
       {/* Tiny drawn heart at trail tail */}
       <path className="ee-heart" d="" style={{ opacity: 0 }} />

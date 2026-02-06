@@ -32,6 +32,7 @@
       "Liberation Mono", "Courier New", monospace;
     background: var(--bg);
     color: var(--text);
+    overflow-x: hidden;
   }
 
   a {
@@ -109,6 +110,11 @@
 @media (max-width: 640px) {
   .services-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .service-card {
+    padding: 1.25rem;
   }
 }
 
@@ -167,12 +173,21 @@
   color: var(--muted);
   border-bottom: 1px solid var(--border);
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .portfolio-table td {
   padding: 0.75rem 1rem;
   border-bottom: 1px solid var(--border);
   color: var(--text);
+}
+
+@media (max-width: 640px) {
+  .portfolio-table th,
+  .portfolio-table td {
+    padding: 0.5rem 0.5rem;
+    font-size: 0.7rem;
+  }
 }
 
 .portfolio-table tbody tr {
@@ -209,6 +224,17 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
+@media (max-width: 640px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .testimonial-card {
+    padding: 1.25rem;
+  }
+}
+
 .testimonial-quote {
   font-size: 0.85rem;
   line-height: 1.7;
@@ -239,6 +265,12 @@
   border: 1px solid var(--border);
   border-radius: 16px;
   background: var(--bg-elevated);
+}
+
+@media (max-width: 640px) {
+  .cta-section {
+    padding: 2.5rem 1.25rem;
+  }
 }
 
 .cta-heading {
@@ -384,7 +416,7 @@
 
 @media (max-width: 640px) {
   .physics-scene {
-    height: 300px;
+    height: 260px;
   }
 }
 
@@ -481,6 +513,12 @@
   fill: var(--text);
   opacity: 0;
   letter-spacing: 0.5px;
+}
+
+@media (max-width: 767px) {
+  .ee-text {
+    font-size: 14px;
+  }
 }
 
 .ee-heart {
