@@ -4,13 +4,13 @@ import { useEffect, useMemo, useRef } from "react";
 
 type TextRevealProps = {
   text: string;
-  as?: keyof JSX.IntrinsicElements;
+  as?: "div" | "h1" | "h2" | "h3" | "p" | "span";
   className?: string;
 };
 
 export default function TextReveal({ text, as = "div", className }: TextRevealProps) {
   const Tag = as;
-  const ref = useRef<HTMLElement | null>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const words = useMemo(() => text.split(" "), [text]);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export default function TextReveal({ text, as = "div", className }: TextRevealPr
   }, []);
 
   return (
-    <Tag ref={ref} className={`text-reveal ${className ?? ""}`.trim()} aria-label={text}>
+    <div ref={ref} className={`text-reveal ${className ?? ""}`.trim()} aria-label={text} role="heading" aria-level={as === "h1" ? 1 : as === "h2" ? 2 : as === "h3" ? 3 : undefined}>
       {words.map((word, index) => (
         <span
           key={`${word}-${index}`}
@@ -45,6 +45,6 @@ export default function TextReveal({ text, as = "div", className }: TextRevealPr
           {word}
         </span>
       ))}
-    </Tag>
+    </div>
   );
 }

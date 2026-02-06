@@ -5,13 +5,14 @@
 @layer base {
   :root {
     color-scheme: dark;
-    --bg: #07090d;
-    --bg-elevated: #0f1117;
+    --bg: #05060f;
+    --bg-elevated: #0b0d1a;
     --text: #f3f4f6;
     --muted: #9aa3b2;
-    --accent: #7aa2ff;
-    --border: #1f2430;
-    --glass: rgba(122, 162, 255, 0.08);
+    --accent: #9db0ff;
+    --border: #161a2a;
+    --glass: rgba(157, 176, 255, 0.12);
+    --glow: rgba(157, 176, 255, 0.18);
   }
 
   :root[data-theme="light"] {
@@ -23,11 +24,12 @@
     --accent: #3a5bff;
     --border: #e3e6ef;
     --glass: rgba(58, 91, 255, 0.1);
+    --glow: rgba(58, 91, 255, 0.16);
   }
 
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
-      Arial, "Noto Sans", "Liberation Sans", sans-serif;
+    font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+      "Liberation Mono", "Courier New", monospace;
     background: var(--bg);
     color: var(--text);
   }
@@ -36,6 +38,20 @@
     color: inherit;
     text-decoration: none;
   }
+}
+
+.page {
+  min-height: 100vh;
+  background: radial-gradient(circle at top left, rgba(90, 110, 255, 0.12), transparent 50%),
+    radial-gradient(circle at 20% 50%, rgba(28, 33, 78, 0.5), transparent 55%),
+    radial-gradient(circle at 80% 20%, rgba(10, 15, 40, 0.7), transparent 60%),
+    var(--bg);
+}
+
+:root[data-theme="light"] .page {
+  background: radial-gradient(circle at top left, rgba(90, 110, 255, 0.06), transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(200, 210, 240, 0.3), transparent 60%),
+    var(--bg);
 }
 
 @layer utilities {
@@ -55,6 +71,234 @@
     background: var(--bg-elevated);
   }
 }
+
+/* ── Navigation Links ── */
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  opacity: 0;
+  transform: scaleX(0.4);
+  transform-origin: left;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* ── Services Grid ── */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.service-card {
+  padding: 2rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+.service-card h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--text);
+}
+
+.service-card p {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* ── Portfolio Table ── */
+
+.portfolio-table-wrap {
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .portfolio-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+.portfolio-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.portfolio-table th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+  font-weight: 500;
+}
+
+.portfolio-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+
+.portfolio-table tbody tr {
+  transition: background 0.15s ease;
+}
+
+.portfolio-table tbody tr:hover td {
+  background: rgba(157, 176, 255, 0.04);
+}
+
+.portfolio-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ── Testimonials ── */
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.testimonial-card {
+  padding: 2rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  position: relative;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.testimonial-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-quote {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--text);
+  font-style: italic;
+  margin-bottom: 1.25rem;
+}
+
+.testimonial-author {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.testimonial-role {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+
+/* ── CTA Section ── */
+
+.cta-section {
+  text-align: center;
+  padding: 4rem 2rem;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--bg-elevated);
+}
+
+.cta-heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .cta-heading {
+    font-size: 2rem;
+  }
+}
+
+/* ── Footer ── */
+
+.site-footer {
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+
+/* ── Status Dot ── */
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  display: inline-block;
+  margin-right: 8px;
+  animation: pulse-dot 2s ease infinite;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* ── Tags ── */
+
+.tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.6rem;
+  border-radius: 999px;
+  background: var(--glass);
+  color: var(--accent);
+  margin-right: 0.35rem;
+  margin-bottom: 0.25rem;
+}
+
+/* ── Reveal Animations ── */
 
 .reveal {
   opacity: 0;

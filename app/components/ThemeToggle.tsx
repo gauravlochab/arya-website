@@ -39,7 +39,8 @@ export default function ThemeToggle() {
       type="button"
       onClick={toggleTheme}
     >
-      {theme === "dark" ? "Light mode" : "Dark mode"}
+      <span className={theme === "light" ? "text-[var(--text)]" : ""}>Light</span>{" / "}
+      <span className={theme === "dark" ? "text-[var(--text)]" : ""}>Dark</span>
     </button>
   );
 }
