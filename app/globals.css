@@ -395,6 +395,76 @@
   height: 100%;
 }
 
+/* ── Tamana Easter Egg ── */
+
+.tamana-note {
+  position: relative;
+  text-align: center;
+  padding: 2.5rem 1rem 1.5rem;
+  overflow: hidden;
+}
+
+.tamana-text {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  opacity: 0.6;
+}
+
+.tamana-heart {
+  color: #e8567f;
+  display: inline-block;
+  animation: heartbeat 1.4s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.2); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.15); }
+  56% { transform: scale(1); }
+}
+
+.tamana-hearts {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.floating-heart {
+  position: absolute;
+  font-size: 0.6rem;
+  color: #e8567f;
+  opacity: 0;
+  animation: float-up 3.5s ease-in infinite;
+}
+
+.floating-heart:nth-child(1) { left: 20%; }
+.floating-heart:nth-child(2) { left: 40%; }
+.floating-heart:nth-child(3) { left: 60%; }
+.floating-heart:nth-child(4) { left: 75%; }
+.floating-heart:nth-child(5) { left: 35%; }
+
+@keyframes float-up {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.5);
+    bottom: 0;
+  }
+  20% {
+    opacity: 0.5;
+    transform: translateY(-10px) scale(0.8);
+  }
+  80% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-60px) scale(0.3);
+    bottom: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .text-reveal .word {
@@ -406,6 +476,11 @@
   .cursor-ring,
   .cursor-dot {
     display: none;
+  }
+
+  .floating-heart,
+  .tamana-heart {
+    animation: none;
   }
 
   * {

@@ -200,6 +200,22 @@ export default function Home() {
             </div>
           </footer>
         </Reveal>
+
+        {/* For Tamana */}
+        <Reveal>
+          <div className="tamana-note">
+            <div className="tamana-hearts" aria-hidden="true">
+              <span className="floating-heart" style={{ animationDelay: "0s" }}>&#10084;</span>
+              <span className="floating-heart" style={{ animationDelay: "0.6s" }}>&#10084;</span>
+              <span className="floating-heart" style={{ animationDelay: "1.2s" }}>&#10084;</span>
+              <span className="floating-heart" style={{ animationDelay: "0.3s" }}>&#10084;</span>
+              <span className="floating-heart" style={{ animationDelay: "0.9s" }}>&#10084;</span>
+            </div>
+            <p className="tamana-text">
+              Built with a little extra <span className="tamana-heart">&#10084;</span> for Tamana
+            </p>
+          </div>
+        </Reveal>
       </div>
     </main>
   );
