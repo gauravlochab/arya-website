@@ -187,16 +187,19 @@ export default function EasterEgg() {
         trailGrad.setAttribute("y2", String(head[1]));
       }
 
-      // Text + heart — placed at ~25% along the trail, clamped to viewport
+      // Text + heart — on mobile stay close to the plane, on desktop near the tail
       if (trail.length > 40) {
-        const idx = Math.floor(trail.length * 0.25);
+        const textPos = isMobile ? 0.6 : 0.25;
+        const idx = Math.floor(trail.length * textPos);
         const pt = trail[idx];
         // Clamp to stay visible within viewport
         const tx = Math.max(TEXT_PAD_X, Math.min(W - TEXT_PAD_X, pt[0]));
         const ty = Math.max(TEXT_PAD_Y_TOP, Math.min(H - TEXT_PAD_Y_BOT, pt[1]));
         textEl.setAttribute("x", String(tx));
         textEl.setAttribute("y", String(ty - 18));
-        heartEl.setAttribute("d", heartPath(tx + 58, ty - 18, 14));
+        const heartOffset = isMobile ? 44 : 58;
+        const heartSize = isMobile ? 11 : 14;
+        heartEl.setAttribute("d", heartPath(tx + heartOffset, ty - 18, heartSize));
         const show = trail.length > 80;
         textEl.style.opacity = show ? "0.9" : "0";
         heartEl.style.opacity = show ? "0.75" : "0";

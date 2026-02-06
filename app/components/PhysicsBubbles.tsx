@@ -7,16 +7,16 @@ const BUBBLES = [
   { label: "APOLIS", color: "#6ED7FF", radius: 42 },
   { label: "Valory", color: "#FF7C5E", radius: 38 },
   { label: "Pibit", color: "#FFD56A", radius: 36 },
-  { label: "BlackRock", color: "#4a4a4a", radius: 44 },
+  { label: "BlackRock", color: "#4a4a4a", radius: 50 },
   { label: "LG", color: "#A50034", radius: 34 },
   { label: "Agents", color: "#8B7BFF", radius: 36 },
   { label: "Swarms", color: "#7CE38B", radius: 38 },
   { label: "LLM", color: "#FF96D5", radius: 32 },
-  { label: "On-Chain", color: "#98FFEA", radius: 36 },
+  { label: "On-Chain", color: "#98FFEA", radius: 40 },
   { label: "Infra", color: "#9BA7B7", radius: 30 },
   { label: "Python", color: "#3776AB", radius: 34 },
-  { label: "TypeScript", color: "#3178C6", radius: 38 },
-  { label: "Open Source", color: "#FFB84D", radius: 40 },
+  { label: "TypeScript", color: "#3178C6", radius: 46 },
+  { label: "Open\nSource", color: "#FFB84D", radius: 44 },
   { label: "DevOps", color: "#6F86FF", radius: 32 },
 ];
 
@@ -116,13 +116,29 @@ export default function PhysicsBubbles() {
           ctx.lineWidth = 1;
           ctx.stroke();
 
-          // Label
-          const fontSize = Math.max(radius * 0.3, 8);
+          // Label — scale font to fit inside circle, support multi-line
+          const lines = label.split("\n");
+          const maxTextWidth = radius * 1.5;
+          let fontSize = radius * 0.38;
+          if (fontSize < 6) fontSize = 6;
           ctx.font = `600 ${fontSize}px ui-monospace, SFMono-Regular, monospace`;
+          // Measure widest line and shrink if needed
+          const widestLine = lines.reduce((max, line) => {
+            const w = ctx.measureText(line).width;
+            return w > max ? w : max;
+          }, 0);
+          if (widestLine > maxTextWidth) {
+            fontSize *= maxTextWidth / widestLine;
+            ctx.font = `600 ${fontSize}px ui-monospace, SFMono-Regular, monospace`;
+          }
           ctx.fillStyle = luminance(color) > 0.4 ? "#0b0c0f" : "#f3f4f6";
           ctx.textAlign = "center";
           ctx.textBaseline = "middle";
-          ctx.fillText(label, 0, 0);
+          const lineHeight = fontSize * 1.2;
+          const totalHeight = lineHeight * (lines.length - 1);
+          lines.forEach((line, li) => {
+            ctx.fillText(line, 0, -totalHeight / 2 + li * lineHeight);
+          });
 
           ctx.restore();
         });
