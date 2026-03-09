@@ -508,23 +508,17 @@
 
 .ee-text {
   font-family: "Segoe Script", "Bradley Hand", "Comic Sans MS", cursive;
-  font-size: 18px;
-  font-weight: 500;
+  font-size: 22px;
+  font-weight: 600;
   fill: var(--text);
   opacity: 0;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
 }
 
 @media (max-width: 767px) {
   .ee-text {
-    font-size: 14px;
+    font-size: 17px;
   }
-}
-
-.ee-heart {
-  fill: var(--text);
-  stroke: none;
-  opacity: 0;
 }
 
 .ee-sparkle {

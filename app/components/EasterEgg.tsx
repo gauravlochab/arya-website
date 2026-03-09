@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-const SPEED = 1.8;
+const SPEED = 2.6;
 const STEER_RATE = 0.04;
 const MOUSE_REPEL_RADIUS = 150;
 const NUM_SPARKLES = 4;
@@ -29,14 +29,6 @@ function steer(cur: number, tgt: number, amt: number): number {
   return cur + d * amt;
 }
 
-/* Small heart SVG path centered at (0,0), about 14px tall */
-function heartPath(cx: number, cy: number, size: number): string {
-  const s = size / 14;
-  return `M${cx},${cy + 3 * s} `
-    + `C${cx},${cy + 1 * s} ${cx - 5 * s},${cy - 4 * s} ${cx},${cy - 2 * s} `
-    + `C${cx + 5 * s},${cy - 4 * s} ${cx},${cy + 1 * s} ${cx},${cy + 3 * s} Z`;
-}
-
 export default function EasterEgg() {
   const svgRef = useRef<SVGSVGElement>(null);
 
@@ -51,7 +43,7 @@ export default function EasterEgg() {
     const isMobile = W < 768;
     svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
 
-    const TRAIL_MAX = isMobile ? 100 : 180;
+    const TRAIL_MAX = isMobile ? 70 : 120;
     const MARGIN = isMobile ? 120 : 100;
     const WANDER_SCALE = isMobile ? 0.6 : 1;
     const PLANE_SCALE = isMobile ? 0.7 : 1;
@@ -75,7 +67,6 @@ export default function EasterEgg() {
     const trailEl = svg.querySelector(".ee-trail") as SVGPathElement;
     const trailGrad = svg.querySelector("#ee-trail-grad") as SVGLinearGradientElement;
     const textEl = svg.querySelector(".ee-text") as SVGTextElement;
-    const heartEl = svg.querySelector(".ee-heart") as SVGPathElement;
     const planeEl = svg.querySelector(".ee-plane") as SVGGElement;
     const sparkleEls = svg.querySelectorAll(".ee-sparkle") as NodeListOf<SVGCircleElement>;
 
@@ -243,12 +234,8 @@ export default function EasterEgg() {
         const ty = Math.max(TEXT_PAD_Y_TOP, Math.min(H - TEXT_PAD_Y_BOT, pt[1]));
         textEl.setAttribute("x", String(tx));
         textEl.setAttribute("y", String(ty - 18));
-        const heartOffset = isMobile ? 44 : 58;
-        const heartSize = isMobile ? 11 : 14;
-        heartEl.setAttribute("d", heartPath(tx + heartOffset, ty - 18, heartSize));
         const show = trail.length > 80;
         textEl.style.opacity = show ? "0.9" : "0";
-        heartEl.style.opacity = show ? "0.75" : "0";
       }
 
       // Sparkles
@@ -329,12 +316,9 @@ export default function EasterEgg() {
       {/* Dotted trail */}
       <path className="ee-trail" d="" fill="none" stroke="url(#ee-trail-grad)" strokeDasharray="3 10" strokeLinecap="round" strokeWidth="3" suppressHydrationWarning />
 
-      {/* Tiny drawn heart at trail tail */}
-      <path className="ee-heart" d="" style={{ opacity: 0 }} />
-
-      {/* "Hi Tammy" text */}
+      {/* "Hi" text */}
       <text className="ee-text" x="0" y="0" textAnchor="middle" dominantBaseline="auto" filter="url(#ee-text-glow)" style={{ opacity: 0 }}>
-        Hi Tammy
+        Hello 👋
       </text>
 
       {/* Sparkle particles */}
