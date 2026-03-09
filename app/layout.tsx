@@ -9,17 +9,24 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://gaurav.gg"),
   title: "Gaurav Lochab — AI Engineer",
   description:
     "AI Engineer specializing in production LLM systems, agent platforms, and RAG pipelines",
-  icons: {
-    icon: "/favicon.ico"
-  },
   openGraph: {
     title: "Gaurav Lochab — AI Engineer",
     description:
-      "AI Engineer specializing in production LLM systems, agent platforms, and RAG pipelines"
-  }
+      "AI Engineer specializing in production LLM systems, agent platforms, and RAG pipelines",
+    url: "https://gaurav.gg",
+    type: "website",
+    siteName: "Gaurav Lochab",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Gaurav Lochab — AI Engineer",
+    description:
+      "AI Engineer specializing in production LLM systems, agent platforms, and RAG pipelines",
+  },
 };
 
 export default function RootLayout({
