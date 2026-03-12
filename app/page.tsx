@@ -173,6 +173,9 @@ export default function Home() {
                 I&apos;m available for new projects
               </h2>
               <p className="text-sm text-muted mb-6">Let&apos;s build something together.</p>
+              <div className="mb-6">
+                <CalendlyPopup variant="cta" />
+              </div>
               <div className="flex flex-wrap justify-center gap-4 text-xs uppercase tracking-[0.3em] text-muted">
                 {siteData.links.map((link) => (
                   <a key={link.label} className="nav-link" href={link.href}>
