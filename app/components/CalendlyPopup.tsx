@@ -1,6 +1,6 @@
 "use client";
 
-export default function CalendlyPopup({ variant = "nav" }: { variant?: "nav" | "cta" }) {
+export default function CalendlyPopup({ variant = "nav" }: { variant?: "nav" | "cta" | "inline" }) {
   const openCalendly = () => {
     if (typeof window !== "undefined" && (window as any).Calendly) {
       (window as any).Calendly.initPopupWidget({
@@ -17,8 +17,16 @@ export default function CalendlyPopup({ variant = "nav" }: { variant?: "nav" | "
     );
   }
 
+  if (variant === "inline") {
+    return (
+      <button onClick={openCalendly} className="calendly-inline">
+        Book a call →
+      </button>
+    );
+  }
+
   return (
-    <button onClick={openCalendly} className="nav-link calendly-btn text-[var(--text)]">
+    <button onClick={openCalendly} className="calendly-nav-pill">
       Book a call
     </button>
   );

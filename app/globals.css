@@ -93,14 +93,81 @@
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.calendly-btn {
-  background: none;
+/* Nav pill button for Book a call */
+.calendly-nav-pill {
+  display: inline-block;
+  padding: 0.35rem 0.9rem;
+  font-family: inherit;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--accent);
   border: none;
-  padding: 0;
-  font: inherit;
-  font-size: inherit;
-  text-transform: inherit;
-  letter-spacing: inherit;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.calendly-nav-pill:hover {
+  background: #7b9fff;
+  box-shadow: 0 2px 12px rgba(157, 176, 255, 0.3);
+}
+
+/* Inline mid-page CTA */
+.calendly-inline {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: none;
+  border: 1.5px solid var(--accent);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.calendly-inline:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* CTA section social links — more visible */
+.cta-link {
+  color: var(--text);
+  opacity: 0.7;
+  position: relative;
+  transition: opacity 0.2s ease;
+  font-weight: 500;
+}
+
+.cta-link:hover {
+  opacity: 1;
+}
+
+.cta-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0;
+  transform: scaleX(0.4);
+  transform-origin: left;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.cta-link:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
 }
 
 .calendly-cta {

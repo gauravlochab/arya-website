@@ -97,6 +97,18 @@ export default function Home() {
           </Reveal>
         </section>
 
+        {/* Mid-page CTA */}
+        <section>
+          <Reveal>
+            <div className="flex flex-wrap items-center gap-4">
+              <CalendlyPopup variant="inline" />
+              <a className="nav-link text-muted text-xs uppercase tracking-[0.3em]" href="mailto:gauravlochab487@gmail.com">
+                or email me
+              </a>
+            </div>
+          </Reveal>
+        </section>
+
         {/* Physics Bubbles */}
         <section>
           <Reveal>
@@ -176,9 +188,9 @@ export default function Home() {
               <div className="mb-6">
                 <CalendlyPopup variant="cta" />
               </div>
-              <div className="flex flex-wrap justify-center gap-4 text-xs uppercase tracking-[0.3em] text-muted">
+              <div className="flex flex-wrap justify-center gap-5 text-sm uppercase tracking-[0.2em]">
                 {siteData.links.map((link) => (
-                  <a key={link.label} className="nav-link" href={link.href}>
+                  <a key={link.label} className="cta-link" href={link.href}>
                     {link.label}
                   </a>
                 ))}
