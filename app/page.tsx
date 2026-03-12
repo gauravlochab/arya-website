@@ -1,3 +1,4 @@
+import CalendlyPopup from "./components/CalendlyPopup";
 import CustomCursor from "./components/CustomCursor";
 import EasterEgg from "./components/EasterEgg";
 import PhysicsBubbles from "./components/PhysicsBubbles";
@@ -62,6 +63,7 @@ export default function Home() {
             </span>
             <div className="flex items-center gap-3 sm:gap-6">
               <ThemeToggle />
+              <CalendlyPopup />
               <a
                 className="nav-link text-[var(--text)]"
                 href="mailto:gauravlochab487@gmail.com"

@@ -93,6 +93,16 @@
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
+.calendly-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-size: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+}
+
 .nav-link:hover::after,
 .nav-link:focus-visible::after {
   opacity: 1;

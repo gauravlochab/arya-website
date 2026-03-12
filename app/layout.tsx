@@ -36,6 +36,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={plexMono.variable}>
+      <head>
+        <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+        <script src="https://assets.calendly.com/assets/external/widget.js" async />
+      </head>
       <body>
         <div className="page">{children}</div>
       </body>
