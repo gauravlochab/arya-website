@@ -1,4 +1,3 @@
-import CalendlyPopup from "./components/CalendlyPopup";
 import CustomCursor from "./components/CustomCursor";
 import EasterEgg from "./components/EasterEgg";
 import PhysicsBubbles from "./components/PhysicsBubbles";
@@ -63,7 +62,6 @@ export default function Home() {
             </span>
             <div className="flex items-center gap-3 sm:gap-6">
               <ThemeToggle />
-              <CalendlyPopup />
               <a
                 className="nav-link text-[var(--text)]"
                 href="mailto:gauravlochab487@gmail.com"
@@ -94,18 +92,6 @@ export default function Home() {
             <p className="max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
               {siteData.about}
             </p>
-          </Reveal>
-        </section>
-
-        {/* Mid-page CTA */}
-        <section>
-          <Reveal>
-            <div className="flex flex-wrap items-center gap-4">
-              <CalendlyPopup variant="inline" />
-              <a className="nav-link text-muted text-xs uppercase tracking-[0.3em]" href="mailto:gauravlochab487@gmail.com">
-                or email me
-              </a>
-            </div>
           </Reveal>
         </section>
 
@@ -185,12 +171,9 @@ export default function Home() {
                 I&apos;m available for new projects
               </h2>
               <p className="text-sm text-muted mb-6">Let&apos;s build something together.</p>
-              <div className="mb-6">
-                <CalendlyPopup variant="cta" />
-              </div>
-              <div className="flex flex-wrap justify-center gap-5 text-sm uppercase tracking-[0.2em]">
+              <div className="flex flex-wrap justify-center gap-4 text-xs uppercase tracking-[0.3em] text-muted">
                 {siteData.links.map((link) => (
-                  <a key={link.label} className="cta-link" href={link.href}>
+                  <a key={link.label} className="nav-link" href={link.href}>
                     {link.label}
                   </a>
                 ))}
