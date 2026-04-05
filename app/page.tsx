@@ -18,21 +18,18 @@ const siteData = {
 
   status: "Available for collaboration",
 
-  about: [
-    "Senior AI / Machine Learning Engineer with 6+ years shipping production AI systems across fintech, enterprise IT, and consumer ML. I specialise in large-scale LLM pipelines, autonomous agent architectures, on-chain agents, and fine-tuning open-source models for real business problems.",
-    "My work spans 2.7M-resume talent search platforms, $10M+ DeFi agent portfolios, RAG systems, model distillation, and invoice AI agents — always biased toward systems that ship and hold up in production.",
-  ],
+  about:
+    "Senior AI / Machine Learning Engineer with 6+ years shipping production systems. I specialise in LLM pipelines, autonomous agents, on-chain agent infrastructure, and fine-tuning open-source models — from 2.7M-resume search platforms to $10M+ DeFi portfolios. Biased toward things that ship.",
 
   experience: [
     {
       company: "Apolis",
-      role: "Senior AI / Machine Learning Engineer",
+      role: "Senior AI / ML Engineer",
       period: "Oct 2025 – Mar 2026",
       location: "Remote",
       highlights: [
-        "Architected NexGig — an AI-powered talent search platform across 2.7M+ candidate resumes using Elasticsearch BM25, dense embeddings, and custom ML ranking pipelines combining skill overlap, role similarity, experience alignment, and location fit.",
-        "Fine-tuned Qwen2.5-3B Instruct with QLoRA (4-bit NF4 quantization) and built teacher-student distillation pipelines to improve extraction quality while reducing production cost and latency.",
-        "Deployed invoice AI agent systems for healthcare and financial auditing — detecting duplicate invoices, contract violations, pricing discrepancies, and anomaly patterns using LLM reasoning and rule-based validation.",
+        "Architected NexGig — AI talent search across 2.7M+ resumes. Elasticsearch BM25 + dense embeddings + custom ML ranking across skill, role, experience, and location signals.",
+        "Fine-tuned Qwen2.5-3B with QLoRA (4-bit NF4) + teacher-student distillation. Deployed invoice AI agents for healthcare/financial auditing — LLM reasoning + rule-based validation.",
       ],
     },
     {
@@ -41,31 +38,28 @@ const siteData = {
       period: "Jun 2024 – Oct 2025",
       location: "Remote",
       highlights: [
-        "Built autonomous DeFi agents for portfolio management and risk optimisation across blockchain protocols, scaling to 5M+ requests and $10M+ in managed assets.",
-        "Engineered LangGraph-powered agent workflows with dynamic task routing and state-machine execution, improving portfolio performance by 25% based on user preferences and live market conditions.",
-        "Fine-tuned Llama models and integrated OpenAI and Claude APIs for financial AI applications — context-aware responses with <200ms latency at scale.",
+        "Built autonomous DeFi agents for portfolio management across blockchain protocols — 5M+ requests, $10M+ managed assets, 25% portfolio performance improvement.",
+        "LangGraph state-machine agent workflows with dynamic task routing. Fine-tuned Llama + OpenAI / Claude APIs for financial AI at <200ms latency.",
       ],
     },
     {
       company: "Smarter",
-      role: "Senior Machine Learning Engineer",
+      role: "Senior ML Engineer",
       period: "Oct 2022 – May 2024",
       location: "London, UK (Remote)",
       highlights: [
-        "Built RAG agent with custom Llama3-8B, FastAPI, LangChain, and Qdrant — implemented query expansion and reranking achieving 30% improved retrieval relevance in production.",
-        "4× model size reduction and 2× latency improvement via INT8 quantization while maintaining 95% accuracy, deployed via Docker containers with vLLM.",
-        "Fashion sales forecasting system using CLIP embeddings and GPT-3 to analyse product data and predict trends — boosted quarterly sales by 18%.",
+        "RAG agent with custom Llama3-8B, LangChain, and Qdrant — query expansion + reranking, 30% improved relevance. 4× model compression via INT8, 2× latency improvement.",
+        "Fashion sales forecasting using CLIP embeddings + GPT-3. Improved inventory management, boosted quarterly sales 18%.",
       ],
     },
     {
       company: "Pibit.ai",
-      role: "Founding Team — Machine Learning",
+      role: "Founding Team — ML",
       period: "Jun 2020 – Sep 2022",
       location: "Gurugram, India",
       highlights: [
-        "Built custom entity extraction from financial documents using NLP and computer vision, improving data extraction accuracy by 35%.",
-        "Deployed Document AI systems and dockerized APIs to production via AWS Lambda and SageMaker with comprehensive change management processes.",
-        "Built income tax fraud detection system using ensemble anomaly detection, unsupervised clustering, and rule-based backtracking for pattern recognition.",
+        "Custom entity extraction from financial documents using NLP + CV — 35% accuracy improvement. Deployed Document AI to production via AWS Lambda and SageMaker.",
+        "Income tax fraud detection via ensemble anomaly detection, unsupervised clustering, and rule-based backtracking.",
       ],
     },
   ],
@@ -240,7 +234,7 @@ export default function Home() {
     <main className="relative min-h-screen text-[var(--text)]">
       <CustomCursor />
       <EasterEgg />
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 pb-16 pt-8 sm:gap-14 sm:px-6 sm:pb-20 sm:pt-10">
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-16 px-5 pb-20 pt-8 sm:gap-24 sm:px-10 sm:pb-28 sm:pt-12">
 
         {/* ── Header ── */}
         <Reveal>
@@ -274,13 +268,9 @@ export default function Home() {
         <section>
           <Reveal>
             <div className="text-xs uppercase tracking-[0.3em] text-muted mb-4">About</div>
-            <div className="flex flex-col gap-3 max-w-2xl">
-              {siteData.about.map((para, i) => (
-                <p key={i} className="text-sm leading-relaxed text-muted sm:text-base">
-                  {para}
-                </p>
-              ))}
-            </div>
+            <p className="max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
+              {siteData.about}
+            </p>
           </Reveal>
         </section>
 
@@ -353,10 +343,7 @@ export default function Home() {
                 <tbody>
                   {siteData.projects.map((project) => (
                     <tr key={project.name}>
-                      <td>
-                        <span className="font-medium text-[var(--text)]">{project.name}</span>
-                        <span className="block text-xs text-muted mt-0.5 max-w-xs">{project.description}</span>
-                      </td>
+                      <td className="font-medium text-[var(--text)]">{project.name}</td>
                       <td>{project.company}</td>
                       <td>{project.year}</td>
                       <td>{project.tags}</td>
