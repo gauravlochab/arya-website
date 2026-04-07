@@ -2,6 +2,7 @@
 
 import ThemeToggle from "../components/ThemeToggle";
 import Reveal from "../components/Reveal";
+import CustomCursor from "../components/CustomCursor";
 
 const archSteps = [
   "Ingestion",
@@ -16,6 +17,7 @@ const archSteps = [
 export default function CaseStudies() {
   return (
     <main className="relative min-h-screen text-[var(--text)]">
+      <CustomCursor />
       <div className="mx-auto flex w-full max-w-4xl flex-col gap-16 px-5 pb-20 pt-8 sm:gap-20 sm:px-10 sm:pb-28 sm:pt-12">
 
         {/* ── Header ── */}

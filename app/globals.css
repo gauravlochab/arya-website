@@ -372,9 +372,9 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 36px;
-  height: 36px;
-  border: 1.5px solid var(--ring, rgba(255, 255, 255, 0.7));
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--ring, rgba(255, 255, 255, 0.7));
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
@@ -387,8 +387,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 6px;
-  height: 6px;
+  width: 3px;
+  height: 3px;
   background: var(--ring, rgba(255, 255, 255, 0.7));
   border-radius: 50%;
   pointer-events: none;
