@@ -14,12 +14,15 @@ const siteData = {
   nav: { cta: "Reach out" },
 
   headline:
-    "I build autonomous agent systems and LLM pipelines for production teams.",
+    "AI Systems Engineer building LLM search, retrieval, and agent infrastructure.",
+
+  subheadline:
+    "I design production AI systems — hybrid search engines, RAG pipelines, LLM inference infrastructure, and autonomous agent workflows.",
 
   status: "Available for collaboration",
 
   about:
-    "Senior AI / Machine Learning Engineer with 6+ years shipping production systems. I specialise in LLM pipelines, autonomous agents, on-chain agent infrastructure, and fine-tuning open-source models — from 2.7M-resume search platforms to $10M+ DeFi portfolios. Biased toward things that ship.",
+    "I build production AI systems at the intersection of language models, retrieval, and backend infrastructure. My work spans LLM-powered applications, semantic search and ranking, RAG pipelines, agentic workflows, and scalable AI backends. I enjoy solving problems where AI must operate reliably at scale.",
 
   experience: [
     {
@@ -64,36 +67,26 @@ const siteData = {
     },
   ],
 
-  services: [
+  capabilities: [
     {
-      title: "Autonomous Agents",
-      description:
-        "End-to-end agent systems that reason, plan, and act — from LangGraph state machines to multi-step tool-calling pipelines with human-in-the-loop oversight.",
+      title: "LLM Systems",
+      description: "Fine-tuning, structured extraction, prompt systems, evaluation pipelines.",
+      bullets: ["QLoRA / LoRA fine-tuning", "Structured JSON extraction", "Prompt engineering systems", "LLM evaluation frameworks"],
     },
     {
-      title: "LLM Fine-Tuning",
-      description:
-        "QLoRA and LoRA fine-tuning of open-source models (Llama, Qwen, Mistral) for structured extraction, classification, and domain-specific generation tasks.",
+      title: "Retrieval & Search",
+      description: "Hybrid search (BM25 + embeddings), ranking pipelines, semantic retrieval.",
+      bullets: ["BM25 + dense embeddings", "Custom ML ranking signals", "Query expansion & reranking", "SPLADE sparse vectors"],
     },
     {
-      title: "RAG & Search Pipelines",
-      description:
-        "Retrieval-augmented generation with dense and sparse embeddings, reranking, query expansion, and evaluation frameworks for production relevance.",
+      title: "AI Infrastructure",
+      description: "Inference pipelines, FastAPI microservices, GPU optimization, production monitoring.",
+      bullets: ["vLLM inference serving", "FastAPI microservices", "INT8/INT4 quantization", "Celery + Redis pipelines"],
     },
     {
-      title: "On-Chain Agents",
-      description:
-        "Autonomous agents operating on decentralised protocols — DeFi portfolio management, on-chain execution, and multi-agent coordination via Open Autonomy.",
-    },
-    {
-      title: "LLM Infrastructure",
-      description:
-        "Scalable inference with vLLM and quantisation, eval pipelines, MLOps, model distillation, and cost-optimised serving on AWS and Azure.",
-    },
-    {
-      title: "Consulting & R&D",
-      description:
-        "Architecture strategy and hands-on research for teams adopting agent-first systems, LLM ops, and production ML — from proof of concept to production.",
+      title: "Agent Systems",
+      description: "LangGraph workflows, tool-calling agents, multi-step automation systems.",
+      bullets: ["LangGraph state machines", "Multi-step tool-calling", "On-chain agent execution", "Human-in-the-loop oversight"],
     },
   ],
 
@@ -152,40 +145,52 @@ const siteData = {
 
   projects: [
     {
-      name: "NexGig",
+      name: "Hybrid Resume Search Platform",
       company: "Apolis",
       year: "2026",
-      tags: "LLM, Search, Fine-Tuning",
       domain: "Enterprise",
-      description:
-        "AI talent search platform across 2.7M+ resumes. Elasticsearch + dense embeddings + fine-tuned Qwen2.5-3B with QLoRA.",
+      tags: ["LLM", "Search", "Fine-Tuning", "Elasticsearch"],
+      problem: "Recruiters struggled to search millions of resumes effectively using keyword matching alone.",
+      architecture: ["Resume ingestion", "LLM extraction", "Elasticsearch indexing", "Dense embeddings", "Hybrid retrieval", "ML ranking", "FastAPI API"],
+      stack: ["Python", "FastAPI", "Elasticsearch", "OpenAI Embeddings", "QLoRA", "Qwen2.5-3B"],
+      contribution: "Architected end-to-end pipeline from ingestion to ranked retrieval. Fine-tuned Qwen2.5-3B with QLoRA for structured extraction.",
+      impact: "2.7M+ resumes indexed. Improved candidate-job matching accuracy significantly.",
     },
     {
-      name: "Optimus / DeFi Agents",
+      name: "Long Document LLM Extraction",
+      company: "Apolis",
+      year: "2025",
+      domain: "Enterprise",
+      tags: ["Fine-Tuning", "NLP", "LLM"],
+      problem: "Resumes are long, noisy, and difficult to parse reliably with off-the-shelf models.",
+      architecture: ["Document input", "Prompt extraction", "Structured JSON output", "Validation layer", "Index write"],
+      stack: ["Python", "QLoRA", "Qwen2.5-3B", "HuggingFace", "Pydantic"],
+      contribution: "Designed fine-tuning pipeline with teacher-student distillation and structured prompt templates.",
+      impact: "Consistent structured extraction at scale. Significantly reduced hallucinations vs zero-shot baselines.",
+    },
+    {
+      name: "Autonomous DeFi Agent System",
       company: "Valory",
       year: "2024–2025",
-      tags: "Agents, On-Chain, LangGraph",
       domain: "Autonomous",
-      description:
-        "Autonomous portfolio management agents. 5M+ requests, $10M+ managed assets, LangGraph state machines.",
+      tags: ["Agents", "LangGraph", "On-Chain", "DeFi"],
+      problem: "Complex DeFi portfolio management requires multi-step reasoning, real-time market data, and on-chain execution.",
+      architecture: ["User task", "Agent planning", "Tool execution", "State management", "On-chain write", "Result synthesis"],
+      stack: ["Python", "LangGraph", "OpenAI", "Claude APIs", "Open Autonomy", "Olas"],
+      contribution: "Built LangGraph state-machine agent workflows with dynamic task routing and blockchain execution layer.",
+      impact: "5M+ requests processed. $10M+ in managed assets. 25% portfolio performance improvement.",
     },
     {
       name: "RAG Intelligence Platform",
       company: "Smarter",
       year: "2022–2024",
-      tags: "RAG, LLM, Infrastructure",
       domain: "Enterprise",
-      description:
-        "Custom Llama3-8B RAG with query expansion and reranking. 30% relevance improvement. 4× model compression via INT8.",
-    },
-    {
-      name: "Document AI & Fraud Detection",
-      company: "Pibit.ai",
-      year: "2020–2022",
-      tags: "NLP, CV, AWS",
-      domain: "Fintech",
-      description:
-        "Entity extraction from financial documents. Income tax fraud detection via ensemble anomaly detection. AWS Lambda + SageMaker.",
+      tags: ["RAG", "LLM", "Qdrant", "Reranking"],
+      problem: "Organizations need AI to answer questions accurately over private knowledge without hallucination.",
+      architecture: ["Documents", "Chunking", "Embeddings", "Qdrant vector DB", "Retrieval", "Reranking", "LLM answer generation"],
+      stack: ["Python", "Llama3-8B", "LangChain", "Qdrant", "FastAPI", "AWS"],
+      contribution: "Built custom RAG with query expansion, reranking, and 4× model compression via INT8 quantization.",
+      impact: "30% improved retrieval relevance. 2× latency improvement. Deployed to production on AWS.",
     },
   ],
 
@@ -226,8 +231,20 @@ const siteData = {
     { label: "Email", href: "mailto:gauravlochab487@gmail.com" },
     { label: "GitHub", href: "https://github.com/gauravlochab" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/gauravlochab487/" },
+    { label: "Twitter", href: "https://x.com/gauravlochab" },
   ],
 };
+
+const archDiagrams = [
+  {
+    label: "LLM Pipeline",
+    steps: ["Data", "Extraction", "Embeddings", "Vector DB", "Retrieval", "LLM Synthesis", "Evaluation"],
+  },
+  {
+    label: "Hybrid Search",
+    steps: ["Query", "BM25 Retrieval", "Dense Embedding Retrieval", "Reranking", "LLM Reasoning"],
+  },
+];
 
 export default function Home() {
   return (
@@ -243,6 +260,9 @@ export default function Home() {
               {siteData.logo}
             </span>
             <div className="flex items-center gap-3 sm:gap-6">
+              <a className="nav-link hidden sm:inline text-muted hover:text-[var(--accent)]" href="#projects">Projects</a>
+              <a className="nav-link hidden sm:inline text-muted hover:text-[var(--accent)]" href="/case-studies">Case Studies</a>
+              <a className="nav-link hidden sm:inline text-muted hover:text-[var(--accent)]" href="https://github.com/gauravlochab" target="_blank" rel="noopener noreferrer">GitHub</a>
               <ThemeToggle />
               <a className="nav-link text-[var(--text)]" href={`mailto:${siteData.email}`}>
                 {siteData.nav.cta}
@@ -256,6 +276,15 @@ export default function Home() {
           <Reveal>
             <div className="max-w-4xl text-2xl leading-relaxed text-[var(--text)] sm:text-3xl md:text-[2.6rem] md:leading-[1.25]">
               <TextReveal text={siteData.headline} as="h1" />
+            </div>
+            <p className="mt-5 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
+              {siteData.subheadline}
+            </p>
+            <div className="hero-buttons">
+              <a className="btn-primary" href="#projects">View Projects</a>
+              <a className="btn-secondary" href="https://github.com/gauravlochab" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a className="btn-secondary" href="#">Resume</a>
+              <a className="btn-secondary" href={`mailto:${siteData.email}`}>Contact</a>
             </div>
             <div className="mt-6 flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-muted">
               <span className="status-dot" />
@@ -282,15 +311,20 @@ export default function Home() {
           </Reveal>
         </section>
 
-        {/* ── Services ── */}
+        {/* ── What I Build ── */}
         <section>
           <Reveal>
-            <div className="text-xs uppercase tracking-[0.3em] text-muted mb-4">What I do</div>
-            <div className="services-grid">
-              {siteData.services.map((service) => (
-                <div key={service.title} className="service-card">
-                  <h3>{service.title}</h3>
-                  <p>{service.description}</p>
+            <div className="text-xs uppercase tracking-[0.3em] text-muted mb-4">What I build</div>
+            <div className="capability-grid">
+              {siteData.capabilities.map((cap) => (
+                <div key={cap.title} className="capability-card">
+                  <h3>{cap.title}</h3>
+                  <p>{cap.description}</p>
+                  <ul className="capability-bullets">
+                    {cap.bullets.map((b) => (
+                      <li key={b}>{b}</li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>
@@ -325,33 +359,97 @@ export default function Home() {
           </Reveal>
         </section>
 
-        {/* ── Selected Work ── */}
+        {/* ── Featured Projects ── */}
+        <section id="projects">
+          <Reveal>
+            <div className="text-xs uppercase tracking-[0.3em] text-muted mb-4">Featured projects</div>
+            <div className="project-cards-grid">
+              {siteData.projects.map((project) => (
+                <div key={project.name} className="project-card">
+                  {/* Header */}
+                  <div className="project-card-header">
+                    <div>
+                      <div className="project-card-name">{project.name}</div>
+                      <div className="project-card-meta">{project.company} · {project.year}</div>
+                    </div>
+                    <span className="project-domain-badge">{project.domain}</span>
+                  </div>
+
+                  {/* Tags */}
+                  <div>
+                    {project.tags.map((tag) => (
+                      <span key={tag} className="tag">{tag}</span>
+                    ))}
+                  </div>
+
+                  {/* Problem */}
+                  <div>
+                    <div className="project-section-label">Problem</div>
+                    <p className="project-problem">{project.problem}</p>
+                  </div>
+
+                  {/* Architecture flow */}
+                  <div>
+                    <div className="project-section-label">Architecture</div>
+                    <div className="arch-flow">
+                      {project.architecture.map((step, i) => (
+                        <span key={i} className="flex items-center gap-1">
+                          <span className="arch-step">{step}</span>
+                          {i < project.architecture.length - 1 && (
+                            <span className="arch-arrow">→</span>
+                          )}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Stack */}
+                  <div>
+                    <div className="project-section-label">Stack</div>
+                    <div>
+                      {project.stack.map((s) => (
+                        <span key={s} className="tag">{s}</span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Contribution */}
+                  <div>
+                    <div className="project-section-label">My contribution</div>
+                    <p className="project-contribution">{project.contribution}</p>
+                  </div>
+
+                  {/* Impact */}
+                  <div>
+                    <div className="project-section-label">Impact</div>
+                    <p className="project-impact">{project.impact}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </section>
+
+        {/* ── Architecture Diagrams ── */}
         <section>
           <Reveal>
-            <div className="text-xs uppercase tracking-[0.3em] text-muted mb-4">Selected work</div>
-            <div className="overflow-x-auto">
-              <table className="portfolio-table">
-                <thead>
-                  <tr>
-                    <th>Project</th>
-                    <th>Company</th>
-                    <th>Year</th>
-                    <th>Tags</th>
-                    <th>Domain</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {siteData.projects.map((project) => (
-                    <tr key={project.name}>
-                      <td className="font-medium text-[var(--text)]">{project.name}</td>
-                      <td>{project.company}</td>
-                      <td>{project.year}</td>
-                      <td>{project.tags}</td>
-                      <td>{project.domain}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="text-xs uppercase tracking-[0.3em] text-muted mb-4">How I architect systems</div>
+            <div className="arch-diagrams-grid">
+              {archDiagrams.map((diagram) => (
+                <div key={diagram.label} className="arch-diagram-card">
+                  <div className="arch-diagram-title">{diagram.label}</div>
+                  <div className="arch-diagram-flow">
+                    {diagram.steps.map((step, i) => (
+                      <span key={i} className="flex items-center gap-1">
+                        <span className="arch-diagram-step">{step}</span>
+                        {i < diagram.steps.length - 1 && (
+                          <span className="arch-diagram-arrow">→</span>
+                        )}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           </Reveal>
         </section>
