@@ -83,9 +83,13 @@ export default function PhysicsBubbles() {
     });
     World.add(engine.world, mouseConstraint);
 
-    // Keep mouse in sync with scroll
+    // Prevent Matter.js from hijacking scroll events.
+    // v0.20 registers both legacy names AND the modern "wheel" event (passive: false),
+    // so we must remove all three. Also remove touchmove to allow touch scrolling.
     mouse.element.removeEventListener("mousewheel", (mouse as any).mousewheel);
     mouse.element.removeEventListener("DOMMouseScroll", (mouse as any).mousewheel);
+    mouse.element.removeEventListener("wheel", (mouse as any).mousewheel);
+    mouse.element.removeEventListener("touchmove", (mouse as any).mousemove);
 
     // Render loop
     const ctx = canvas.getContext("2d");

@@ -19,7 +19,7 @@ export default function CustomCursor() {
     const onMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-      dot.style.transform = `translate(${mouseX - 3}px, ${mouseY - 3}px)`;
+      dot.style.transform = `translate(${mouseX - 1.5}px, ${mouseY - 1.5}px)`;
     };
 
     const onMouseEnterInteractive = () => {
@@ -30,8 +30,8 @@ export default function CustomCursor() {
     };
 
     const onMouseLeaveInteractive = () => {
-      outer.style.width = "36px";
-      outer.style.height = "36px";
+      outer.style.width = "24px";
+      outer.style.height = "24px";
       outer.style.borderColor = "var(--ring, rgba(255,255,255,0.7))";
       outer.style.opacity = "1";
     };
@@ -39,7 +39,7 @@ export default function CustomCursor() {
     const animate = () => {
       outerX += (mouseX - outerX) * 0.12;
       outerY += (mouseY - outerY) * 0.12;
-      outer.style.transform = `translate(${outerX - 18}px, ${outerY - 18}px)`;
+      outer.style.transform = `translate(${outerX - 12}px, ${outerY - 12}px)`;
       requestAnimationFrame(animate);
     };
 
