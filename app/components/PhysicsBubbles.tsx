@@ -123,8 +123,8 @@ export default function PhysicsBubbles() {
         // Convert viewport coords to canvas-local coords
         const px = planePos.x - rect.left;
         const py = planePos.y - rect.top;
-        const REPEL_RADIUS = 100;
-        const BLAST_FORCE = 0.015;
+        const REPEL_RADIUS = 140;
+        const BLAST_FORCE = 0.06;
 
         // Plane's heading direction for directional push
         const planeAngle = planePos.angle || 0;
@@ -139,8 +139,8 @@ export default function PhysicsBubbles() {
             const proximity = Math.pow(1 - dist / (REPEL_RADIUS + radius), 2);
             const awayX = (dx / dist) * BLAST_FORCE * proximity;
             const awayY = (dy / dist) * BLAST_FORCE * proximity;
-            const pushX = planeDirX * BLAST_FORCE * proximity * 0.5;
-            const pushY = planeDirY * BLAST_FORCE * proximity * 0.5;
+            const pushX = planeDirX * BLAST_FORCE * proximity * 0.7;
+            const pushY = planeDirY * BLAST_FORCE * proximity * 0.7;
             Matter.Body.applyForce(body, body.position, {
               x: awayX + pushX,
               y: awayY + pushY,
