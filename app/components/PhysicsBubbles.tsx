@@ -57,28 +57,31 @@ export default function PhysicsBubbles() {
     const { Engine, World, Bodies, Mouse, MouseConstraint, Events } = Matter;
 
     const engine = Engine.create({
-      gravity: { x: 0, y: 1.2, scale: 0.001 },
+      gravity: { x: 0, y: 1.5, scale: 0.001 },
     });
     engineRef.current = engine;
 
-    // Walls
+    // Walls — floor + left wall + right wall (spread across full width)
     const wallThickness = 60;
     const walls = [
-      Bodies.rectangle(width / 2, height + wallThickness / 2, width + 100, wallThickness, { isStatic: true }),
+      // Floor
+      Bodies.rectangle(width / 2, height + wallThickness / 2, width + 200, wallThickness, { isStatic: true }),
+      // Left wall
       Bodies.rectangle(-wallThickness / 2, height / 2, wallThickness, height * 2, { isStatic: true }),
+      // Right wall
       Bodies.rectangle(width + wallThickness / 2, height / 2, wallThickness, height * 2, { isStatic: true }),
     ];
     World.add(engine.world, walls);
 
-    // Create bubbles with staggered drop — start from higher up and spread across top
+    // Create bubbles — spread across full width, start from high above
     const bodies: { body: Matter.Body; label: string; color: string; radius: number }[] = [];
 
     BUBBLES.forEach((bubble, i) => {
-      const scaleFactor = Math.min(width / 800, 1);
+      const scaleFactor = Math.min(width / 800, 1.2);
       const radius = bubble.radius * scaleFactor;
       const x = Math.random() * (width - radius * 2) + radius;
-      // Start much higher up: spread between -100 and -2500 for dramatic cascade
-      const y = -radius - Math.random() * 600 - i * 80;
+      // Start from very high up for dramatic cascade — spread between -radius and -(radius + 800 + i*60)
+      const y = -radius - Math.random() * 800 - i * 60;
 
       const body = Bodies.circle(x, y, radius, {
         restitution: 0.6,
@@ -104,8 +107,6 @@ export default function PhysicsBubbles() {
     World.add(engine.world, mouseConstraint);
 
     // Prevent Matter.js from hijacking scroll events.
-    // v0.20 registers both legacy names AND the modern "wheel" event (passive: false),
-    // so we must remove all three. Also remove touchmove to allow touch scrolling.
     mouse.element.removeEventListener("mousewheel", (mouse as any).mousewheel);
     mouse.element.removeEventListener("DOMMouseScroll", (mouse as any).mousewheel);
     mouse.element.removeEventListener("wheel", (mouse as any).mousewheel);
@@ -137,7 +138,6 @@ export default function PhysicsBubbles() {
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < REPEL_RADIUS + radius && dist > 1) {
             const proximity = Math.pow(1 - dist / (REPEL_RADIUS + radius), 2);
-            // Blast: push away from plane + push in plane's flight direction
             const awayX = (dx / dist) * BLAST_FORCE * proximity;
             const awayY = (dy / dist) * BLAST_FORCE * proximity;
             const pushX = planeDirX * BLAST_FORCE * proximity * 0.5;
@@ -214,8 +214,11 @@ export default function PhysicsBubbles() {
       canvas.width = w;
       canvas.height = h;
 
-      // Update floor position
+      // Update wall positions
       Matter.Body.setPosition(walls[0], { x: w / 2, y: h + wallThickness / 2 });
+      // Update left wall
+      Matter.Body.setPosition(walls[1], { x: -wallThickness / 2, y: h / 2 });
+      // Update right wall
       Matter.Body.setPosition(walls[2], { x: w + wallThickness / 2, y: h / 2 });
     };
 

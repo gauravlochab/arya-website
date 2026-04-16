@@ -4,6 +4,7 @@ import PhysicsBubbles from "./components/PhysicsBubbles";
 import Reveal from "./components/Reveal";
 import TextReveal from "./components/TextReveal";
 import ThemeToggle from "./components/ThemeToggle";
+import ChatCTA from "./components/ChatCTA";
 
 const siteData = {
   name: "Gaurav Lochab",
@@ -196,7 +197,7 @@ export default function Home() {
       <CustomCursor />
       <EasterEgg />
 
-      {/* ── Fixed Header (theo.gg style) ── */}
+      {/* -- Fixed Header (theo.gg style) -- */}
       <header className="site-header">
         <span className="text-xl font-bold tracking-normal text-[var(--text)]">
           {siteData.logo}
@@ -212,35 +213,26 @@ export default function Home() {
         </div>
       </header>
 
-      {/* ── Hero Section (theo.gg layout: text left, bubbles right) ── */}
-      <section className="min-h-screen px-8 pt-32 pb-16 md:px-16 flex flex-col lg:flex-row items-center relative overflow-hidden">
-        {/* Left: headline */}
-        <div className="w-full lg:w-3/5 z-10 flex flex-col justify-center pt-16 lg:pt-0">
-          <div className="w-full max-w-[900px] mb-12" style={{ fontSize: "clamp(28px, 5vw, 54px)", lineHeight: "1.15", fontWeight: 700 }}>
-            <TextReveal text={siteData.headline} as="h1" />
-          </div>
-          <p className="text-[var(--muted)] text-[13px] mt-auto lg:mt-32">
-            Trusted by AI-first companies worldwide &rarr;
-          </p>
-        </div>
-
-        {/* Right: PhysicsBubbles */}
-        <div className="w-full lg:w-2/5 h-[400px] lg:h-[600px] mt-16 lg:mt-0 relative hidden md:block">
+      {/* -- Hero Section: Full-width bubbles BEHIND text -- */}
+      <section className="relative min-h-[90vh] pt-32 pb-0 px-8 md:px-16 overflow-hidden">
+        {/* Bubbles fill the entire section */}
+        <div className="absolute inset-0 z-0">
           <PhysicsBubbles />
+        </div>
+        {/* Text on top */}
+        <div className="relative z-10 max-w-full md:max-w-[55%]">
+          <Reveal>
+            <div style={{ fontSize: "clamp(2rem, 5vw, 54px)", lineHeight: 1.15, fontWeight: 700 }}>
+              <TextReveal text={siteData.headline} as="h1" />
+            </div>
+            <p className="mt-12 text-sm text-muted">
+              Trusted by AI-first companies worldwide &rarr;
+            </p>
+          </Reveal>
         </div>
       </section>
 
-      {/* ── Mobile Bubbles (visible only on small screens) ── */}
-      <section className="block md:hidden px-8 pb-16">
-        <Reveal>
-          <p className="text-[var(--muted)] text-[13px] mb-4">
-            Trusted by AI-first companies worldwide &rarr;
-          </p>
-          <PhysicsBubbles />
-        </Reveal>
-      </section>
-
-      {/* ── About ── */}
+      {/* -- About -- */}
       <section className="py-32 px-8 flex flex-col items-center">
         <Reveal>
           <div className="max-w-2xl text-center leading-relaxed text-[15px] sm:text-[18px]" style={{ color: "var(--text)" }}>
@@ -249,7 +241,7 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* ── Capabilities Grid (theo.gg services: 3 columns, title + paragraph only) ── */}
+      {/* -- Capabilities Grid (theo.gg services: 3 columns, title + paragraph only) -- */}
       <section className="py-32 px-8 md:px-16 w-full mx-auto max-w-7xl">
         <Reveal>
           <div className="capabilities-grid">
@@ -263,7 +255,7 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* ── Experience ── */}
+      {/* -- Experience -- */}
       <section className="py-32 px-8 md:px-16 w-full mx-auto max-w-5xl">
         <Reveal>
           <div className="text-xs uppercase tracking-[0.3em] text-muted mb-6">Experience</div>
@@ -291,7 +283,7 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* ── Projects Table (theo.gg style) ── */}
+      {/* -- Projects Table (theo.gg style) -- */}
       <section id="projects" className="py-24 px-8 md:px-16 w-full overflow-x-auto max-w-7xl mx-auto">
         <Reveal>
           <div className="portfolio-table-wrap">
@@ -334,7 +326,7 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* ── Testimonials ── */}
+      {/* -- Testimonials -- */}
       <section className="py-32 px-8 md:px-16 max-w-5xl mx-auto w-full">
         <Reveal>
           <div className="testimonials-grid">
@@ -361,46 +353,14 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* ── Chat-style CTA Section (theo.gg style) ── */}
-      <section className="px-8 md:px-16 pb-32 max-w-3xl mx-auto w-full">
+      {/* -- Interactive Chat CTA Section -- */}
+      <section className="px-8 md:px-16 pb-32 w-full">
         <Reveal>
-          <div className="chat-cta-section">
-            <div className="chat-bubble chat-bubble-1">
-              <span className="chat-available-dot"></span>
-              I&apos;m available for new projects
-            </div>
-            <div className="chat-bubble chat-bubble-2">
-              Do you have a project in mind? A collaboration proposal? Or do you just want to get in touch?
-            </div>
-            <div className="chat-bubble chat-bubble-3">
-              <a href={`mailto:${siteData.email}`} className="chat-link">
-                Click here to send me a message.
-              </a>
-            </div>
-            <div className="chat-bubble chat-bubble-4">
-              You can also reach out to me via email, at{" "}
-              <a href={`mailto:${siteData.email}`} className="chat-link">
-                {siteData.email}
-              </a>
-              , or by phone at{" "}
-              <a href={`tel:${siteData.phone}`} className="chat-link">
-                {siteData.phone}
-              </a>
-              .
-            </div>
-            <div className="chat-input-area">
-              <div className="chat-input-field">
-                <span className="chat-input-placeholder">Type here...</span>
-                <button className="chat-send-btn" aria-label="Send message">
-                  &rarr;
-                </button>
-              </div>
-            </div>
-          </div>
+          <ChatCTA />
         </Reveal>
       </section>
 
-      {/* ── Footer (minimal, theo.gg style) ── */}
+      {/* -- Footer (minimal, theo.gg style) -- */}
       <footer className="border-t border-[var(--border)] px-8 py-8 md:px-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-8 text-[10px]">
         <div className="flex items-start gap-8">
           <span className="text-lg font-bold leading-none text-[var(--text)]">

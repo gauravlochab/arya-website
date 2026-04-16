@@ -81,7 +81,7 @@
   }
 }
 
-/* ── Navigation Links ── */
+/* -- Navigation Links -- */
 
 .nav-link {
   position: relative;
@@ -107,7 +107,7 @@
   transform: scaleX(1);
 }
 
-/* ── Capabilities Grid (theo.gg services style) ── */
+/* -- Capabilities Grid (theo.gg services style) -- */
 
 .capabilities-grid {
   display: grid;
@@ -141,7 +141,7 @@
   color: var(--muted);
 }
 
-/* ── Portfolio Table (theo.gg style — redesigned) ── */
+/* -- Portfolio Table (theo.gg style -- redesigned) -- */
 
 .portfolio-table-wrap {
   width: 100%;
@@ -161,7 +161,7 @@
 }
 
 .portfolio-table thead tr {
-  border-bottom: 1px solid var(--border);
+  border-bottom: 2px solid var(--text);
 }
 
 .portfolio-table th {
@@ -236,7 +236,7 @@
 .portfolio-project-name {
   font-weight: 700;
   color: var(--text);
-  font-size: 0.82rem;
+  font-size: 1.1rem;
 }
 
 .portfolio-company-name {
@@ -272,22 +272,22 @@
   white-space: nowrap;
 }
 
-/* Arrow */
+/* Arrow — always visible, large and bold */
 .portfolio-cell-arrow {
   text-align: right;
 }
 
 .portfolio-arrow {
-  color: var(--muted);
-  opacity: 0;
-  font-size: 1rem;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  color: var(--text);
+  opacity: 1;
+  font-size: 1.5rem;
+  font-weight: 700;
+  transition: transform 0.2s ease;
   display: inline-block;
 }
 
 .portfolio-row:hover .portfolio-arrow {
-  opacity: 1;
-  transform: translateX(2px);
+  transform: translateX(4px);
 }
 
 @media (max-width: 640px) {
@@ -308,7 +308,7 @@
   }
 
   .portfolio-project-name {
-    font-size: 0.72rem;
+    font-size: 0.85rem;
   }
 
   .portfolio-company-name {
@@ -316,7 +316,7 @@
   }
 }
 
-/* ── Testimonials ── */
+/* -- Testimonials -- */
 
 .testimonials-grid {
   display: grid;
@@ -363,32 +363,61 @@
   margin-top: 0.1rem;
 }
 
-/* ── Chat-style CTA Section (theo.gg style) ── */
+/* -- Interactive Chat CTA Section -- */
 
-.chat-cta-section {
+.chat-container {
+  max-width: 700px;
+  margin: 0 auto;
+  border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  overflow: hidden;
 }
 
-.chat-bubble {
-  border: 1px solid var(--border);
-  padding: 1rem 1.25rem;
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  min-height: 280px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.chat-msg-row {
+  display: flex;
+}
+
+.chat-msg-left {
+  justify-content: flex-start;
+}
+
+.chat-msg-right {
+  justify-content: flex-end;
+}
+
+/* Chat bubbles — the ONE exception to 0 border-radius */
+.chat-bubble-rounded {
+  border-radius: 16px !important;
+  padding: 12px 18px;
   font-size: 0.85rem;
   line-height: 1.6;
-  color: var(--text);
+  max-width: 70%;
+  word-break: break-word;
+}
+
+.chat-bubble-bot {
+  border: 1px solid var(--border);
   background: var(--bg-elevated);
-  align-self: flex-start;
+  color: var(--text);
 }
 
-.chat-bubble-1 {
-  max-width: 340px;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-weight: 600;
+.chat-bubble-user {
+  background: var(--text);
+  color: var(--bg);
 }
 
+/* Chat available dot */
 .chat-available-dot {
   display: inline-block;
   width: 8px;
@@ -397,18 +426,6 @@
   background: #22c55e;
   border-radius: 50% !important;
   flex-shrink: 0;
-}
-
-.chat-bubble-2 {
-  max-width: 520px;
-}
-
-.chat-bubble-3 {
-  max-width: 360px;
-}
-
-.chat-bubble-4 {
-  max-width: 580px;
 }
 
 .chat-link {
@@ -423,47 +440,86 @@
   opacity: 0.75;
 }
 
-/* Chat input area */
-.chat-input-area {
-  margin-top: 0.5rem;
-}
-
-.chat-input-field {
+/* Typing indicator */
+.chat-typing-indicator {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid var(--border);
-  padding: 0.75rem 0;
-  gap: 1rem;
+  gap: 4px;
+  padding: 12px 18px;
 }
 
-.chat-input-placeholder {
-  font-size: 0.82rem;
+.chat-typing-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: var(--muted);
+  border-radius: 50% !important;
+  animation: chatTypingPulse 1.4s ease-in-out infinite;
+}
+
+.chat-typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.chat-typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes chatTypingPulse {
+  0%, 60%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Chat input bar */
+.chat-input-bar {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  padding: 0;
+}
+
+.chat-input-real {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-size: 0.85rem;
+  padding: 14px 18px;
+  font-family: inherit;
+}
+
+.chat-input-real::placeholder {
   color: var(--muted);
   opacity: 0.6;
-  flex: 1;
 }
 
-.chat-send-btn {
+.chat-send-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  border: 1px solid var(--border);
-  background: var(--bg-elevated);
-  color: var(--muted);
-  font-size: 1rem;
-  transition: color 0.2s ease, border-color 0.2s ease;
+  width: 48px;
+  height: 48px;
+  background: var(--text);
+  color: var(--bg);
+  border: none;
+  font-size: 1.2rem;
+  font-weight: 700;
   flex-shrink: 0;
+  transition: opacity 0.2s ease;
 }
 
-.chat-send-btn:hover {
-  color: var(--text);
-  border-color: var(--text);
+.chat-send-button:hover {
+  opacity: 0.85;
 }
 
-/* ── Footer ── */
+/* -- Footer -- */
 
 .site-footer {
   padding-top: 2rem;
@@ -472,7 +528,7 @@
   color: var(--muted);
 }
 
-/* ── About text gradient fade (theo.gg effect) ── */
+/* -- About text gradient fade (theo.gg effect) -- */
 
 .text-fade-gradient {
   background: linear-gradient(to bottom, var(--text) 0%, var(--muted) 100%);
@@ -483,7 +539,7 @@
 }
 
 
-/* ── Tags ── */
+/* -- Tags -- */
 
 .tag {
   display: inline-block;
@@ -495,7 +551,7 @@
   margin-bottom: 0.25rem;
 }
 
-/* ── Reveal Animations ── */
+/* -- Reveal Animations -- */
 
 .reveal {
   opacity: 0;
@@ -525,7 +581,7 @@
   transform: translateY(0);
 }
 
-/* ── Custom Cursor ── */
+/* -- Custom Cursor -- */
 
 @media (pointer: fine) {
   * {
@@ -569,19 +625,13 @@
   }
 }
 
-/* ── Physics Bubbles ── */
+/* -- Physics Bubbles -- */
 
 .physics-scene {
   position: relative;
   width: 100%;
-  height: 500px;
+  height: 100%;
   overflow: hidden;
-}
-
-@media (max-width: 640px) {
-  .physics-scene {
-    height: 320px;
-  }
 }
 
 .physics-canvas {
@@ -591,7 +641,7 @@
   height: 100%;
 }
 
-/* ── Easter Egg ── */
+/* -- Easter Egg -- */
 
 .ee-overlay {
   position: fixed;
@@ -613,7 +663,7 @@
   stop-opacity: 0.45;
 }
 
-/* ── Paper Airplane ── */
+/* -- Paper Airplane -- */
 
 .ee-wing-shadow {
   fill: #3a3f52;
@@ -698,7 +748,7 @@
   fill: #7ea4f0;
 }
 
-/* ── Experience Timeline ── */
+/* -- Experience Timeline -- */
 
 .experience-list {
   display: flex;
@@ -797,7 +847,7 @@
   top: 0.1em;
 }
 
-/* ── Testimonial Footer ── */
+/* -- Testimonial Footer -- */
 
 .testimonial-footer {
   display: flex;
@@ -827,7 +877,7 @@
   }
 }
 
-/* ── Global: ZERO border-radius everywhere (theo.gg sharp edges) ── */
+/* -- Global: ZERO border-radius everywhere (theo.gg sharp edges) -- */
 *,
 *::before,
 *::after {
@@ -845,7 +895,17 @@
   border-radius: 50% !important;
 }
 
-/* ── Header fixed bar ── */
+/* Exception: chat bubbles have rounded corners */
+.chat-bubble-rounded {
+  border-radius: 16px !important;
+}
+
+/* Exception: typing dots stay round */
+.chat-typing-dot {
+  border-radius: 50% !important;
+}
+
+/* -- Header fixed bar -- */
 .site-header {
   position: fixed;
   top: 0;
@@ -865,7 +925,7 @@
   }
 }
 
-/* ── Scrollbar (clean, theo.gg style) ── */
+/* -- Scrollbar (clean, theo.gg style) -- */
 ::-webkit-scrollbar {
   width: 8px;
 }
