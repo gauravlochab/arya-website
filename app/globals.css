@@ -3,29 +3,28 @@
 @tailwind utilities;
 
 @layer base {
-  /* ── Light mode is DEFAULT (theo.gg is light-first) ── */
   :root {
-    color-scheme: light;
-    --bg: #FFFFFF;
-    --bg-elevated: #FFFFFF;
-    --text: #030618;
-    --muted: #9ca3af;
-    --accent: #030618;
-    --border: #e5e7eb;
-    --glass: rgba(0, 0, 0, 0.03);
-    --glow: rgba(0, 0, 0, 0.06);
+    color-scheme: dark;
+    --bg: #05060f;
+    --bg-elevated: #0b0d1a;
+    --text: #f3f4f6;
+    --muted: #9aa3b2;
+    --accent: #9db0ff;
+    --border: #161a2a;
+    --glass: rgba(157, 176, 255, 0.12);
+    --glow: rgba(157, 176, 255, 0.18);
   }
 
-  :root[data-theme="dark"] {
-    color-scheme: dark;
-    --bg: #030618;
-    --bg-elevated: #0a0d1a;
-    --text: #f3f4f6;
-    --muted: #6b7280;
-    --accent: #f3f4f6;
-    --border: #1f2937;
-    --glass: rgba(255, 255, 255, 0.05);
-    --glow: rgba(255, 255, 255, 0.08);
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --bg: #f8f9fb;
+    --bg-elevated: #ffffff;
+    --text: #0b0c0f;
+    --muted: #556070;
+    --accent: #3a5bff;
+    --border: #e3e6ef;
+    --glass: rgba(58, 91, 255, 0.1);
+    --glow: rgba(58, 91, 255, 0.16);
   }
 
   body {
