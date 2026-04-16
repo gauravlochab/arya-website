@@ -12,6 +12,14 @@ interface Project {
   colorScheme: "dark" | "light"; // text color on hover: dark = white text, light = dark text
 }
 
+// Color changes every 2 rows — 4 distinct color zones
+const PAIR_COLORS: { color: string; scheme: "dark" | "light" }[] = [
+  { color: "#5d39b9", scheme: "dark" },   // purple — rows 1-2
+  { color: "#009adf", scheme: "dark" },   // blue — rows 3-4
+  { color: "#E8785B", scheme: "light" },  // coral — rows 5-6
+  { color: "#206f31", scheme: "dark" },   // green — rows 7-8
+];
+
 const PROJECTS: Project[] = [
   {
     name: "Hybrid Resume Search Platform",
@@ -19,8 +27,8 @@ const PROJECTS: Project[] = [
     year: "2026",
     domain: "Enterprise",
     tags: ["#llm", "#search", "#fine-tuning", "#elasticsearch"],
-    hoverColor: "#5d39b9",
-    colorScheme: "dark",
+    hoverColor: PAIR_COLORS[0].color,
+    colorScheme: PAIR_COLORS[0].scheme,
   },
   {
     name: "Long Document LLM Extraction",
@@ -28,8 +36,8 @@ const PROJECTS: Project[] = [
     year: "2025",
     domain: "Enterprise",
     tags: ["#fine-tuning", "#nlp", "#llm", "#qlora"],
-    hoverColor: "#850167",
-    colorScheme: "dark",
+    hoverColor: PAIR_COLORS[0].color,
+    colorScheme: PAIR_COLORS[0].scheme,
   },
   {
     name: "Autonomous DeFi Agent System",
@@ -37,8 +45,8 @@ const PROJECTS: Project[] = [
     year: "2024-2025",
     domain: "Autonomous",
     tags: ["#agents", "#langgraph", "#on-chain", "#defi"],
-    hoverColor: "#009adf",
-    colorScheme: "dark",
+    hoverColor: PAIR_COLORS[1].color,
+    colorScheme: PAIR_COLORS[1].scheme,
   },
   {
     name: "RAG Intelligence Platform",
@@ -46,8 +54,8 @@ const PROJECTS: Project[] = [
     year: "2022-2024",
     domain: "Enterprise",
     tags: ["#rag", "#llm", "#qdrant", "#reranking"],
-    hoverColor: "#E8785B",
-    colorScheme: "light",
+    hoverColor: PAIR_COLORS[1].color,
+    colorScheme: PAIR_COLORS[1].scheme,
   },
   {
     name: "Invoice AI Agents",
@@ -55,8 +63,8 @@ const PROJECTS: Project[] = [
     year: "2025",
     domain: "Healthcare",
     tags: ["#agents", "#llm", "#validation", "#auditing"],
-    hoverColor: "#df1b24",
-    colorScheme: "dark",
+    hoverColor: PAIR_COLORS[2].color,
+    colorScheme: PAIR_COLORS[2].scheme,
   },
   {
     name: "Fashion Sales Forecasting",
@@ -64,8 +72,8 @@ const PROJECTS: Project[] = [
     year: "2023",
     domain: "Retail",
     tags: ["#clip", "#gpt-3", "#embeddings", "#forecasting"],
-    hoverColor: "#f78615",
-    colorScheme: "light",
+    hoverColor: PAIR_COLORS[2].color,
+    colorScheme: PAIR_COLORS[2].scheme,
   },
   {
     name: "Document AI Extraction",
@@ -73,8 +81,8 @@ const PROJECTS: Project[] = [
     year: "2020-2022",
     domain: "Fintech",
     tags: ["#nlp", "#cv", "#aws", "#sagemaker"],
-    hoverColor: "#206f31",
-    colorScheme: "dark",
+    hoverColor: PAIR_COLORS[3].color,
+    colorScheme: PAIR_COLORS[3].scheme,
   },
   {
     name: "Tax Fraud Detection",
@@ -82,8 +90,8 @@ const PROJECTS: Project[] = [
     year: "2021",
     domain: "Fintech",
     tags: ["#anomaly-detection", "#clustering", "#ml"],
-    hoverColor: "#18378c",
-    colorScheme: "dark",
+    hoverColor: PAIR_COLORS[3].color,
+    colorScheme: PAIR_COLORS[3].scheme,
   },
 ];
 
