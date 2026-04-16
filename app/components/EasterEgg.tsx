@@ -2,10 +2,10 @@
 
 import { useEffect, useRef } from "react";
 
-const SPEED = 2.6;
-const STEER_RATE = 0.04;
+const SPEED = 4.2;
+const STEER_RATE = 0.045;
 const MOUSE_REPEL_RADIUS = 150;
-const NUM_SPARKLES = 4;
+const NUM_SPARKLES = 14;
 
 function catmullRomToBezier(pts: [number, number][]): string {
   if (pts.length < 2) return "";
@@ -101,30 +101,31 @@ export default function EasterEgg() {
     }
     const sparkles: Sparkle[] = [];
 
-    function emitSparkle() {
+    function emitSparkle(count = 1) {
       const cos = Math.cos(angle);
       const sin = Math.sin(angle);
-      // Emit from around the plane body
-      const ox = -20 + Math.random() * -20;
-      const oy = (Math.random() - 0.5) * 20;
-      sparkles.push({
-        x: x + ox * cos - oy * sin,
-        y: y + ox * sin + oy * cos,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3 - 0.2,
-        life: 1,
-        maxLife: 60 + Math.random() * 40,
-        size: SPARKLE_SIZE_MULT + Math.random() * SPARKLE_SIZE_MULT,
-      });
-      // Keep sparkle count reasonable
+      for (let n = 0; n < count; n++) {
+        // Emit from behind the plane tail area
+        const ox = -25 + Math.random() * -30;
+        const oy = (Math.random() - 0.5) * 24;
+        sparkles.push({
+          x: x + ox * cos - oy * sin,
+          y: y + ox * sin + oy * cos,
+          vx: (Math.random() - 0.5) * 0.6 - Math.cos(angle) * 0.4,
+          vy: (Math.random() - 0.5) * 0.6 - 0.15,
+          life: 1,
+          maxLife: 40 + Math.random() * 50,
+          size: SPARKLE_SIZE_MULT * 0.6 + Math.random() * SPARKLE_SIZE_MULT,
+        });
+      }
       while (sparkles.length > NUM_SPARKLES) sparkles.shift();
     }
 
     function tick() {
       frame++;
       if (entering) {
-        x += 2.5;
-        y -= 0.2;
+        x += 4;
+        y -= 0.3;
         angle = -0.1;
         const cos = Math.cos(angle);
         const sin = Math.sin(angle);
@@ -207,8 +208,8 @@ export default function EasterEgg() {
         ]);
         if (trail.length > TRAIL_MAX) trail.shift();
 
-        // Emit sparkle occasionally
-        if (frame % 35 === 0) emitSparkle();
+        // Emit sparkles frequently for a dense trail
+        if (frame % 6 === 0) emitSparkle(2);
       }
 
       /* ── Update DOM ── */
@@ -316,9 +317,9 @@ export default function EasterEgg() {
       {/* Dotted trail */}
       <path className="ee-trail" d="" fill="none" stroke="url(#ee-trail-grad)" strokeDasharray="3 10" strokeLinecap="round" strokeWidth="3" suppressHydrationWarning />
 
-      {/* "Hi" text */}
+      {/* Quirky tagline */}
       <text className="ee-text" x="0" y="0" textAnchor="middle" dominantBaseline="auto" filter="url(#ee-text-glow)" style={{ opacity: 0 }}>
-        Hello 👋
+        Ship it 🚀
       </text>
 
       {/* Sparkle particles */}
