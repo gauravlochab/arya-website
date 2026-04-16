@@ -338,29 +338,19 @@ export default function Home() {
       <section className="py-32 px-8 md:px-16 flex flex-col gap-32">
         {siteData.testimonials.map((t, i) => (
           <Reveal key={i}>
-            <div className={`testimonial-block ${i % 2 === 1 ? "reverse" : ""}`}>
-              {/* Photo placeholder */}
-              <div className="testimonial-photo">
-                <span style={{ fontFamily: "var(--font-mono), monospace", fontWeight: 600, letterSpacing: "0.05em" }}>
-                  {t.initials}
-                </span>
-              </div>
-
-              {/* Content */}
-              <div className="testimonial-content">
-                <p>{t.quote}</p>
-                <p>{t.quote2}</p>
-                <div className="testimonial-meta">
-                  <a
-                    href={t.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="testimonial-author nav-link"
-                  >
-                    {t.author}, {t.role}
-                  </a>
-                  <div className="testimonial-role">{t.company}</div>
-                </div>
+            <div className="testimonial-block-text-only">
+              <p>{t.quote}</p>
+              <p>{t.quote2}</p>
+              <div className="testimonial-meta">
+                <a
+                  href={t.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="testimonial-author nav-link"
+                >
+                  {t.author}, {t.role}
+                </a>
+                <div className="testimonial-role">{t.company}</div>
               </div>
             </div>
           </Reveal>
