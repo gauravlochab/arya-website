@@ -7,7 +7,7 @@ type Theme = "dark" | "light";
 const STORAGE_KEY = "gaurav-theme";
 
 function getInitialTheme(): Theme {
-  if (typeof window === "undefined") return "dark";
+  if (typeof window === "undefined") return "light";
   const stored = window.localStorage.getItem(STORAGE_KEY) as Theme | null;
   if (stored === "dark" || stored === "light") return stored;
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
@@ -18,7 +18,7 @@ function applyTheme(theme: Theme) {
 }
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
     const initial = getInitialTheme();
@@ -35,12 +35,15 @@ export default function ThemeToggle() {
 
   return (
     <button
-      className="text-xs uppercase tracking-[0.3em] text-muted transition-colors hover:text-[var(--accent)]"
+      className="text-[13px] font-bold transition-colors hover:opacity-70"
       type="button"
       onClick={toggleTheme}
     >
-      <span className={theme === "light" ? "text-[var(--text)]" : ""}>Light</span>{" / "}
-      <span className={theme === "dark" ? "text-[var(--text)]" : ""}>Dark</span>
+      <span className={theme === "light" ? "text-[var(--text)]" : "text-[var(--muted)]"}>Light</span>
+      {" "}
+      <span className="text-[var(--muted)] font-normal">/</span>
+      {" "}
+      <span className={theme === "dark" ? "text-[var(--text)]" : "text-[var(--muted)]"}>Dark</span>
     </button>
   );
 }

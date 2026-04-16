@@ -14,15 +14,13 @@ const siteData = {
   nav: { cta: "Reach out" },
 
   headline:
-    "AI Systems Engineer building LLM search, retrieval, and agent infrastructure.",
+    "I build production AI systems — LLM search, retrieval, and agent infrastructure for industry leaders.",
 
   subheadline:
     "I design production AI systems — hybrid search engines, RAG pipelines, LLM inference infrastructure, and autonomous agent workflows.",
 
-  status: "Available for collaboration",
-
   about:
-    "I build production AI systems at the intersection of language models, retrieval, and backend infrastructure. My work spans LLM-powered applications, semantic search and ranking, RAG pipelines, agentic workflows, and scalable AI backends. I enjoy solving problems where AI must operate reliably at scale.",
+    "Building production AI systems at the intersection of language models, retrieval, and backend infrastructure is what drives me. I enjoy bringing complex architectures to life and immersing myself in the problems that fascinate me. My curiosity has driven me to work across LLM fine-tuning, semantic search, autonomous agents, and scalable backends — from ideation to production. Solving hard problems and pushing the boundaries of what AI systems can reliably do at scale brings me immense satisfaction.",
 
   experience: [
     {
@@ -51,7 +49,7 @@ const siteData = {
       period: "Oct 2022 – May 2024",
       location: "London, UK (Remote)",
       highlights: [
-        "RAG agent with custom Llama3-8B, LangChain, and Qdrant — query expansion + reranking, 30% improved relevance. 4× model compression via INT8, 2× latency improvement.",
+        "RAG agent with custom Llama3-8B, LangChain, and Qdrant — query expansion + reranking, 30% improved relevance. 4x model compression via INT8, 2x latency improvement.",
         "Fashion sales forecasting using CLIP embeddings + GPT-3. Improved inventory management, boosted quarterly sales 18%.",
       ],
     },
@@ -69,77 +67,34 @@ const siteData = {
 
   capabilities: [
     {
-      title: "LLM Systems",
-      description: "Fine-tuning, structured extraction, prompt systems, evaluation pipelines.",
-      bullets: ["QLoRA / LoRA fine-tuning", "Structured JSON extraction", "Prompt engineering systems", "LLM evaluation frameworks"],
+      title: "LLM Systems & Fine-Tuning",
+      description:
+        "I build end-to-end LLM pipelines — from fine-tuning foundation models with QLoRA and distillation, to structured extraction, prompt engineering systems, and evaluation frameworks that ensure production reliability.",
     },
     {
-      title: "Retrieval & Search",
-      description: "Hybrid search (BM25 + embeddings), ranking pipelines, semantic retrieval.",
-      bullets: ["BM25 + dense embeddings", "Custom ML ranking signals", "Query expansion & reranking", "SPLADE sparse vectors"],
+      title: "Search & Retrieval Infrastructure",
+      description:
+        "I specialize in building hybrid search systems that combine BM25 lexical retrieval with dense embeddings, custom ML ranking signals, query expansion, and reranking pipelines that deliver precise results at scale.",
     },
     {
-      title: "AI Infrastructure",
-      description: "Inference pipelines, FastAPI microservices, GPU optimization, production monitoring.",
-      bullets: ["vLLM inference serving", "FastAPI microservices", "INT8/INT4 quantization", "Celery + Redis pipelines"],
+      title: "Agent Systems & Workflows",
+      description:
+        "I design and build autonomous agent systems using LangGraph state machines, multi-step tool-calling, dynamic task routing, and human-in-the-loop oversight for reliable real-world execution.",
     },
     {
-      title: "Agent Systems",
-      description: "LangGraph workflows, tool-calling agents, multi-step automation systems.",
-      bullets: ["LangGraph state machines", "Multi-step tool-calling", "On-chain agent execution", "Human-in-the-loop oversight"],
-    },
-  ],
-
-  skills: [
-    {
-      category: "LLMs & Agents",
-      items: [
-        "LangChain",
-        "LangGraph",
-        "OpenAI",
-        "Anthropic Claude",
-        "HuggingFace",
-        "vLLM",
-        "RAG",
-        "QLoRA",
-        "RLHF / ORPO",
-        "AutoGen",
-      ],
+      title: "AI Infrastructure & MLOps",
+      description:
+        "I architect production inference pipelines with vLLM serving, INT8/INT4 quantization, FastAPI microservices, and Celery + Redis task orchestration — optimized for throughput, latency, and cost.",
     },
     {
-      category: "Backend & MLOps",
-      items: [
-        "Python",
-        "FastAPI",
-        "PostgreSQL",
-        "Redis",
-        "Celery",
-        "Docker",
-        "Kubernetes",
-        "Apache Airflow",
-        "CI/CD",
-      ],
+      title: "Strategy & Consulting",
+      description:
+        "I leverage deep expertise to analyze your AI needs, evaluate emerging architectures, and chart a roadmap for success — from assessing existing ML infrastructure to recommending LLM strategies tailored to your organization.",
     },
     {
-      category: "Cloud & Search",
-      items: [
-        "AWS (Lambda, SageMaker)",
-        "Azure",
-        "Elasticsearch",
-        "Qdrant",
-        "BM25",
-        "Sparse Embeddings (SPLADE)",
-      ],
-    },
-    {
-      category: "Blockchain & Web3",
-      items: [
-        "Open Autonomy",
-        "Olas Ecosystem",
-        "On-Chain Agents",
-        "DeFi Protocols",
-        "Multi-Agent Coordination",
-      ],
+      title: "On-Demand AI Engineering",
+      description:
+        "Get a dedicated channel with me and your team where you can ask everything — from specific model issues, inference optimization, pipeline architecture, to production debugging and everything in between.",
     },
   ],
 
@@ -149,82 +104,82 @@ const siteData = {
       company: "Apolis",
       year: "2026",
       domain: "Enterprise",
-      tags: ["LLM", "Search", "Fine-Tuning", "Elasticsearch"],
-      problem: "Recruiters struggled to search millions of resumes effectively using keyword matching alone.",
-      architecture: ["Resume ingestion", "LLM extraction", "Elasticsearch indexing", "Dense embeddings", "Hybrid retrieval", "ML ranking", "FastAPI API"],
-      stack: ["Python", "FastAPI", "Elasticsearch", "OpenAI Embeddings", "QLoRA", "Qwen2.5-3B"],
-      contribution: "Architected end-to-end pipeline from ingestion to ranked retrieval. Fine-tuned Qwen2.5-3B with QLoRA for structured extraction.",
-      impact: "2.7M+ resumes indexed. Improved candidate-job matching accuracy significantly.",
+      tags: ["#llm", "#search", "#fine-tuning", "#elasticsearch"],
     },
     {
       name: "Long Document LLM Extraction",
       company: "Apolis",
       year: "2025",
       domain: "Enterprise",
-      tags: ["Fine-Tuning", "NLP", "LLM"],
-      problem: "Resumes are long, noisy, and difficult to parse reliably with off-the-shelf models.",
-      architecture: ["Document input", "Prompt extraction", "Structured JSON output", "Validation layer", "Index write"],
-      stack: ["Python", "QLoRA", "Qwen2.5-3B", "HuggingFace", "Pydantic"],
-      contribution: "Designed fine-tuning pipeline with teacher-student distillation and structured prompt templates.",
-      impact: "Consistent structured extraction at scale. Significantly reduced hallucinations vs zero-shot baselines.",
+      tags: ["#fine-tuning", "#nlp", "#llm", "#qlora"],
     },
     {
       name: "Autonomous DeFi Agent System",
       company: "Valory",
-      year: "2024–2025",
+      year: "2024-2025",
       domain: "Autonomous",
-      tags: ["Agents", "LangGraph", "On-Chain", "DeFi"],
-      problem: "Complex DeFi portfolio management requires multi-step reasoning, real-time market data, and on-chain execution.",
-      architecture: ["User task", "Agent planning", "Tool execution", "State management", "On-chain write", "Result synthesis"],
-      stack: ["Python", "LangGraph", "OpenAI", "Claude APIs", "Open Autonomy", "Olas"],
-      contribution: "Built LangGraph state-machine agent workflows with dynamic task routing and blockchain execution layer.",
-      impact: "5M+ requests processed. $10M+ in managed assets. 25% portfolio performance improvement.",
+      tags: ["#agents", "#langgraph", "#on-chain", "#defi"],
     },
     {
       name: "RAG Intelligence Platform",
       company: "Smarter",
-      year: "2022–2024",
+      year: "2022-2024",
       domain: "Enterprise",
-      tags: ["RAG", "LLM", "Qdrant", "Reranking"],
-      problem: "Organizations need AI to answer questions accurately over private knowledge without hallucination.",
-      architecture: ["Documents", "Chunking", "Embeddings", "Qdrant vector DB", "Retrieval", "Reranking", "LLM answer generation"],
-      stack: ["Python", "Llama3-8B", "LangChain", "Qdrant", "FastAPI", "AWS"],
-      contribution: "Built custom RAG with query expansion, reranking, and 4× model compression via INT8 quantization.",
-      impact: "30% improved retrieval relevance. 2× latency improvement. Deployed to production on AWS.",
+      tags: ["#rag", "#llm", "#qdrant", "#reranking"],
+    },
+    {
+      name: "Invoice AI Agents",
+      company: "Apolis",
+      year: "2025",
+      domain: "Healthcare",
+      tags: ["#agents", "#llm", "#validation", "#auditing"],
+    },
+    {
+      name: "Fashion Sales Forecasting",
+      company: "Smarter",
+      year: "2023",
+      domain: "Retail",
+      tags: ["#clip", "#gpt-3", "#embeddings", "#forecasting"],
+    },
+    {
+      name: "Document AI Extraction",
+      company: "Pibit.ai",
+      year: "2020-2022",
+      domain: "Fintech",
+      tags: ["#nlp", "#cv", "#aws", "#sagemaker"],
+    },
+    {
+      name: "Tax Fraud Detection",
+      company: "Pibit.ai",
+      year: "2021",
+      domain: "Fintech",
+      tags: ["#anomaly-detection", "#clustering", "#ml"],
     },
   ],
 
   testimonials: [
     {
       quote:
-        "Gaurav is the rare engineer who combines deep AI research knowledge with the pragmatism to ship production systems on tight timelines. His work on NexGig — a talent intelligence platform processing 2.7 million resumes with fine-tuned LLMs — was technically ambitious and delivered measurable business impact from day one. I'd work with him again without hesitation.",
+        "Gaurav is the rare engineer who combines deep AI research knowledge with the pragmatism to ship production systems on tight timelines. His work on NexGig — a talent intelligence platform processing 2.7 million resumes with fine-tuned LLMs — was technically ambitious and delivered measurable business impact from day one.",
+      quote2:
+        "I'd work with him again without hesitation.",
       author: "Rajesh Jaluka",
       role: "CTO",
       company: "Apolis",
       linkedin: "https://www.linkedin.com/in/rjaluka/",
+      initials: "RJ",
     },
     {
       quote:
-        "Gaurav brought a rare combination of LLM depth and systems-level thinking to Valory. He architected our autonomous agent infrastructure from the ground up — workflows that scaled to millions of on-chain operations managing real assets. His work directly shaped how we build autonomous services at the protocol level.",
+        "Gaurav brought a rare combination of LLM depth and systems-level thinking to Valory. He architected our autonomous agent infrastructure from the ground up — workflows that scaled to millions of on-chain operations managing real assets.",
+      quote2:
+        "His work directly shaped how we build autonomous services at the protocol level.",
       author: "David Galindo",
       role: "Co-Founder & CTO",
       company: "Valory",
       linkedin: "https://www.linkedin.com/in/dgcrypto/",
+      initials: "DG",
     },
-  ],
-
-  education: {
-    degree: "B.E. in Computer Science and Engineering",
-    institution: "USICT Delhi",
-    period: "Aug 2016 – May 2020",
-    gpa: "8.1 / 10",
-    coursework:
-      "Machine Learning, Data Mining, Quantitative Analysis, Financial Mathematics, Statistics, DSA, Databases",
-  },
-
-  awards: [
-    "Research Paper — International Advanced Computing Conference '22",
-    "Mentor at Scaler Academy — Quantitative analysis and ML in finance",
   ],
 
   links: [
@@ -235,340 +190,222 @@ const siteData = {
   ],
 };
 
-const archDiagrams = [
-  {
-    label: "LLM Pipeline",
-    steps: ["Data", "Extraction", "Embeddings", "Vector DB", "Retrieval", "LLM Synthesis", "Evaluation"],
-  },
-  {
-    label: "Hybrid Search",
-    steps: ["Query", "BM25 Retrieval", "Dense Embedding Retrieval", "Reranking", "LLM Reasoning"],
-  },
-];
-
 export default function Home() {
   return (
     <main className="relative min-h-screen text-[var(--text)]">
       <CustomCursor />
       <EasterEgg />
-      <div className="mx-auto flex w-full max-w-5xl flex-col gap-16 px-5 pb-20 pt-8 sm:gap-24 sm:px-10 sm:pb-28 sm:pt-12">
 
-        {/* ── Header ── */}
+      {/* ── Fixed Header (theo.gg style) ── */}
+      <header className="site-header">
+        <span className="text-xl font-bold tracking-normal text-[var(--text)]">
+          {siteData.logo}
+        </span>
+        <div className="flex items-center gap-6 text-[13px] font-bold">
+          <ThemeToggle />
+          <a
+            className="border-b border-[var(--text)] pb-0.5 transition-opacity hover:opacity-70"
+            href={`mailto:${siteData.email}`}
+          >
+            {siteData.nav.cta}
+          </a>
+        </div>
+      </header>
+
+      {/* ── Hero Section (theo.gg layout: text left, bubbles right) ── */}
+      <section className="min-h-screen px-8 pt-32 pb-16 md:px-16 flex flex-col lg:flex-row items-center relative overflow-hidden">
+        {/* Left: headline */}
+        <div className="w-full lg:w-3/5 z-10 flex flex-col justify-center pt-16 lg:pt-0">
+          <div className="w-full max-w-[900px] mb-12" style={{ fontSize: "clamp(28px, 5vw, 54px)", lineHeight: "1.15", fontWeight: 700 }}>
+            <TextReveal text={siteData.headline} as="h1" />
+          </div>
+          <p className="text-[var(--muted)] text-[13px] mt-auto lg:mt-32">
+            Trusted by AI-first companies worldwide &rarr;
+          </p>
+        </div>
+
+        {/* Right: PhysicsBubbles */}
+        <div className="w-full lg:w-2/5 h-[400px] lg:h-[600px] mt-16 lg:mt-0 relative hidden md:block">
+          <PhysicsBubbles />
+        </div>
+      </section>
+
+      {/* ── Mobile Bubbles (visible only on small screens) ── */}
+      <section className="block md:hidden px-8 pb-16">
         <Reveal>
-          <header className="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-muted">
-            <span className="text-lg font-semibold tracking-normal text-[var(--text)]">
-              {siteData.logo}
-            </span>
-            <div className="flex items-center gap-3 sm:gap-6">
-              <a className="nav-link hidden sm:inline text-muted hover:text-[var(--accent)]" href="#projects">Projects</a>
-              <a className="nav-link hidden sm:inline text-muted hover:text-[var(--accent)]" href="/case-studies">Case Studies</a>
-              <a className="nav-link hidden sm:inline text-muted hover:text-[var(--accent)]" href="https://github.com/gauravlochab" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <ThemeToggle />
-              <a className="nav-link text-[var(--text)]" href={`mailto:${siteData.email}`}>
-                {siteData.nav.cta}
-              </a>
-            </div>
-          </header>
+          <p className="text-[var(--muted)] text-[13px] mb-4">
+            Trusted by AI-first companies worldwide &rarr;
+          </p>
+          <PhysicsBubbles />
+        </Reveal>
+      </section>
+
+      {/* ── About Section (theo.gg gradient text effect) ── */}
+      <section className="py-32 px-8 flex flex-col items-center gap-24">
+        <Reveal>
+          {/* Faded light version */}
+          <div className="max-w-2xl text-center text-fade-light leading-relaxed text-[15px] sm:text-[18px]">
+            {siteData.about}
+          </div>
         </Reveal>
 
-        {/* ── Hero ── */}
-        <section>
-          <Reveal>
-            <div className="max-w-4xl text-2xl leading-relaxed text-[var(--text)] sm:text-3xl md:text-[2.6rem] md:leading-[1.25]">
-              <TextReveal text={siteData.headline} as="h1" />
-            </div>
-            <p className="mt-5 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
-              {siteData.subheadline}
-            </p>
-            <div className="hero-buttons">
-              <a className="btn-primary" href="#projects">View Projects</a>
-              <a className="btn-secondary" href="https://github.com/gauravlochab" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a className="btn-secondary" href="#">Resume</a>
-              <a className="btn-secondary" href={`mailto:${siteData.email}`}>Contact</a>
-            </div>
-            <div className="mt-6 flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-muted">
-              <span className="status-dot" />
-              {siteData.status} · {siteData.location}
-            </div>
-          </Reveal>
-        </section>
-
-        {/* ── About ── */}
-        <section>
-          <Reveal>
-            <div className="text-xs uppercase tracking-[0.3em] text-muted mb-4">About</div>
-            <p className="max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
-              {siteData.about}
-            </p>
-          </Reveal>
-        </section>
-
-        {/* ── Physics Bubbles ── */}
-        <section>
-          <Reveal>
-            <div className="text-xs uppercase tracking-[0.3em] text-muted mb-4">Trusted by</div>
-            <PhysicsBubbles />
-          </Reveal>
-        </section>
-
-        {/* ── What I Build ── */}
-        <section>
-          <Reveal>
-            <div className="text-xs uppercase tracking-[0.3em] text-muted mb-4">What I build</div>
-            <div className="capability-grid">
-              {siteData.capabilities.map((cap) => (
-                <div key={cap.title} className="capability-card">
-                  <h3>{cap.title}</h3>
-                  <p>{cap.description}</p>
-                  <ul className="capability-bullets">
-                    {cap.bullets.map((b) => (
-                      <li key={b}>{b}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        </section>
-
-        {/* ── Experience ── */}
-        <section>
-          <Reveal>
-            <div className="text-xs uppercase tracking-[0.3em] text-muted mb-4">Experience</div>
-            <div className="experience-list">
-              {siteData.experience.map((job) => (
-                <div key={job.company} className="experience-item">
-                  <div className="experience-header">
-                    <div className="experience-left">
-                      <span className="experience-company">{job.company}</span>
-                      <span className="experience-role">{job.role}</span>
-                    </div>
-                    <div className="experience-right">
-                      <span className="experience-period">{job.period}</span>
-                      <span className="experience-location">{job.location}</span>
-                    </div>
-                  </div>
-                  <ul className="experience-highlights">
-                    {job.highlights.map((h, i) => (
-                      <li key={i}>{h}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        </section>
-
-        {/* ── Featured Projects ── */}
-        <section id="projects">
-          <Reveal>
-            <div className="text-xs uppercase tracking-[0.3em] text-muted mb-4">Featured projects</div>
-            <div className="project-cards-grid">
-              {siteData.projects.map((project) => (
-                <div key={project.name} className="project-card">
-                  {/* Header */}
-                  <div className="project-card-header">
-                    <div>
-                      <div className="project-card-name">{project.name}</div>
-                      <div className="project-card-meta">{project.company} · {project.year}</div>
-                    </div>
-                    <span className="project-domain-badge">{project.domain}</span>
-                  </div>
-
-                  {/* Tags */}
-                  <div>
-                    {project.tags.map((tag) => (
-                      <span key={tag} className="tag">{tag}</span>
-                    ))}
-                  </div>
-
-                  {/* Problem */}
-                  <div>
-                    <div className="project-section-label">Problem</div>
-                    <p className="project-problem">{project.problem}</p>
-                  </div>
-
-                  {/* Architecture flow */}
-                  <div>
-                    <div className="project-section-label">Architecture</div>
-                    <div className="arch-flow">
-                      {project.architecture.map((step, i) => (
-                        <span key={i} className="flex items-center gap-1">
-                          <span className="arch-step">{step}</span>
-                          {i < project.architecture.length - 1 && (
-                            <span className="arch-arrow">→</span>
-                          )}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Stack */}
-                  <div>
-                    <div className="project-section-label">Stack</div>
-                    <div>
-                      {project.stack.map((s) => (
-                        <span key={s} className="tag">{s}</span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Contribution */}
-                  <div>
-                    <div className="project-section-label">My contribution</div>
-                    <p className="project-contribution">{project.contribution}</p>
-                  </div>
-
-                  {/* Impact */}
-                  <div>
-                    <div className="project-section-label">Impact</div>
-                    <p className="project-impact">{project.impact}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        </section>
-
-        {/* ── Architecture Diagrams ── */}
-        <section>
-          <Reveal>
-            <div className="text-xs uppercase tracking-[0.3em] text-muted mb-4">How I architect systems</div>
-            <div className="arch-diagrams-grid">
-              {archDiagrams.map((diagram) => (
-                <div key={diagram.label} className="arch-diagram-card">
-                  <div className="arch-diagram-title">{diagram.label}</div>
-                  <div className="arch-diagram-flow">
-                    {diagram.steps.map((step, i) => (
-                      <span key={i} className="flex items-center gap-1">
-                        <span className="arch-diagram-step">{step}</span>
-                        {i < diagram.steps.length - 1 && (
-                          <span className="arch-diagram-arrow">→</span>
-                        )}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        </section>
-
-        {/* ── Skills ── */}
-        <section>
-          <Reveal>
-            <div className="text-xs uppercase tracking-[0.3em] text-muted mb-4">Skills & Stack</div>
-            <div className="skills-grid">
-              {siteData.skills.map((group) => (
-                <div key={group.category} className="skills-group">
-                  <div className="skills-category">{group.category}</div>
-                  <div className="skills-tags">
-                    {group.items.map((item) => (
-                      <span key={item} className="tag">{item}</span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        </section>
-
-        {/* ── Testimonials ── */}
-        <section>
-          <Reveal>
-            <div className="text-xs uppercase tracking-[0.3em] text-muted mb-4">Kind words</div>
-            <div className="testimonials-grid">
-              {siteData.testimonials.map((t, i) => (
-                <div key={i} className="testimonial-card">
-                  <p className="testimonial-quote">&ldquo;{t.quote}&rdquo;</p>
-                  <div className="testimonial-footer">
-                    <a
-                      href={t.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="testimonial-author nav-link"
-                    >
-                      {t.author}
-                    </a>
-                    <span className="testimonial-role">
-                      {t.role}, {t.company}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Reveal>
-        </section>
-
-        {/* ── Education & Awards ── */}
-        <section>
-          <Reveal>
-            <div className="text-xs uppercase tracking-[0.3em] text-muted mb-4">Education</div>
-            <div className="education-card">
-              <div className="education-header">
-                <div>
-                  <span className="education-degree">{siteData.education.degree}</span>
-                  <span className="education-institution">{siteData.education.institution}</span>
-                </div>
-                <div className="education-meta">
-                  <span>{siteData.education.period}</span>
-                  <span className="education-gpa">GPA {siteData.education.gpa}</span>
-                </div>
-              </div>
-              <p className="education-coursework">
-                <span className="text-muted text-xs uppercase tracking-widest mr-2">Coursework</span>
-                {siteData.education.coursework}
-              </p>
-              <div className="education-awards">
-                {siteData.awards.map((award, i) => (
-                  <span key={i} className="award-item">▸ {award}</span>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-        </section>
-
-        {/* ── CTA ── */}
-        <section>
-          <Reveal>
-            <div className="cta-section">
-              <h2 className="cta-heading">I&apos;m available for new projects</h2>
-              <p className="text-sm text-muted mb-6">
-                Let&apos;s build something together — agents, LLM systems, or production ML infrastructure.
-              </p>
-              <div className="flex flex-wrap justify-center gap-4 text-xs uppercase tracking-[0.3em] text-muted">
-                {siteData.links.map((link) => (
-                  <a key={link.label} className="nav-link" href={link.href}>
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-        </section>
-
-        {/* ── Footer ── */}
         <Reveal>
-          <footer className="site-footer">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <span className="text-lg font-semibold tracking-normal text-[var(--text)]">
-                {siteData.logo}
-              </span>
-              <div className="flex flex-wrap gap-4 text-xs uppercase tracking-[0.3em] text-muted">
-                {siteData.links.map((link) => (
-                  <a key={link.label} className="nav-link" href={link.href}>
-                    {link.label}
-                  </a>
+          {/* Gradient fade version */}
+          <div className="max-w-2xl text-center text-fade-gradient leading-relaxed text-[15px] sm:text-[18px] font-bold">
+            {siteData.about}
+          </div>
+        </Reveal>
+      </section>
+
+      {/* ── Capabilities Grid (theo.gg services: 3 columns, title + paragraph only) ── */}
+      <section className="py-32 px-8 md:px-16 w-full mx-auto max-w-7xl">
+        <Reveal>
+          <div className="capabilities-grid">
+            {siteData.capabilities.map((cap) => (
+              <div key={cap.title} className="capability-item">
+                <h3>{cap.title}</h3>
+                <p>{cap.description}</p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </section>
+
+      {/* ── Experience ── */}
+      <section className="py-32 px-8 md:px-16 w-full mx-auto max-w-5xl">
+        <Reveal>
+          <div className="text-xs uppercase tracking-[0.3em] text-muted mb-6">Experience</div>
+          <div className="experience-list">
+            {siteData.experience.map((job) => (
+              <div key={job.company} className="experience-item">
+                <div className="experience-header">
+                  <div className="experience-left">
+                    <span className="experience-company">{job.company}</span>
+                    <span className="experience-role">{job.role}</span>
+                  </div>
+                  <div className="experience-right">
+                    <span className="experience-period">{job.period}</span>
+                    <span className="experience-location">{job.location}</span>
+                  </div>
+                </div>
+                <ul className="experience-highlights">
+                  {job.highlights.map((h, i) => (
+                    <li key={i}>{h}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </section>
+
+      {/* ── Projects Table (theo.gg style) ── */}
+      <section id="projects" className="py-24 px-8 md:px-16 w-full overflow-x-auto max-w-7xl mx-auto">
+        <Reveal>
+          <div className="portfolio-table-wrap">
+            <table className="portfolio-table">
+              <thead>
+                <tr>
+                  <th className="w-[55%] pl-4">Project</th>
+                  <th className="w-[10%]">Year</th>
+                  <th className="w-[25%]">Tags</th>
+                  <th className="w-[10%]">Domain</th>
+                </tr>
+              </thead>
+              <tbody>
+                {siteData.projects.map((project, idx) => (
+                  <tr key={project.name} className="group">
+                    <td className="pl-4">
+                      <span className="portfolio-row-num">
+                        {String(idx + 1).padStart(2, "0")}
+                      </span>{" "}
+                      <span className="portfolio-row-name">{project.name}</span>
+                    </td>
+                    <td className="text-[var(--muted)]">{project.year}</td>
+                    <td className="portfolio-row-tags">
+                      {project.tags.join(", ")}
+                    </td>
+                    <td className="portfolio-row-domain">{project.domain}</td>
+                  </tr>
                 ))}
+              </tbody>
+            </table>
+          </div>
+        </Reveal>
+      </section>
+
+      {/* ── Testimonials (theo.gg alternating layout with photo placeholders) ── */}
+      <section className="py-32 px-8 md:px-16 flex flex-col gap-32">
+        {siteData.testimonials.map((t, i) => (
+          <Reveal key={i}>
+            <div className={`testimonial-block ${i % 2 === 1 ? "reverse" : ""}`}>
+              {/* Photo placeholder */}
+              <div className="testimonial-photo">
+                <span style={{ fontFamily: "var(--font-mono), monospace", fontWeight: 600, letterSpacing: "0.05em" }}>
+                  {t.initials}
+                </span>
+              </div>
+
+              {/* Content */}
+              <div className="testimonial-content">
+                <p>{t.quote}</p>
+                <p>{t.quote2}</p>
+                <div className="testimonial-meta">
+                  <a
+                    href={t.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="testimonial-author nav-link"
+                  >
+                    {t.author}, {t.role}
+                  </a>
+                  <div className="testimonial-role">{t.company}</div>
+                </div>
               </div>
             </div>
-            <div className="mt-4 text-xs text-muted">
-              {siteData.name} · {siteData.location} &copy; 2025
-            </div>
-          </footer>
-        </Reveal>
+          </Reveal>
+        ))}
+      </section>
 
-      </div>
+      {/* ── CTA Section ── */}
+      <section className="px-8 md:px-16 pb-32 max-w-5xl mx-auto w-full">
+        <Reveal>
+          <div className="cta-section">
+            <h2 className="cta-heading">I&apos;m available for new projects</h2>
+            <p className="text-sm text-muted mb-6">
+              Let&apos;s build something together — agents, LLM systems, or production ML infrastructure.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 text-xs uppercase tracking-[0.3em] text-muted">
+              {siteData.links.map((link) => (
+                <a key={link.label} className="nav-link" href={link.href}>
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
+      {/* ── Footer (minimal, theo.gg style) ── */}
+      <footer className="border-t border-[var(--border)] px-8 py-8 md:px-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-8 text-[10px]">
+        <div className="flex items-start gap-8">
+          <span className="text-lg font-bold leading-none text-[var(--text)]">
+            {siteData.logo}
+          </span>
+          <div className="flex flex-col gap-1 text-[var(--muted)]">
+            <a href={`mailto:${siteData.email}`} className="transition-colors hover:text-[var(--text)]">
+              {siteData.email}
+            </a>
+            <a href={`tel:${siteData.phone}`} className="transition-colors hover:text-[var(--text)]">
+              {siteData.phone}
+            </a>
+            <p>{siteData.location}</p>
+          </div>
+        </div>
+        <div className="text-[var(--muted)]">
+          {siteData.name} &copy; {new Date().getFullYear()}
+        </div>
+      </footer>
     </main>
   );
 }
