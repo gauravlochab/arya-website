@@ -5,6 +5,7 @@ import Reveal from "./components/Reveal";
 import TextReveal from "./components/TextReveal";
 import ThemeToggle from "./components/ThemeToggle";
 import ChatCTA from "./components/ChatCTA";
+import ScrollColorShift from "./components/ScrollColorShift";
 
 const siteData = {
   name: "Gaurav Lochab",
@@ -196,6 +197,7 @@ export default function Home() {
     <main className="relative min-h-screen text-[var(--text)]">
       <CustomCursor />
       <EasterEgg />
+      <ScrollColorShift />
 
       {/* -- Fixed Header (theo.gg style) -- */}
       <header className="site-header">

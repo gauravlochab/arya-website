@@ -116,6 +116,14 @@ export default function ChatCTA() {
     }
   };
 
+  // Determine if a bot message is the last consecutive bot message before a user message or end
+  const isLastBotInGroup = (index: number): boolean => {
+    if (messages[index].sender !== "bot") return false;
+    // Check if the next message is from user or this is the last message
+    const next = messages[index + 1];
+    return !next || next.sender === "user";
+  };
+
   return (
     <div className="chat-container">
       <div className="chat-messages">
@@ -131,7 +139,7 @@ export default function ChatCTA() {
             <div
               className={
                 msg.sender === "bot"
-                  ? "chat-bubble-rounded chat-bubble-bot"
+                  ? `chat-bubble-rounded chat-bubble-bot${isLastBotInGroup(i) ? " chat-bubble-bot-last" : ""}`
                   : "chat-bubble-rounded chat-bubble-user"
               }
             >
