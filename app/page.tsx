@@ -240,18 +240,10 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* ── About Section (theo.gg gradient text effect) ── */}
-      <section className="py-32 px-8 flex flex-col items-center gap-24">
+      {/* ── About ── */}
+      <section className="py-32 px-8 flex flex-col items-center">
         <Reveal>
-          {/* Faded light version */}
-          <div className="max-w-2xl text-center text-fade-light leading-relaxed text-[15px] sm:text-[18px]">
-            {siteData.about}
-          </div>
-        </Reveal>
-
-        <Reveal>
-          {/* Gradient fade version */}
-          <div className="max-w-2xl text-center text-fade-gradient leading-relaxed text-[15px] sm:text-[18px] font-bold">
+          <div className="max-w-2xl text-center leading-relaxed text-[15px] sm:text-[18px]" style={{ color: "var(--text)" }}>
             {siteData.about}
           </div>
         </Reveal>
@@ -334,27 +326,31 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* ── Testimonials (theo.gg alternating layout with photo placeholders) ── */}
-      <section className="py-32 px-8 md:px-16 flex flex-col gap-32">
-        {siteData.testimonials.map((t, i) => (
-          <Reveal key={i}>
-            <div className="testimonial-block-text-only">
-              <p>{t.quote}</p>
-              <p>{t.quote2}</p>
-              <div className="testimonial-meta">
-                <a
-                  href={t.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="testimonial-author nav-link"
-                >
-                  {t.author}, {t.role}
-                </a>
-                <div className="testimonial-role">{t.company}</div>
+      {/* ── Testimonials ── */}
+      <section className="py-32 px-8 md:px-16 max-w-5xl mx-auto w-full">
+        <Reveal>
+          <div className="testimonials-grid">
+            {siteData.testimonials.map((t, i) => (
+              <div key={i} className="testimonial-card">
+                <blockquote>
+                  <p>&ldquo;{t.quote}</p>
+                  <p>{t.quote2}&rdquo;</p>
+                </blockquote>
+                <div className="testimonial-meta">
+                  <a
+                    href={t.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="testimonial-author nav-link"
+                  >
+                    {t.author}, {t.role}
+                  </a>
+                  <div className="testimonial-role">{t.company}</div>
+                </div>
               </div>
-            </div>
-          </Reveal>
-        ))}
+            ))}
+          </div>
+        </Reveal>
       </section>
 
       {/* ── CTA Section ── */}
