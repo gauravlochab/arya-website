@@ -4,25 +4,23 @@ import { useEffect } from "react";
 
 export default function ScrollColorShift() {
   useEffect(() => {
-    const section = document.getElementById("projects");
-    if (!section) return;
+    const wrapper = document.getElementById("projects-wrapper");
+    if (!wrapper) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          const page = document.querySelector(".page");
-          if (!page) return;
           if (entry.isIntersecting) {
-            page.classList.add("bg-coral");
+            wrapper.classList.add("bg-coral");
           } else {
-            page.classList.remove("bg-coral");
+            wrapper.classList.remove("bg-coral");
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
 
-    observer.observe(section);
+    observer.observe(wrapper);
     return () => observer.disconnect();
   }, []);
 

@@ -14,22 +14,21 @@ export default function ChatCTA() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [showTyping, setShowTyping] = useState(false);
-  const [autoPlayed, setAutoPlayed] = useState(false);
-  const [userHasSent, setUserHasSent] = useState(false);
+  const autoPlayedRef = useRef(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
 
   // Auto-play bot messages on mount
   useEffect(() => {
-    if (autoPlayed) return;
-    setAutoPlayed(true);
+    if (autoPlayedRef.current) return;
+    autoPlayedRef.current = true;
 
     const botMessages: Message[] = [
       {
         sender: "bot",
         content: (
-          <span style={{ display: "flex", alignItems: "center", gap: "0.6rem", fontWeight: 600 }}>
+          <span style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
             <span className="chat-available-dot" />
-            I&apos;m available for new projects
+            <strong>I&apos;m available for new projects</strong>
           </span>
         ),
       },
@@ -71,10 +70,12 @@ export default function ChatCTA() {
         setMessages((prev) => [...prev, botMessages[idx]]);
       }, delay);
     });
-  }, [autoPlayed]);
+  }, []);
 
-  // Scroll to bottom when messages change
+  // Scroll to bottom only after user sends a message (not during auto-play)
+  const userInteractedRef = useRef(false);
   useEffect(() => {
+    if (!userInteractedRef.current) return;
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, showTyping]);
 
@@ -82,12 +83,10 @@ export default function ChatCTA() {
     const trimmed = input.trim();
     if (!trimmed) return;
 
-    // Add user message
+    userInteractedRef.current = true;
     setMessages((prev) => [...prev, { sender: "user", content: trimmed }]);
     setInput("");
-    setUserHasSent(true);
 
-    // Show typing indicator then bot response
     setShowTyping(true);
     setTimeout(() => {
       setShowTyping(false);
@@ -119,14 +118,13 @@ export default function ChatCTA() {
   // Determine if a bot message is the last consecutive bot message before a user message or end
   const isLastBotInGroup = (index: number): boolean => {
     if (messages[index].sender !== "bot") return false;
-    // Check if the next message is from user or this is the last message
     const next = messages[index + 1];
     return !next || next.sender === "user";
   };
 
   return (
-    <div className="chat-container">
-      <div className="chat-messages">
+    <div className="chat-section">
+      <div className="chat-messages-open">
         {messages.map((msg, i) => (
           <div
             key={i}
@@ -139,8 +137,8 @@ export default function ChatCTA() {
             <div
               className={
                 msg.sender === "bot"
-                  ? `chat-bubble-rounded chat-bubble-bot${isLastBotInGroup(i) ? " chat-bubble-bot-last" : ""}`
-                  : "chat-bubble-rounded chat-bubble-user"
+                  ? `chat-bubble-theo${isLastBotInGroup(i) ? " chat-bubble-last" : ""}`
+                  : "chat-bubble-theo chat-bubble-user"
               }
             >
               {msg.content}
@@ -149,7 +147,7 @@ export default function ChatCTA() {
         ))}
         {showTyping && (
           <div className="chat-msg-row chat-msg-left">
-            <div className="chat-bubble-rounded chat-bubble-bot chat-typing-indicator">
+            <div className="chat-bubble-theo chat-typing-indicator">
               <span className="chat-typing-dot" />
               <span className="chat-typing-dot" />
               <span className="chat-typing-dot" />
@@ -158,23 +156,25 @@ export default function ChatCTA() {
         )}
         <div ref={chatEndRef} />
       </div>
-      <div className="chat-input-bar">
+      <div className="chat-input-theo">
         <input
           type="text"
-          className="chat-input-real"
-          placeholder="Type here..."
+          className="chat-input-field"
+          placeholder="Type here"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={handleKeyDown}
           aria-label="Type a message"
         />
         <button
-          className="chat-send-button"
+          className="chat-send-theo"
           onClick={handleSend}
           aria-label="Send message"
           type="button"
         >
-          &rarr;
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" width="24" height="24">
+            <path d="m.938.945.335 1.078L2.977 7.5l-2.04 6.55L15.063 7.5Zm1.625 1.86L11.608 7H3.867ZM3.867 8h7.742l-9.046 4.2Z" />
+          </svg>
         </button>
       </div>
     </div>

@@ -49,10 +49,10 @@
   }
 }
 
-/* -- Page wrapper with smooth background transition for scroll color shift -- */
+/* -- Page wrapper -- */
 .page {
   min-height: 100vh;
-  transition: background 0.4s ease;
+  transition: background 0.3s;
   background: radial-gradient(circle at top left, rgba(90, 110, 255, 0.12), transparent 50%),
     radial-gradient(circle at 20% 50%, rgba(28, 33, 78, 0.5), transparent 55%),
     radial-gradient(circle at 80% 20%, rgba(10, 15, 40, 0.7), transparent 60%),
@@ -65,40 +65,62 @@
     var(--bg);
 }
 
-/* Scroll-triggered coral background (theo.gg portfolio section) */
-.page.bg-coral {
-  background: #E8785B !important;
+/* -- Per-row hover color scheme (theo.gg style) -- */
+
+/* When a project row is hovered, JS sets inline background + data-hover-scheme on .page */
+/* "dark" scheme = dark bg → white text; "light" scheme = light bg → dark text */
+.page[data-hover-scheme="dark"] .portfolio-table th,
+.page[data-hover-scheme="dark"] .portfolio-cell-num,
+.page[data-hover-scheme="dark"] .portfolio-cell-year,
+.page[data-hover-scheme="dark"] .portfolio-cell-tags,
+.page[data-hover-scheme="dark"] .portfolio-cell-domain,
+.page[data-hover-scheme="dark"] .portfolio-company-name {
+  color: rgba(255, 255, 255, 0.6);
 }
 
-:root[data-theme="light"] .page.bg-coral {
-  background: #F0826B !important;
-}
-
-/* When coral bg is active, ensure text remains readable */
-.page.bg-coral .portfolio-table th,
-.page.bg-coral .portfolio-cell-num,
-.page.bg-coral .portfolio-cell-year,
-.page.bg-coral .portfolio-cell-tags,
-.page.bg-coral .portfolio-cell-domain,
-.page.bg-coral .portfolio-company-name {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.page.bg-coral .portfolio-project-name,
-.page.bg-coral .portfolio-arrow {
+.page[data-hover-scheme="dark"] .portfolio-project-name,
+.page[data-hover-scheme="dark"] .portfolio-arrow {
   color: #ffffff;
 }
 
-.page.bg-coral .portfolio-table thead tr {
+.page[data-hover-scheme="dark"] .portfolio-table thead tr {
   border-bottom-color: rgba(255, 255, 255, 0.4);
 }
 
-.page.bg-coral .portfolio-row td {
-  border-bottom-color: rgba(255, 255, 255, 0.2);
+.page[data-hover-scheme="dark"] .portfolio-row td {
+  border-bottom-color: rgba(255, 255, 255, 0.15);
 }
 
-.page.bg-coral .portfolio-row:hover {
-  background: rgba(255, 255, 255, 0.1);
+/* Light scheme hover: keep text dark */
+.page[data-hover-scheme="light"] .portfolio-table th,
+.page[data-hover-scheme="light"] .portfolio-cell-num,
+.page[data-hover-scheme="light"] .portfolio-cell-year,
+.page[data-hover-scheme="light"] .portfolio-cell-tags,
+.page[data-hover-scheme="light"] .portfolio-cell-domain,
+.page[data-hover-scheme="light"] .portfolio-company-name {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.page[data-hover-scheme="light"] .portfolio-project-name,
+.page[data-hover-scheme="light"] .portfolio-arrow {
+  color: #0b0c0f;
+}
+
+.page[data-hover-scheme="light"] .portfolio-table thead tr {
+  border-bottom-color: rgba(0, 0, 0, 0.3);
+}
+
+.page[data-hover-scheme="light"] .portfolio-row td {
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Also affect surrounding sections during hover for full-page effect */
+.page[data-hover-scheme="dark"] {
+  color: #f3f4f6;
+}
+
+.page[data-hover-scheme="light"] {
+  color: #0b0c0f;
 }
 
 @layer utilities {
@@ -406,25 +428,21 @@
   margin-top: 0.1rem;
 }
 
-/* -- Interactive Chat CTA Section -- */
+/* -- Interactive Chat CTA Section (theo.gg exact clone) -- */
 
-.chat-container {
-  max-width: 700px;
+.chat-section {
+  max-width: 800px;
   margin: 0 auto;
-  border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  gap: 2rem;
 }
 
-.chat-messages {
+.chat-messages-open {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  padding: 1.5rem;
-  min-height: 280px;
-  max-height: 500px;
-  overflow-y: auto;
+  gap: 10px;
+  padding-left: 35px;
 }
 
 .chat-msg-row {
@@ -439,30 +457,29 @@
   justify-content: flex-end;
 }
 
-/* Chat bubbles — theo.gg exact specs */
-.chat-bubble-rounded {
+/* Chat bubbles — theo.gg exact specs: transparent bg, border, 10px radius */
+.chat-bubble-theo {
+  border: 1px solid var(--text);
   border-radius: 10px !important;
   padding: 12px 16px;
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.35;
   max-width: 430px;
   word-break: break-word;
-}
-
-/* Last bot bubble in a group: bottom-left sharp corner (avatar indicator) */
-.chat-bubble-bot-last {
-  border-radius: 10px 10px 10px 0px !important;
-}
-
-.chat-bubble-bot {
-  border: 1px solid var(--border);
-  background: var(--bg-elevated);
+  background: transparent;
   color: var(--text);
 }
 
-.chat-bubble-user {
+/* Last bot bubble: sharp bottom-left corner */
+.chat-bubble-last {
+  border-radius: 10px 10px 10px 0px !important;
+}
+
+/* User messages: inverted colors */
+.chat-bubble-theo.chat-bubble-user {
   background: var(--text);
   color: var(--bg);
+  border-color: var(--text);
 }
 
 /* Chat available dot */
@@ -477,9 +494,8 @@
 }
 
 .chat-link {
-  color: var(--accent);
+  color: var(--text);
   text-decoration: underline;
-  text-decoration-color: var(--accent);
   text-underline-offset: 2px;
   transition: opacity 0.2s ease;
 }
@@ -498,44 +514,41 @@
 
 .chat-typing-dot {
   display: inline-block;
-  width: 7px;
-  height: 7px;
-  background: var(--muted);
+  width: 6px;
+  height: 6px;
+  background: var(--text);
   border-radius: 50% !important;
-  animation: chatTypingPulse 1.4s ease-in-out infinite;
+  animation: chatTypingPulse 1s ease-in-out infinite;
 }
 
 .chat-typing-dot:nth-child(2) {
-  animation-delay: 0.2s;
+  animation-delay: 0.1s;
 }
 
 .chat-typing-dot:nth-child(3) {
-  animation-delay: 0.4s;
+  animation-delay: 0.2s;
 }
 
 @keyframes chatTypingPulse {
   0%, 60%, 100% {
-    opacity: 0.3;
-    transform: scale(0.8);
+    opacity: 0;
   }
   30% {
     opacity: 1;
-    transform: scale(1);
   }
 }
 
-/* Chat input bar — theo.gg exact specs */
-.chat-input-bar {
+/* Chat input — theo.gg: underline only, no box */
+.chat-input-theo {
   display: flex;
   align-items: center;
-  border-top: 1px solid var(--border);
-  padding: 0;
 }
 
-.chat-input-real {
+.chat-input-field {
   flex: 1;
   background: transparent;
   border: none;
+  border-bottom: 1px solid var(--text);
   outline: none;
   color: var(--text);
   font-size: 16px;
@@ -543,28 +556,26 @@
   font-family: inherit;
 }
 
-.chat-input-real::placeholder {
+.chat-input-field::placeholder {
   color: var(--muted);
-  opacity: 0.6;
 }
 
-.chat-send-button {
+/* Send button — theo.gg: transparent bg, paper-plane SVG */
+.chat-send-theo {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
-  background: var(--text);
-  color: var(--bg);
+  width: 60px;
+  height: 60px;
+  background: transparent;
   border: none;
-  font-size: 1.2rem;
-  font-weight: 700;
+  color: var(--text);
   flex-shrink: 0;
   transition: opacity 0.2s ease;
 }
 
-.chat-send-button:hover {
-  opacity: 0.85;
+.chat-send-theo:hover {
+  opacity: 0.6;
 }
 
 /* -- Footer -- */
@@ -943,13 +954,13 @@
   border-radius: 50% !important;
 }
 
-/* Exception: chat bubbles have rounded corners */
-.chat-bubble-rounded {
+/* Exception: chat bubbles have rounded corners (theo.gg style) */
+.chat-bubble-theo {
   border-radius: 10px !important;
 }
 
 /* Exception: last bot bubble in group — sharp bottom-left */
-.chat-bubble-bot-last {
+.chat-bubble-last {
   border-radius: 10px 10px 10px 0px !important;
 }
 

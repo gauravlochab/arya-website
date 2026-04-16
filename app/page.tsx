@@ -5,7 +5,7 @@ import Reveal from "./components/Reveal";
 import TextReveal from "./components/TextReveal";
 import ThemeToggle from "./components/ThemeToggle";
 import ChatCTA from "./components/ChatCTA";
-import ScrollColorShift from "./components/ScrollColorShift";
+import ProjectsTable from "./components/ProjectsTable";
 
 const siteData = {
   name: "Gaurav Lochab",
@@ -100,65 +100,6 @@ const siteData = {
     },
   ],
 
-  projects: [
-    {
-      name: "Hybrid Resume Search Platform",
-      company: "Apolis",
-      year: "2026",
-      domain: "Enterprise",
-      tags: ["#llm", "#search", "#fine-tuning", "#elasticsearch"],
-    },
-    {
-      name: "Long Document LLM Extraction",
-      company: "Apolis",
-      year: "2025",
-      domain: "Enterprise",
-      tags: ["#fine-tuning", "#nlp", "#llm", "#qlora"],
-    },
-    {
-      name: "Autonomous DeFi Agent System",
-      company: "Valory",
-      year: "2024-2025",
-      domain: "Autonomous",
-      tags: ["#agents", "#langgraph", "#on-chain", "#defi"],
-    },
-    {
-      name: "RAG Intelligence Platform",
-      company: "Smarter",
-      year: "2022-2024",
-      domain: "Enterprise",
-      tags: ["#rag", "#llm", "#qdrant", "#reranking"],
-    },
-    {
-      name: "Invoice AI Agents",
-      company: "Apolis",
-      year: "2025",
-      domain: "Healthcare",
-      tags: ["#agents", "#llm", "#validation", "#auditing"],
-    },
-    {
-      name: "Fashion Sales Forecasting",
-      company: "Smarter",
-      year: "2023",
-      domain: "Retail",
-      tags: ["#clip", "#gpt-3", "#embeddings", "#forecasting"],
-    },
-    {
-      name: "Document AI Extraction",
-      company: "Pibit.ai",
-      year: "2020-2022",
-      domain: "Fintech",
-      tags: ["#nlp", "#cv", "#aws", "#sagemaker"],
-    },
-    {
-      name: "Tax Fraud Detection",
-      company: "Pibit.ai",
-      year: "2021",
-      domain: "Fintech",
-      tags: ["#anomaly-detection", "#clustering", "#ml"],
-    },
-  ],
-
   testimonials: [
     {
       quote:
@@ -197,7 +138,6 @@ export default function Home() {
     <main className="relative min-h-screen text-[var(--text)]">
       <CustomCursor />
       <EasterEgg />
-      <ScrollColorShift />
 
       {/* -- Fixed Header (theo.gg style) -- */}
       <header className="site-header">
@@ -285,46 +225,10 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* -- Projects Table (theo.gg style) -- */}
+      {/* -- Projects Table (theo.gg style — per-row hover colors) -- */}
       <section id="projects" className="py-24 px-8 md:px-16 w-full overflow-x-auto max-w-7xl mx-auto">
         <Reveal>
-          <div className="portfolio-table-wrap">
-            <table className="portfolio-table">
-              <thead>
-                <tr>
-                  <th className="portfolio-th-num">#</th>
-                  <th className="portfolio-th-client">Client</th>
-                  <th className="portfolio-th-year">Year</th>
-                  <th className="portfolio-th-tags">Tags</th>
-                  <th className="portfolio-th-domain">Domain</th>
-                  <th className="portfolio-th-arrow"></th>
-                </tr>
-              </thead>
-              <tbody>
-                {siteData.projects.map((project, idx) => (
-                  <tr key={project.name} className="portfolio-row">
-                    <td className="portfolio-cell-num">
-                      {String(idx + 1).padStart(2, "0")}
-                    </td>
-                    <td className="portfolio-cell-client">
-                      <span className="portfolio-project-name">{project.name}</span>
-                      <span className="portfolio-company-name">{project.company}</span>
-                    </td>
-                    <td className="portfolio-cell-year">{project.year}</td>
-                    <td className="portfolio-cell-tags">
-                      {project.tags.map((tag, i) => (
-                        <span key={i} className="portfolio-tag">{tag}</span>
-                      ))}
-                    </td>
-                    <td className="portfolio-cell-domain">{project.domain}</td>
-                    <td className="portfolio-cell-arrow">
-                      <span className="portfolio-arrow">&rarr;</span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <ProjectsTable />
         </Reveal>
       </section>
 
