@@ -172,11 +172,15 @@ export default function Home() {
             <p className="mt-12 text-sm text-muted">
               Trusted by AI-first companies worldwide &rarr;
             </p>
-            <div className="mt-6">
-              <GitHubContributions />
-            </div>
           </Reveal>
         </div>
+      </section>
+
+      {/* -- GitHub Contributions -- */}
+      <section className="github-contrib-strip">
+        <Reveal>
+          <GitHubContributions />
+        </Reveal>
       </section>
 
       {/* -- About (scroll-reveal grey → white) -- */}
