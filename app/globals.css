@@ -578,6 +578,34 @@
   opacity: 0.6;
 }
 
+/* -- GitHub Contributions Counter -- */
+
+.github-contributions {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  transition: opacity 0.2s ease;
+}
+
+.github-contributions:hover {
+  opacity: 0.7;
+}
+
+.gc-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.gc-label {
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
 /* -- Footer -- */
 
 .site-footer {

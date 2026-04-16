@@ -7,6 +7,7 @@ import ThemeToggle from "./components/ThemeToggle";
 import ChatCTA from "./components/ChatCTA";
 import ProjectsTable from "./components/ProjectsTable";
 import ScrollRevealText from "./components/ScrollRevealText";
+import GitHubContributions from "./components/GitHubContributions";
 
 const siteData = {
   name: "Gaurav Lochab",
@@ -171,6 +172,9 @@ export default function Home() {
             <p className="mt-12 text-sm text-muted">
               Trusted by AI-first companies worldwide &rarr;
             </p>
+            <div className="mt-6">
+              <GitHubContributions />
+            </div>
           </Reveal>
         </div>
       </section>
