@@ -6,6 +6,9 @@ const SPEED = 4.2;
 const STEER_RATE = 0.045;
 const MOUSE_REPEL_RADIUS = 150;
 const NUM_SPARKLES = 14;
+const NUM_EDGE_SPARKS = 10;
+const EDGE_HIT_ZONE = 60;
+const EDGE_COOLDOWN = 40; // frames between edge bursts
 
 function catmullRomToBezier(pts: [number, number][]): string {
   if (pts.length < 2) return "";
@@ -101,6 +104,35 @@ export default function EasterEgg() {
     }
     const sparkles: Sparkle[] = [];
 
+    /* Edge spark state */
+    interface EdgeSpark {
+      x: number; y: number;
+      vx: number; vy: number;
+      life: number; maxLife: number;
+      size: number;
+    }
+    const edgeSparks: EdgeSpark[] = [];
+    let edgeCooldown = 0;
+
+    function emitEdgeBurst(ex: number, ey: number, normalX: number, normalY: number) {
+      if (edgeCooldown > 0) return;
+      edgeCooldown = EDGE_COOLDOWN;
+      for (let i = 0; i < 8; i++) {
+        const spread = (Math.random() - 0.5) * 2.5;
+        const speed = 1.5 + Math.random() * 3;
+        edgeSparks.push({
+          x: ex + (Math.random() - 0.5) * 10,
+          y: ey + (Math.random() - 0.5) * 10,
+          vx: normalX * speed + spread,
+          vy: normalY * speed + spread - 0.5,
+          life: 1,
+          maxLife: 15 + Math.random() * 20,
+          size: 1.5 + Math.random() * 2.5,
+        });
+      }
+      while (edgeSparks.length > NUM_EDGE_SPARKS) edgeSparks.shift();
+    }
+
     function emitSparkle(count = 1) {
       const cos = Math.cos(angle);
       const sin = Math.sin(angle);
@@ -158,10 +190,16 @@ export default function EasterEgg() {
           const s = Math.pow((y - (H - edgeZone)) / edgeZone, 1.2) * 0.2;
           tgt = steer(tgt, -Math.PI * 0.5, s);
         }
-        // Emergency pull if very close to edge
+        // Emergency pull if very close to edge + emit edge sparks
         if (x < 40 || x > W - 40 || y < 40 || y > H - 40) {
           tgt = steer(tgt, Math.atan2(H / 2 - y, W / 2 - x), 0.25);
         }
+        // Edge spark bursts
+        if (edgeCooldown > 0) edgeCooldown--;
+        if (x < EDGE_HIT_ZONE) emitEdgeBurst(x, y, 1, 0);
+        else if (x > W - EDGE_HIT_ZONE) emitEdgeBurst(x, y, -1, 0);
+        if (y < EDGE_HIT_ZONE) emitEdgeBurst(x, y, 0, 1);
+        else if (y > H - EDGE_HIT_ZONE) emitEdgeBurst(x, y, 0, -1);
         if (frame % 60 === 0) tgt += (Math.random() - 0.5) * 0.4;
 
         // Periodically dive through the bubbles section
@@ -257,6 +295,29 @@ export default function EasterEgg() {
         }
       }
 
+      // Edge sparks (gold/warm)
+      const edgeSparkEls = svg.querySelectorAll(".ee-edge-spark") as NodeListOf<SVGCircleElement>;
+      for (let i = 0; i < NUM_EDGE_SPARKS; i++) {
+        const el = edgeSparkEls[i];
+        if (!el) continue;
+        if (i < edgeSparks.length) {
+          const s = edgeSparks[i];
+          s.x += s.vx;
+          s.y += s.vy;
+          s.vx *= 0.95; // friction
+          s.vy *= 0.95;
+          s.vy += 0.05; // slight gravity
+          s.life -= 1 / s.maxLife;
+          if (s.life < 0) s.life = 0;
+          el.setAttribute("cx", String(s.x));
+          el.setAttribute("cy", String(s.y));
+          el.setAttribute("r", String(s.size * s.life));
+          el.style.opacity = String(s.life);
+        } else {
+          el.style.opacity = "0";
+        }
+      }
+
       // Airplane — paper plane physics: bob, rock, and bank into turns
       const bob = Math.sin(frame * 0.04) * 3;
       const rock = Math.sin(frame * 0.025) * 3;
@@ -325,6 +386,11 @@ export default function EasterEgg() {
       {/* Sparkle particles */}
       {Array.from({ length: NUM_SPARKLES }).map((_, i) => (
         <circle key={i} className="ee-sparkle" cx="0" cy="0" r="0" style={{ opacity: 0 }} />
+      ))}
+
+      {/* Edge spark particles (gold/warm on wall hit) */}
+      {Array.from({ length: NUM_EDGE_SPARKS }).map((_, i) => (
+        <circle key={`edge-${i}`} className="ee-edge-spark" cx="0" cy="0" r="0" style={{ opacity: 0 }} />
       ))}
 
       {/* Paper airplane */}

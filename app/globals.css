@@ -861,6 +861,15 @@
   fill: #7ea4f0;
 }
 
+/* Edge impact sparks — warm gold */
+.ee-edge-spark {
+  fill: #ffc84a;
+}
+
+:root:not([data-theme="dark"]) .ee-edge-spark {
+  fill: #e8a020;
+}
+
 /* -- Experience Timeline -- */
 
 .experience-list {
