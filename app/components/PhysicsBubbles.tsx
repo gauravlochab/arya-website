@@ -57,31 +57,40 @@ export default function PhysicsBubbles() {
     const { Engine, World, Bodies, Mouse, MouseConstraint, Events } = Matter;
 
     const engine = Engine.create({
-      gravity: { x: 0, y: 1.5, scale: 0.001 },
+      gravity: { x: 0.15, y: 1.2, scale: 0.001 },
     });
     engineRef.current = engine;
 
-    // Walls — floor + left wall + right wall (spread across full width)
+    // Walls — diagonal floor creates triangular pile-up (theo.gg style)
     const wallThickness = 60;
+    // Diagonal floor: runs from bottom-left corner up to mid-right
+    // This angle creates the triangular heap effect
+    const diagonalLength = Math.sqrt(width * width + height * height) * 0.8;
+    const diagonalAngle = Math.atan2(-height * 0.55, width);
     const walls = [
-      // Floor
-      Bodies.rectangle(width / 2, height + wallThickness / 2, width + 200, wallThickness, { isStatic: true }),
-      // Left wall
-      Bodies.rectangle(-wallThickness / 2, height / 2, wallThickness, height * 2, { isStatic: true }),
-      // Right wall
-      Bodies.rectangle(width + wallThickness / 2, height / 2, wallThickness, height * 2, { isStatic: true }),
+      // Flat floor at the very bottom
+      Bodies.rectangle(width / 2, height + wallThickness / 2, width + 400, wallThickness, { isStatic: true }),
+      // Diagonal ramp — slopes up from left to right, pushing bubbles to pile on the right
+      Bodies.rectangle(
+        width * 0.5, height * 0.85,
+        diagonalLength, wallThickness,
+        { isStatic: true, angle: diagonalAngle }
+      ),
+      // Right wall — keeps bubbles from flying off screen
+      Bodies.rectangle(width + wallThickness / 2, height / 2, wallThickness, height * 3, { isStatic: true }),
     ];
     World.add(engine.world, walls);
 
-    // Create bubbles — spread across full width, start from high above
+    // Create bubbles — bias start positions to upper-right for cascade effect
     const bodies: { body: Matter.Body; label: string; color: string; radius: number }[] = [];
 
     BUBBLES.forEach((bubble, i) => {
       const scaleFactor = Math.min(width / 800, 1.2);
       const radius = bubble.radius * scaleFactor;
-      const x = Math.random() * (width - radius * 2) + radius;
-      // Start from very high up for dramatic cascade — spread between -radius and -(radius + 800 + i*60)
-      const y = -radius - Math.random() * 800 - i * 60;
+      // Bias X position toward the right half (60% to 100% of width)
+      const x = width * 0.3 + Math.random() * (width * 0.7 - radius * 2);
+      // Start from high above, staggered
+      const y = -radius - Math.random() * 600 - i * 50;
 
       const body = Bodies.circle(x, y, radius, {
         restitution: 0.6,
@@ -214,10 +223,10 @@ export default function PhysicsBubbles() {
       canvas.width = w;
       canvas.height = h;
 
-      // Update wall positions
+      // Update floor
       Matter.Body.setPosition(walls[0], { x: w / 2, y: h + wallThickness / 2 });
-      // Update left wall
-      Matter.Body.setPosition(walls[1], { x: -wallThickness / 2, y: h / 2 });
+      // Update diagonal ramp
+      Matter.Body.setPosition(walls[1], { x: w * 0.5, y: h * 0.85 });
       // Update right wall
       Matter.Body.setPosition(walls[2], { x: w + wallThickness / 2, y: h / 2 });
     };
