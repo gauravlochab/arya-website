@@ -593,16 +593,13 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 0.75rem;
-  padding: 0.5rem 0.9rem;
-  border: 1px solid var(--border);
+  margin-top: 0.5rem;
   color: var(--muted);
   font-size: 0.72rem;
-  transition: border-color 0.25s ease, color 0.25s ease;
+  transition: color 0.25s ease;
 }
 
 .github-contributions:hover {
-  border-color: var(--accent);
   color: var(--text);
 }
 
