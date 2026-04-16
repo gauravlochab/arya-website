@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export const revalidate = 3600; // revalidate every hour
+export const revalidate = 3600; // cache for 1 hour
 
 export async function GET() {
   try {
@@ -11,16 +11,10 @@ export async function GET() {
     );
     const html = await res.text();
 
-    // Extract the number from: <h2 ...>  795  contributions ...
-    const match = html.match(
-      /js-contribution-activity-description[^>]*>\s*([\d,]+)\s*\n?\s*contributions/
-    );
+    const match = html.match(/([\d,]+)\s*\n\s*contributions/);
+    const contributions = match ? match[1] : null;
 
-    if (match) {
-      return NextResponse.json({ contributions: match[1].trim(), year });
-    }
-
-    return NextResponse.json({ contributions: null, year });
+    return NextResponse.json({ contributions, year });
   } catch {
     return NextResponse.json({ contributions: null }, { status: 500 });
   }

@@ -582,38 +582,28 @@
 
 .github-contributions {
   display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.6rem 1.2rem;
-  background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--border);
+  align-items: baseline;
+  gap: 0.5rem;
   transition: opacity 0.2s ease;
 }
 
-:root[data-theme="light"] .github-contributions {
-  background: rgba(255, 255, 255, 0.5);
-}
-
 .github-contributions:hover {
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 .gc-number {
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   font-weight: 700;
   color: var(--text);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
   line-height: 1;
 }
 
 .gc-label {
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  line-height: 1.4;
 }
 
 /* -- Footer -- */

@@ -169,11 +169,11 @@ export default function Home() {
             <div style={{ fontSize: "clamp(2rem, 5vw, 54px)", lineHeight: 1.15, fontWeight: 700 }}>
               <TextReveal text={siteData.headline} as="h1" />
             </div>
-            <p className="mt-12 text-sm text-muted">
-              Trusted by AI-first companies worldwide &rarr;
-            </p>
-            <div className="mt-8">
+            <div className="mt-12 flex items-center gap-8 flex-wrap">
               <GitHubContributions />
+              <p className="text-sm text-muted">
+                Trusted by AI-first companies worldwide &rarr;
+              </p>
             </div>
           </Reveal>
         </div>
@@ -285,23 +285,8 @@ export default function Home() {
             <p>{siteData.location}</p>
           </div>
         </div>
-        <div className="flex flex-col items-end gap-3">
-          <div className="flex items-center gap-4 text-[var(--muted)]">
-            {siteData.links.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-colors hover:text-[var(--text)] text-[11px] font-medium uppercase tracking-wider"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-          <div className="text-[var(--muted)]">
-            {siteData.name} &copy; {new Date().getFullYear()}
-          </div>
+        <div className="text-[var(--muted)]">
+          {siteData.name} &copy; {new Date().getFullYear()}
         </div>
       </footer>
     </main>
