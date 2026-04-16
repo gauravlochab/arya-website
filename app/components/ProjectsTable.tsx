@@ -12,12 +12,12 @@ interface Project {
   colorScheme: "dark" | "light"; // text color on hover: dark = white text, light = dark text
 }
 
-// Color changes every 2 rows — 4 distinct color zones
+// Warm, muted colors — changes every 2 rows
 const PAIR_COLORS: { color: string; scheme: "dark" | "light" }[] = [
-  { color: "#5d39b9", scheme: "dark" },   // purple — rows 1-2
-  { color: "#009adf", scheme: "dark" },   // blue — rows 3-4
-  { color: "#E8785B", scheme: "light" },  // coral — rows 5-6
-  { color: "#206f31", scheme: "dark" },   // green — rows 7-8
+  { color: "#7B3244", scheme: "dark" },   // deep wine — rows 1-2
+  { color: "#B0703C", scheme: "dark" },   // warm terracotta — rows 3-4
+  { color: "#4E6B5C", scheme: "dark" },   // muted sage — rows 5-6
+  { color: "#3D4F5F", scheme: "dark" },   // warm slate — rows 7-8
 ];
 
 const PROJECTS: Project[] = [

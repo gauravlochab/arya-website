@@ -43,7 +43,7 @@ export default function EasterEgg() {
     const isMobile = W < 768;
     svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
 
-    const TRAIL_MAX = isMobile ? 70 : 120;
+    const TRAIL_MAX = isMobile ? 40 : 60;
     const MARGIN = isMobile ? 120 : 100;
     const WANDER_SCALE = isMobile ? 0.6 : 1;
     const PLANE_SCALE = isMobile ? 0.7 : 1;
@@ -235,7 +235,7 @@ export default function EasterEgg() {
         const ty = Math.max(TEXT_PAD_Y_TOP, Math.min(H - TEXT_PAD_Y_BOT, pt[1]));
         textEl.setAttribute("x", String(tx));
         textEl.setAttribute("y", String(ty - 18));
-        const show = trail.length > 80;
+        const show = trail.length > 40;
         textEl.style.opacity = show ? "0.9" : "0";
       }
 
@@ -319,7 +319,7 @@ export default function EasterEgg() {
 
       {/* Quirky tagline */}
       <text className="ee-text" x="0" y="0" textAnchor="middle" dominantBaseline="auto" filter="url(#ee-text-glow)" style={{ opacity: 0 }}>
-        Ship it 🚀
+        Let's ship it 🚀
       </text>
 
       {/* Sparkle particles */}
