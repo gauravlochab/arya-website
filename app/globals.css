@@ -591,26 +591,40 @@
 
 .github-contributions {
   display: inline-flex;
-  align-items: baseline;
-  gap: 0.4rem;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid var(--border);
   color: var(--muted);
-  font-size: 0.75rem;
-  transition: color 0.2s ease;
+  font-size: 0.72rem;
+  transition: border-color 0.25s ease, color 0.25s ease;
 }
 
 .github-contributions:hover {
+  border-color: var(--accent);
   color: var(--text);
 }
 
+.gc-icon {
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+.github-contributions:hover .gc-icon {
+  opacity: 1;
+}
+
 .gc-number {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  color: var(--text);
-  letter-spacing: -0.02em;
+  color: var(--accent);
+  letter-spacing: -0.03em;
 }
 
 .gc-label {
   font-weight: 400;
+  letter-spacing: 0.02em;
 }
 
 /* -- Scroll reveal text (theo.gg about section effect) -- */

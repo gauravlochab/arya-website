@@ -169,7 +169,7 @@ export default function Home() {
             <div style={{ fontSize: "clamp(2rem, 5vw, 54px)", lineHeight: 1.15, fontWeight: 700 }}>
               <TextReveal text={siteData.headline} as="h1" />
             </div>
-            <div className="mt-12 flex flex-col gap-2">
+            <div className="mt-12 flex flex-col gap-4">
               <p className="text-sm text-muted">
                 Trusted by AI-first companies worldwide &rarr;
               </p>
