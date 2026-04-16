@@ -4,19 +4,39 @@ import { useEffect, useRef } from "react";
 import Matter from "matter-js";
 
 const BUBBLES = [
-  { label: "Apolis", color: "#6ED7FF", radius: 42 },
-  { label: "Valory", color: "#FF7C5E", radius: 38 },
-  { label: "Pibit", color: "#FFD56A", radius: 36 },
-  { label: "LG", color: "#A50034", radius: 34 },
-  { label: "Agents", color: "#8B7BFF", radius: 36 },
-  { label: "Swarms", color: "#7CE38B", radius: 38 },
-  { label: "LLM", color: "#FF96D5", radius: 32 },
-  { label: "On-Chain", color: "#98FFEA", radius: 40 },
-  { label: "Infra", color: "#9BA7B7", radius: 30 },
-  { label: "Python", color: "#3776AB", radius: 34 },
-  { label: "TypeScript", color: "#3178C6", radius: 46 },
-  { label: "Open\nSource", color: "#FFB84D", radius: 44 },
-  { label: "DevOps", color: "#6F86FF", radius: 32 },
+  // Companies
+  { label: "Apolis", color: "#6ED7FF", radius: 52 },
+  { label: "Valory", color: "#FF7C5E", radius: 48 },
+  { label: "Pibit", color: "#FFD56A", radius: 44 },
+  { label: "LG", color: "#A50034", radius: 38 },
+  { label: "Smarter", color: "#7CE38B", radius: 46 },
+  { label: "OpenAI", color: "#10A37F", radius: 50 },
+  { label: "Claude", color: "#D4A574", radius: 45 },
+  // Frameworks & Tools
+  { label: "LangChain", color: "#1C3C3C", radius: 55 },
+  { label: "FastAPI", color: "#009688", radius: 42 },
+  { label: "Python", color: "#3776AB", radius: 58 },
+  { label: "Elastic\nsearch", color: "#FED10A", radius: 56 },
+  { label: "Qdrant", color: "#DC382C", radius: 40 },
+  { label: "Docker", color: "#2496ED", radius: 44 },
+  { label: "AWS", color: "#FF9900", radius: 42 },
+  { label: "Redis", color: "#DC382C", radius: 38 },
+  { label: "Hugging\nFace", color: "#FFD21E", radius: 50 },
+  { label: "vLLM", color: "#8B7BFF", radius: 36 },
+  { label: "Kubernetes", color: "#326CE5", radius: 52 },
+  { label: "PostgreSQL", color: "#336791", radius: 48 },
+  // Concepts & Skills
+  { label: "RAG", color: "#FF96D5", radius: 40 },
+  { label: "Agents", color: "#A78BFA", radius: 54 },
+  { label: "LLM", color: "#F472B6", radius: 46 },
+  { label: "DeFi", color: "#98FFEA", radius: 38 },
+  { label: "On-Chain", color: "#34D399", radius: 44 },
+  { label: "TypeScript", color: "#3178C6", radius: 50 },
+  { label: "DevOps", color: "#6F86FF", radius: 36 },
+  { label: "Celery", color: "#A9CC54", radius: 34 },
+  { label: "RLHF", color: "#F97316", radius: 38 },
+  { label: "React", color: "#61DAFB", radius: 42 },
+  { label: "Next.js", color: "#FFFFFF", radius: 40 },
 ];
 
 export default function PhysicsBubbles() {
@@ -37,7 +57,7 @@ export default function PhysicsBubbles() {
     const { Engine, World, Bodies, Mouse, MouseConstraint, Events } = Matter;
 
     const engine = Engine.create({
-      gravity: { x: 0, y: 0.8, scale: 0.001 },
+      gravity: { x: 0, y: 1.2, scale: 0.001 },
     });
     engineRef.current = engine;
 
@@ -50,17 +70,18 @@ export default function PhysicsBubbles() {
     ];
     World.add(engine.world, walls);
 
-    // Create bubbles with staggered drop
+    // Create bubbles with staggered drop — start from higher up and spread across top
     const bodies: { body: Matter.Body; label: string; color: string; radius: number }[] = [];
 
     BUBBLES.forEach((bubble, i) => {
       const scaleFactor = Math.min(width / 800, 1);
       const radius = bubble.radius * scaleFactor;
       const x = Math.random() * (width - radius * 2) + radius;
-      const y = -radius - Math.random() * 400 - i * 60;
+      // Start much higher up: spread between -100 and -2500 for dramatic cascade
+      const y = -radius - Math.random() * 600 - i * 80;
 
       const body = Bodies.circle(x, y, radius, {
-        restitution: 0.5,
+        restitution: 0.6,
         friction: 0.3,
         frictionAir: 0.01,
         density: 0.002,

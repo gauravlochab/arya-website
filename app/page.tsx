@@ -298,26 +298,34 @@ export default function Home() {
             <table className="portfolio-table">
               <thead>
                 <tr>
-                  <th className="w-[55%] pl-4">Project</th>
-                  <th className="w-[10%]">Year</th>
-                  <th className="w-[25%]">Tags</th>
-                  <th className="w-[10%]">Domain</th>
+                  <th className="portfolio-th-num">#</th>
+                  <th className="portfolio-th-client">Client</th>
+                  <th className="portfolio-th-year">Year</th>
+                  <th className="portfolio-th-tags">Tags</th>
+                  <th className="portfolio-th-domain">Domain</th>
+                  <th className="portfolio-th-arrow"></th>
                 </tr>
               </thead>
               <tbody>
                 {siteData.projects.map((project, idx) => (
-                  <tr key={project.name} className="group">
-                    <td className="pl-4">
-                      <span className="portfolio-row-num">
-                        {String(idx + 1).padStart(2, "0")}
-                      </span>{" "}
-                      <span className="portfolio-row-name">{project.name}</span>
+                  <tr key={project.name} className="portfolio-row">
+                    <td className="portfolio-cell-num">
+                      {String(idx + 1).padStart(2, "0")}
                     </td>
-                    <td className="text-[var(--muted)]">{project.year}</td>
-                    <td className="portfolio-row-tags">
-                      {project.tags.join(", ")}
+                    <td className="portfolio-cell-client">
+                      <span className="portfolio-project-name">{project.name}</span>
+                      <span className="portfolio-company-name">{project.company}</span>
                     </td>
-                    <td className="portfolio-row-domain">{project.domain}</td>
+                    <td className="portfolio-cell-year">{project.year}</td>
+                    <td className="portfolio-cell-tags">
+                      {project.tags.map((tag, i) => (
+                        <span key={i} className="portfolio-tag">{tag}</span>
+                      ))}
+                    </td>
+                    <td className="portfolio-cell-domain">{project.domain}</td>
+                    <td className="portfolio-cell-arrow">
+                      <span className="portfolio-arrow">&rarr;</span>
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -353,20 +361,40 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* ── CTA Section ── */}
-      <section className="px-8 md:px-16 pb-32 max-w-5xl mx-auto w-full">
+      {/* ── Chat-style CTA Section (theo.gg style) ── */}
+      <section className="px-8 md:px-16 pb-32 max-w-3xl mx-auto w-full">
         <Reveal>
-          <div className="cta-section">
-            <h2 className="cta-heading">I&apos;m available for new projects</h2>
-            <p className="text-sm text-muted mb-6">
-              Let&apos;s build something together — agents, LLM systems, or production ML infrastructure.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 text-xs uppercase tracking-[0.3em] text-muted">
-              {siteData.links.map((link) => (
-                <a key={link.label} className="nav-link" href={link.href}>
-                  {link.label}
-                </a>
-              ))}
+          <div className="chat-cta-section">
+            <div className="chat-bubble chat-bubble-1">
+              <span className="chat-available-dot"></span>
+              I&apos;m available for new projects
+            </div>
+            <div className="chat-bubble chat-bubble-2">
+              Do you have a project in mind? A collaboration proposal? Or do you just want to get in touch?
+            </div>
+            <div className="chat-bubble chat-bubble-3">
+              <a href={`mailto:${siteData.email}`} className="chat-link">
+                Click here to send me a message.
+              </a>
+            </div>
+            <div className="chat-bubble chat-bubble-4">
+              You can also reach out to me via email, at{" "}
+              <a href={`mailto:${siteData.email}`} className="chat-link">
+                {siteData.email}
+              </a>
+              , or by phone at{" "}
+              <a href={`tel:${siteData.phone}`} className="chat-link">
+                {siteData.phone}
+              </a>
+              .
+            </div>
+            <div className="chat-input-area">
+              <div className="chat-input-field">
+                <span className="chat-input-placeholder">Type here...</span>
+                <button className="chat-send-btn" aria-label="Send message">
+                  &rarr;
+                </button>
+              </div>
             </div>
           </div>
         </Reveal>
