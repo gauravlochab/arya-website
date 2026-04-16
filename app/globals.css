@@ -50,10 +50,18 @@
   }
 }
 
-/* ── Page wrapper — clean, no gradients ── */
 .page {
   min-height: 100vh;
-  background: var(--bg);
+  background: radial-gradient(circle at top left, rgba(90, 110, 255, 0.12), transparent 50%),
+    radial-gradient(circle at 20% 50%, rgba(28, 33, 78, 0.5), transparent 55%),
+    radial-gradient(circle at 80% 20%, rgba(10, 15, 40, 0.7), transparent 60%),
+    var(--bg);
+}
+
+:root[data-theme="light"] .page {
+  background: radial-gradient(circle at top left, rgba(90, 110, 255, 0.06), transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(200, 210, 240, 0.3), transparent 60%),
+    var(--bg);
 }
 
 @layer utilities {
