@@ -24,7 +24,7 @@ export default function GitHubContributions() {
       className="github-contributions"
     >
       <span className="gc-number">{count}</span>
-      <span className="gc-label">GitHub contributions this year</span>
+      <span className="gc-label">contributions this year &rarr;</span>
     </a>
   );
 }
