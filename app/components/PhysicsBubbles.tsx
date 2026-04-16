@@ -4,10 +4,9 @@ import { useEffect, useRef } from "react";
 import Matter from "matter-js";
 
 const BUBBLES = [
-  { label: "APOLIS", color: "#6ED7FF", radius: 42 },
+  { label: "Apolis", color: "#6ED7FF", radius: 42 },
   { label: "Valory", color: "#FF7C5E", radius: 38 },
   { label: "Pibit", color: "#FFD56A", radius: 36 },
-  { label: "BlackRock", color: "#4a4a4a", radius: 50 },
   { label: "LG", color: "#A50034", radius: 34 },
   { label: "Agents", color: "#8B7BFF", radius: 36 },
   { label: "Swarms", color: "#7CE38B", radius: 38 },
