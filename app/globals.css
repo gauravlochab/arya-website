@@ -587,6 +587,23 @@
   color: var(--muted);
 }
 
+/* -- Scroll reveal text (theo.gg about section effect) -- */
+
+.scroll-reveal-text {
+  line-height: 1.7;
+}
+
+.scroll-reveal-word {
+  color: var(--muted);
+  opacity: 0.35;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.scroll-reveal-word.lit {
+  color: var(--text);
+  opacity: 1;
+}
+
 /* -- About text gradient fade (theo.gg effect) -- */
 
 .text-fade-gradient {

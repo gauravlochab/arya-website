@@ -6,6 +6,7 @@ import TextReveal from "./components/TextReveal";
 import ThemeToggle from "./components/ThemeToggle";
 import ChatCTA from "./components/ChatCTA";
 import ProjectsTable from "./components/ProjectsTable";
+import ScrollRevealText from "./components/ScrollRevealText";
 
 const siteData = {
   name: "Gaurav Lochab",
@@ -174,13 +175,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* -- About -- */}
+      {/* -- About (scroll-reveal grey → white) -- */}
       <section className="py-32 px-8 flex flex-col items-center">
-        <Reveal>
-          <div className="max-w-2xl text-center leading-relaxed text-[15px] sm:text-[18px]" style={{ color: "var(--text)" }}>
-            {siteData.about}
-          </div>
-        </Reveal>
+        <div className="max-w-2xl text-center text-[15px] sm:text-[18px]">
+          <ScrollRevealText text={siteData.about} />
+        </div>
       </section>
 
       {/* -- Capabilities Grid (theo.gg services: 3 columns, title + paragraph only) -- */}
