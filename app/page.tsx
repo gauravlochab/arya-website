@@ -169,16 +169,14 @@ export default function Home() {
             <div style={{ fontSize: "clamp(2rem, 5vw, 54px)", lineHeight: 1.15, fontWeight: 700 }}>
               <TextReveal text={siteData.headline} as="h1" />
             </div>
-            <p className="mt-12 text-sm text-muted">
-              Trusted by AI-first companies worldwide &rarr;
-            </p>
+            <div className="mt-12 flex flex-col gap-2">
+              <p className="text-sm text-muted">
+                Trusted by AI-first companies worldwide &rarr;
+              </p>
+              <GitHubContributions />
+            </div>
           </Reveal>
         </div>
-      </section>
-
-      {/* -- GitHub Contributions -- */}
-      <section className="pt-16 pb-8 px-8 flex justify-center">
-        <GitHubContributions />
       </section>
 
       {/* -- About (scroll-reveal grey → white) -- */}

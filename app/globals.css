@@ -578,34 +578,6 @@
   opacity: 0.6;
 }
 
-/* -- GitHub Contributions Counter -- */
-
-.github-contributions {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.45rem;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 2px;
-  transition: border-color 0.2s ease;
-}
-
-.github-contributions:hover {
-  border-color: var(--accent);
-}
-
-.gc-number {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--accent);
-  letter-spacing: -0.01em;
-}
-
-.gc-label {
-  font-size: 0.85rem;
-  font-weight: 400;
-  color: var(--muted);
-}
-
 /* -- Footer -- */
 
 .site-footer {
@@ -613,6 +585,32 @@
   border-top: 1px solid var(--border);
   font-size: 0.7rem;
   color: var(--muted);
+}
+
+/* -- GitHub contributions counter -- */
+
+.github-contributions {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  transition: color 0.2s ease;
+}
+
+.github-contributions:hover {
+  color: var(--text);
+}
+
+.gc-number {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.gc-label {
+  font-weight: 400;
 }
 
 /* -- Scroll reveal text (theo.gg about section effect) -- */
