@@ -319,7 +319,7 @@ export default function EasterEgg() {
 
       {/* Quirky tagline */}
       <text className="ee-text" x="0" y="0" textAnchor="middle" dominantBaseline="auto" filter="url(#ee-text-glow)" style={{ opacity: 0 }}>
-        Ship it! 🚢
+        Let's ship it! 🚢
       </text>
 
       {/* Sparkle particles */}
