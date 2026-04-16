@@ -285,8 +285,23 @@ export default function Home() {
             <p>{siteData.location}</p>
           </div>
         </div>
-        <div className="text-[var(--muted)]">
-          {siteData.name} &copy; {new Date().getFullYear()}
+        <div className="flex flex-col items-end gap-3">
+          <div className="flex items-center gap-4 text-[var(--muted)]">
+            {siteData.links.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-[var(--text)] text-[11px] font-medium uppercase tracking-wider"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+          <div className="text-[var(--muted)]">
+            {siteData.name} &copy; {new Date().getFullYear()}
+          </div>
         </div>
       </footer>
     </main>
