@@ -296,7 +296,7 @@ export default function EasterEgg() {
       }
 
       // Edge sparks (gold/warm)
-      const edgeSparkEls = svg.querySelectorAll(".ee-edge-spark") as NodeListOf<SVGCircleElement>;
+      const edgeSparkEls = svg!.querySelectorAll(".ee-edge-spark") as NodeListOf<SVGCircleElement>;
       for (let i = 0; i < NUM_EDGE_SPARKS; i++) {
         const el = edgeSparkEls[i];
         if (!el) continue;
