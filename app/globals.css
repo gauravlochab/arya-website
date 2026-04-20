@@ -68,7 +68,7 @@
 /* -- Per-row hover color scheme (theo.gg style) -- */
 
 /* When a project row is hovered, JS sets inline background + data-hover-scheme on .page */
-/* "dark" scheme = dark bg → white text; "light" scheme = light bg → dark text */
+/* "dark" scheme = dark bg -> white text; "light" scheme = light bg -> dark text */
 .page[data-hover-scheme="dark"] .portfolio-table th,
 .page[data-hover-scheme="dark"] .portfolio-cell-num,
 .page[data-hover-scheme="dark"] .portfolio-cell-year,
@@ -943,6 +943,18 @@
   color: var(--muted);
 }
 
+/* Experience mobile: stack header vertically so period/location don't wrap badly */
+@media (max-width: 640px) {
+  .experience-header {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .experience-right {
+    align-items: flex-start;
+  }
+}
+
 .experience-highlights {
   list-style: none;
   padding: 0;
@@ -1038,12 +1050,20 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: 2rem;
+  padding: 1rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 50;
-  background: transparent;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+@media (min-width: 640px) {
+  .site-header {
+    padding: 2rem;
+  }
 }
 
 @media (min-width: 768px) {
