@@ -44,7 +44,7 @@ const siteData = {
     {
       company: "Valory",
       role: "Senior AI Developer",
-      period: "Jun 2024 – Oct 2025",
+      period: "Sep 2023 – Oct 2025",
       location: "Remote",
       highlights: [
         "Built distributed autonomous agent systems in Python for portfolio management, scaling to 5M+ requests and $10M+ managed assets with <200ms latency.",
@@ -53,20 +53,9 @@ const siteData = {
       ],
     },
     {
-      company: "Smarter",
-      role: "Senior Machine Learning Engineer",
-      period: "Oct 2022 – May 2024",
-      location: "London, UK (Remote)",
-      highlights: [
-        "Engineered ML serving pipelines with 4x model size reduction and 2x latency improvement via INT8 quantization, deploying containerized inference using Docker and vLLM on Linux while maintaining 95% accuracy.",
-        "Developed an LLM evaluation pipeline using Llama3-8B fine-tuned with instruction tuning and ORPO preference alignment, benchmarking and replacing underperforming models to improve accuracy by 15%.",
-        "Built production RAG agent using Llama3-8B, FastAPI, LangChain, and Qdrant; implemented query expansion and re-ranking achieving 30% improved retrieval relevance.",
-      ],
-    },
-    {
       company: "Pibit.ai",
       role: "Founding Team / Machine Learning",
-      period: "Jun 2020 – Sep 2022",
+      period: "Jun 2020 – Aug 2023",
       location: "Gurugram, India",
       highlights: [
         "Built Python-based ETL pipelines for large-scale document processing on AWS, improving throughput by 30% while reducing processing errors by 25%.",
