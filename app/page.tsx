@@ -58,7 +58,7 @@ export default function Home() {
         {/* Text on top */}
         <div className="relative z-10 max-w-full md:max-w-[55%]">
           <Reveal>
-            <div style={{ fontSize: "clamp(2rem, 5vw, 54px)", lineHeight: 1.15, fontWeight: 700 }}>
+            <div style={{ fontSize: "clamp(2.2rem, 5.4vw, 60px)", lineHeight: 1.1, fontWeight: 700 }}>
               <TextReveal text={siteData.headline} as="h1" />
             </div>
             <div className="mt-12 flex flex-col gap-4">
@@ -73,7 +73,8 @@ export default function Home() {
 
       {/* -- About (scroll-reveal grey -> white) -- */}
       <section className="py-32 px-8 flex flex-col items-center">
-        <div className="max-w-2xl text-center text-[15px] sm:text-[18px]">
+        <div className="max-w-2xl text-center text-[17px] sm:text-[21px]">
+          <div className="section-eyebrow section-eyebrow--center">About</div>
           <ScrollRevealText text={siteData.about} />
         </div>
       </section>
@@ -81,9 +82,11 @@ export default function Home() {
       {/* -- Capabilities Grid (theo.gg services: 3 columns, title + paragraph only) -- */}
       <section className="py-32 px-8 md:px-16 w-full mx-auto max-w-7xl">
         <Reveal>
+          <div className="section-eyebrow">What I do</div>
           <div className="capabilities-grid">
-            {siteData.capabilities.map((cap) => (
+            {siteData.capabilities.map((cap, i) => (
               <div key={cap.title} className="capability-item">
+                <span className="capability-index">{String(i + 1).padStart(2, "0")}</span>
                 <h3>{cap.title}</h3>
                 <p>{cap.description}</p>
               </div>
@@ -95,7 +98,7 @@ export default function Home() {
       {/* -- Experience -- */}
       <section className="py-32 px-8 md:px-16 w-full mx-auto max-w-5xl">
         <Reveal>
-          <div className="text-xs uppercase tracking-[0.3em] text-muted mb-6">Experience</div>
+          <div className="section-eyebrow">Experience</div>
           <div className="experience-list">
             {siteData.experience.map((job) => (
               <div key={job.company} className="experience-item">
@@ -123,6 +126,7 @@ export default function Home() {
       {/* -- Projects Table (theo.gg style -- per-row hover colors) -- */}
       <section id="projects" className="py-24 px-8 md:px-16 w-full overflow-x-auto max-w-7xl mx-auto">
         <Reveal>
+          <div className="section-eyebrow">Selected work</div>
           <ProjectsTable />
         </Reveal>
       </section>
@@ -130,6 +134,7 @@ export default function Home() {
       {/* -- Testimonials -- */}
       <section className="py-32 px-8 md:px-16 max-w-5xl mx-auto w-full">
         <Reveal>
+          <div className="section-eyebrow">Endorsements</div>
           <div className="testimonials-grid">
             {siteData.testimonials.map((t, i) => (
               <div key={i} className="testimonial-card">
