@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-// @ts-expect-error — react-dom types not installed
 import { createPortal } from "react-dom";
 
 export default function ResumeOverlay() {
