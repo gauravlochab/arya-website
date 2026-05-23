@@ -4,37 +4,45 @@
 
 @layer base {
   :root {
-    color-scheme: dark;
-    --bg: #07080f;
-    --bg-elevated: #0e111c;
-    --surface-2: #171b2b;
-    --text: #f4f5f8;
-    --muted: #aab2c5;
-    --faint: #717892;
-    --accent: #9db0ff;
-    --accent-soft: rgba(157, 176, 255, 0.1);
-    --border: #232838;
-    --border-strong: #363c54;
-    --glass: rgba(157, 176, 255, 0.12);
-    --glow: rgba(157, 176, 255, 0.18);
-    --shadow: 0 18px 40px -16px rgba(0, 0, 0, 0.7);
+    color-scheme: light;
+    /* Warm beige — default, inspired by warm-light portfolios */
+    --bg: #f5efe6;
+    --bg-elevated: #ffffff;
+    --surface-2: #ede1cf;
+    --text: #2d2a24;
+    --muted: #5f5646;
+    --faint: #8a7e6a;
+    --accent: #ff8400;
+    --accent-2: #052e87;
+    --accent-soft: rgba(255, 132, 0, 0.1);
+    --border: #dfd1bc;
+    --border-strong: #c8b89a;
+    --glass: rgba(45, 42, 36, 0.06);
+    --glow: rgba(255, 132, 0, 0.18);
+    --shadow: 0 22px 48px -20px rgba(60, 40, 10, 0.22);
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-pill: 999px;
   }
 
-  :root[data-theme="light"] {
-    color-scheme: light;
-    --bg: #f6f7f9;
-    --bg-elevated: #ffffff;
-    --surface-2: #eef0f4;
-    --text: #0b0c0f;
-    --muted: #515c6e;
-    --faint: #8b94a4;
-    --accent: #3a5bff;
-    --accent-soft: rgba(58, 91, 255, 0.08);
-    --border: #e3e6ef;
-    --border-strong: #cdd2de;
-    --glass: rgba(58, 91, 255, 0.1);
-    --glow: rgba(58, 91, 255, 0.16);
-    --shadow: 0 18px 40px -16px rgba(20, 30, 60, 0.16);
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    /* Warm dark — companion to the beige theme */
+    --bg: #1a1814;
+    --bg-elevated: #25221d;
+    --surface-2: #2f2b25;
+    --text: #f1e5d5;
+    --muted: #b8aa92;
+    --faint: #756a58;
+    --accent: #ff8400;
+    --accent-2: #6a8dff;
+    --accent-soft: rgba(255, 132, 0, 0.12);
+    --border: #3a352c;
+    --border-strong: #524a3d;
+    --glass: rgba(241, 229, 213, 0.08);
+    --glow: rgba(255, 132, 0, 0.2);
+    --shadow: 0 18px 40px -16px rgba(0, 0, 0, 0.6);
   }
 
   body {
@@ -63,9 +71,9 @@
 .page {
   min-height: 100vh;
   transition: background 0.3s;
-  background: radial-gradient(circle at top left, rgba(90, 110, 255, 0.12), transparent 50%),
-    radial-gradient(circle at 20% 50%, rgba(28, 33, 78, 0.5), transparent 55%),
-    radial-gradient(circle at 80% 20%, rgba(10, 15, 40, 0.7), transparent 60%),
+  background:
+    radial-gradient(circle at 88% 8%, rgba(255, 132, 0, 0.09), transparent 45%),
+    radial-gradient(circle at 8% 92%, rgba(5, 46, 135, 0.07), transparent 50%),
     var(--bg);
 }
 
@@ -247,11 +255,12 @@
 
 .capability-item h3 {
   font-family: var(--font-display), var(--font-mono), sans-serif;
-  font-size: 1.16rem;
+  font-size: 1.45rem;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
   color: var(--text);
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.85rem;
 }
 
 .capability-item p {
@@ -483,8 +492,8 @@
 }
 
 .testimonial-card blockquote p {
-  font-size: 0.92rem;
-  line-height: 1.75;
+  font-size: 1.05rem;
+  line-height: 1.6;
   color: var(--text);
   margin-bottom: 0.75rem;
 }
@@ -1001,9 +1010,10 @@
 
 .experience-company {
   font-family: var(--font-display), var(--font-mono), sans-serif;
-  font-size: 1.08rem;
+  font-size: 1.5rem;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.018em;
+  line-height: 1.1;
   color: var(--text);
 }
 
@@ -1120,32 +1130,29 @@
   }
 }
 
-/* -- Global: ZERO border-radius everywhere (theo.gg sharp edges) -- */
-*,
-*::before,
-*::after {
-  border-radius: 0 !important;
+/* -- Default radii for cards (warm-beige redesign — soft edges replace
+   the previous sharp-edge override) -- */
+.capability-item,
+.experience-item,
+.testimonial-card {
+  border-radius: var(--radius-md);
 }
 
-/* Exception: cursor and bubbles must stay round */
 .cursor-ring,
 .cursor-dot {
-  border-radius: 50% !important;
+  border-radius: 50%;
 }
 
-/* Exception: green availability dot stays round */
 .chat-available-dot {
-  border-radius: 50% !important;
+  border-radius: 50%;
 }
 
-/* Exception: chat bubbles have rounded corners (theo.gg style) */
 .chat-bubble-theo {
-  border-radius: 10px !important;
+  border-radius: 12px;
 }
 
-/* Exception: last bot bubble in group — sharp bottom-left */
 .chat-bubble-last {
-  border-radius: 10px 10px 10px 0px !important;
+  border-radius: 12px 12px 12px 2px;
 }
 
 /* Exception: typing dots stay round */

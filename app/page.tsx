@@ -40,7 +40,8 @@ export default function Home() {
           <div className="flex items-center gap-3 sm:gap-5">
             <ThemeToggle />
             <a
-              className="border-b border-[var(--text)] pb-0.5 transition-opacity hover:opacity-70"
+              className="px-5 py-2 font-semibold text-[var(--text)] transition-transform hover:scale-[1.03]"
+              style={{ background: "var(--accent)", borderRadius: "var(--radius-pill)" }}
               href={`mailto:${siteData.email}`}
             >
               {siteData.nav.cta}
@@ -58,7 +59,7 @@ export default function Home() {
         {/* Text on top */}
         <div className="relative z-10 max-w-full md:max-w-[55%]">
           <Reveal>
-            <div style={{ fontSize: "clamp(2.2rem, 5.4vw, 60px)", lineHeight: 1.1, fontWeight: 700 }}>
+            <div style={{ fontSize: "clamp(2.8rem, 7vw, 92px)", lineHeight: 1.04, fontWeight: 700, letterSpacing: "-0.025em" }}>
               <TextReveal text={siteData.headline} as="h1" />
             </div>
             <div className="mt-12 flex flex-col gap-4">
